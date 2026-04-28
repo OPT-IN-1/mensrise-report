@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Men's Rise 流入層分析レポート（4/16以降・4/28更新）</title>
+<title>Men's Rise 統合分析レポート（LINE登録者 / 流入層）</title>
 <style>
   :root{
     --bg:#0f1419;
@@ -27,7 +27,7 @@
   }
   .container{max-width:1100px;margin:0 auto;padding:40px 24px;}
   header{
-    border-bottom:2px solid var(--accent);padding-bottom:24px;margin-bottom:40px;
+    border-bottom:2px solid var(--accent);padding-bottom:24px;margin-bottom:24px;
   }
   .brand{
     color:var(--accent);font-size:14px;letter-spacing:.2em;font-weight:600;
@@ -36,6 +36,32 @@
   h1{font-size:32px;font-weight:700;margin-bottom:12px;line-height:1.3}
   .meta{color:var(--text-sub);font-size:13px;display:flex;gap:24px;flex-wrap:wrap}
   .meta span::before{content:"●";color:var(--accent);margin-right:6px;font-size:8px;vertical-align:middle}
+
+  /* Tabs */
+  .tabs{
+    display:flex;gap:0;margin-bottom:32px;
+    border-bottom:1px solid var(--border);
+    overflow-x:auto;
+  }
+  .tab{
+    background:transparent;border:none;color:var(--text-sub);
+    padding:14px 22px;font-size:14px;font-weight:600;
+    cursor:pointer;border-bottom:3px solid transparent;
+    margin-bottom:-1px;font-family:inherit;letter-spacing:.02em;
+    white-space:nowrap;transition:color .15s, border-color .15s;
+  }
+  .tab:hover{color:var(--text)}
+  .tab.active{color:var(--accent-2);border-bottom-color:var(--accent)}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block;animation:fadein .25s ease}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  .panel-meta{
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;
+    padding:14px 18px;margin-bottom:32px;
+    color:var(--text-sub);font-size:13px;display:flex;gap:24px;flex-wrap:wrap;
+  }
+  .panel-meta span::before{content:"●";color:var(--accent);margin-right:6px;font-size:8px;vertical-align:middle}
 
   section{margin-bottom:48px}
   h2{
@@ -48,7 +74,6 @@
   }
   h4{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--text-sub)}
 
-  /* KPI Cards */
   .kpi-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:16px;margin-bottom:24px;
@@ -62,36 +87,22 @@
   .kpi-value.accent{color:var(--accent)}
   .kpi-value.danger{color:var(--danger)}
   .kpi-value.good{color:var(--good)}
+  .kpi-value.info{color:var(--info)}
   .kpi-sub{font-size:11px;color:var(--text-sub);margin-top:4px}
 
   /* Comparison panel */
-  .compare{
-    display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;
-  }
-  .panel{
-    background:var(--surface);border:1px solid var(--border);
-    padding:20px;border-radius:8px;
-  }
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+  .panel{background:var(--surface);border:1px solid var(--border);padding:20px;border-radius:8px;}
   .panel.actual{border-left:4px solid var(--info)}
   .panel.hypo{border-left:4px solid var(--accent)}
-  .panel-title{
-    font-size:13px;color:var(--text-sub);margin-bottom:12px;
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  .panel-title .tag{
-    font-size:10px;padding:2px 8px;border-radius:10px;
-    background:var(--surface-2);color:var(--text);
-  }
+  .panel-title{font-size:13px;color:var(--text-sub);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
+  .panel-title .tag{font-size:10px;padding:2px 8px;border-radius:10px;background:var(--surface-2);color:var(--text);}
   .panel.actual .tag{background:var(--info);color:#000}
   .panel.hypo .tag{background:var(--accent);color:#000}
-  .panel-row{
-    display:flex;justify-content:space-between;padding:8px 0;
-    border-bottom:1px solid var(--border);font-size:14px;
-  }
+  .panel-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;}
   .panel-row:last-child{border-bottom:none}
   .panel-row strong{color:var(--accent-2)}
 
-  /* Tables */
   table{
     width:100%;border-collapse:collapse;margin:12px 0 24px;
     background:var(--surface);border-radius:8px;overflow:hidden;
@@ -115,10 +126,9 @@
   }
   .badge.danger{background:rgba(255,107,107,.15);color:var(--danger)}
   .badge.warn{background:rgba(255,169,77,.15);color:var(--warn)}
-  .badge.good{background:rgba(81,207,102,.15);color:var(--good)}
+  .badge.good,.badge.ok{background:rgba(81,207,102,.15);color:var(--good)}
   .badge.info{background:rgba(95,179,246,.15);color:var(--info)}
 
-  /* Highlight box */
   .highlight{
     background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(212,175,55,.02));
     border:1px solid rgba(212,175,55,.3);
@@ -127,34 +137,24 @@
   .highlight strong{color:var(--accent-2)}
 
   /* Case list */
-  .case{
-    background:var(--surface);border:1px solid var(--border);
-    padding:16px 20px;border-radius:8px;margin-bottom:12px;
-  }
-  .case-header{
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-    padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid var(--border);
-  }
+  .case{background:var(--surface);border:1px solid var(--border);padding:16px 20px;border-radius:8px;margin-bottom:12px;}
+  .case-header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid var(--border);}
   .case-name{font-weight:600;color:var(--accent-2)}
   .case-attr{font-size:12px;color:var(--text-sub)}
-  .case-reason{
-    font-size:13px;color:var(--text);margin-top:6px;
-    padding-left:12px;border-left:2px solid var(--border);
-  }
+  .case-reason{font-size:13px;color:var(--text);margin-top:6px;padding-left:12px;border-left:2px solid var(--border);}
   .case-reason strong{color:var(--accent-2)}
 
-  /* Cross table */
-  .cross{
-    overflow-x:auto;
-  }
+  .cross{overflow-x:auto}
   .cross table{font-size:13px}
   .cross td.cell{text-align:center;font-variant-numeric:tabular-nums}
   .cross td.cell.zero{color:var(--text-sub);opacity:.4}
-  .cross td.cell.high{background:rgba(255,107,107,.1);color:var(--danger);font-weight:600}
-  .cross td.cell.mid{background:rgba(255,169,77,.08);color:var(--warn)}
+  .cross td.cell.high{background:rgba(255,107,107,.12);color:var(--danger);font-weight:600}
+  .cross td.cell.mid{background:rgba(255,169,77,.10);color:var(--warn)}
+  .cross td.cell.low{background:rgba(95,179,246,.07);color:var(--info)}
   .cross td.row-total{background:var(--surface-2);font-weight:600;text-align:right}
 
-  /* Footer */
+  .divider{height:1px;background:var(--border);margin:32px 0}
+
   footer{
     margin-top:60px;padding-top:24px;border-top:1px solid var(--border);
     color:var(--text-sub);font-size:12px;
@@ -162,22 +162,13 @@
   footer dl{display:grid;grid-template-columns:120px 1fr;gap:8px 16px}
   footer dt{color:var(--accent-2)}
 
-  /* Sub-section divider */
-  .divider{
-    height:1px;background:var(--border);margin:32px 0;
-  }
-
-  /* Site nav */
-  .nav{margin-bottom:24px;font-size:13px}
-  .nav a{color:var(--info);text-decoration:none;border-bottom:1px dashed var(--info)}
-  .nav a:hover{color:var(--accent-2);border-color:var(--accent-2)}
-
   @media(max-width:680px){
     .container{padding:24px 16px}
-    h1{font-size:24px}
-    h2{font-size:18px}
+    h1{font-size:22px}
+    h2{font-size:17px}
     .compare{grid-template-columns:1fr}
     .kpi-value{font-size:22px}
+    .tab{padding:12px 14px;font-size:13px}
   }
 </style>
 </head>
@@ -185,508 +176,665 @@
 <div class="container">
 
 <header>
-  <div class="brand">Men's Rise — Sales Analytics</div>
-  <h1>流入層分析レポート（4/16以降）</h1>
+  <div class="brand">Men's Rise — Analytics</div>
+  <h1>メンズライズ 統合分析レポート</h1>
   <div class="meta">
     <span>分析日：2026-04-28</span>
+    <span>2タブ構成：LINE登録者属性 ／ 個別相談（営業）流入層</span>
+  </div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab active" data-tab="line" role="tab" aria-selected="true">LINE登録者 属性分析（4/20以降）</button>
+  <button class="tab" data-tab="sales" role="tab" aria-selected="false">流入層分析（個別相談・営業 4/16以降）</button>
+</div>
+
+<!-- ================================================================== -->
+<!-- ============   TAB 1: LINE登録者 属性分析   ====================== -->
+<!-- ================================================================== -->
+<div class="tab-panel active" id="tab-line" role="tabpanel">
+
+  <div class="panel-meta">
+    <span>対象：4/20以降にアンケートを回答したLINE登録者</span>
+    <span>母集団：896名</span>
+    <span>ソース：LINE登録者CSV（20260428151453）</span>
+  </div>
+
+  <!-- サマリー -->
+  <section>
+    <h2>📊 サマリー</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:16px">
+      本タブは <strong>4/20以降にLINE登録 → アンケートを回答した 896名</strong> を対象とする。<br>
+      ※ アンケート未回答者は4月20日以降のアンケート修正前データのため対象外。以下すべての数値は896名を母数とする。
+    </p>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">対象母集団</div>
+        <div class="kpi-value accent">896<span style="font-size:14px;color:var(--text-sub)">名</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">10代＋20代</div>
+        <div class="kpi-value">767<span style="font-size:14px;color:var(--text-sub)">名 / 85.6%</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">学生＋会社員</div>
+        <div class="kpi-value good">836<span style="font-size:14px;color:var(--text-sub)">名 / 93.4%</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">最大セグメント</div>
+        <div class="kpi-value info">20代×会社員</div>
+        <div class="kpi-sub">271名 / 30.2%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 職業 -->
+  <section>
+    <h2>💼 職業 内訳</h2>
+    <table>
+      <thead><tr><th>職業</th><th class="num">人数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge good">学生</span></td><td class="num">444名</td><td class="num"><span class="pct-bar" style="width:165px"></span>49.6%</td></tr>
+        <tr><td><span class="badge info">会社員</span></td><td class="num">392名</td><td class="num"><span class="pct-bar" style="width:146px;background:var(--info)"></span>43.8%</td></tr>
+        <tr><td>フリーランス</td><td class="num">23名</td><td class="num"><span class="pct-bar" style="width:9px"></span>2.6%</td></tr>
+        <tr><td>経営者</td><td class="num">21名</td><td class="num"><span class="pct-bar" style="width:8px"></span>2.3%</td></tr>
+        <tr><td>フリーター</td><td class="num">14名</td><td class="num"><span class="pct-bar" style="width:5px"></span>1.6%</td></tr>
+        <tr><td>主婦</td><td class="num">2名</td><td class="num"><span class="pct-bar" style="width:1px"></span>0.2%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>学生＋会社員で 836名（93.4%）</strong>。フリーランス・経営者の高決済力層は 4.9%（44名）に留まる。
+    </p>
+  </section>
+
+  <!-- 年齢統合 -->
+  <section>
+    <h2>🎂 年齢 内訳（統合版）</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      4/26からアンケートの年齢選択肢が細分化されたため、ここでは <strong>5階層（10代以下・20代・30代・40代・50代以上）</strong> に統合した数値を掲載。
+    </p>
+    <table>
+      <thead><tr><th>年代</th><th class="num">人数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td>10代以下（〜19歳）</td><td class="num">305名</td><td class="num"><span class="pct-bar" style="width:113px"></span>34.0%</td></tr>
+        <tr><td><span class="badge danger">20代（20〜29歳）</span></td><td class="num">462名</td><td class="num"><span class="pct-bar" style="width:172px;background:var(--danger)"></span>51.6%</td></tr>
+        <tr><td>30代（30〜39歳）</td><td class="num">105名</td><td class="num"><span class="pct-bar" style="width:39px"></span>11.7%</td></tr>
+        <tr><td>40代（40〜49歳）</td><td class="num">19名</td><td class="num"><span class="pct-bar" style="width:7px"></span>2.1%</td></tr>
+        <tr><td>50代以上</td><td class="num">5名</td><td class="num"><span class="pct-bar" style="width:2px"></span>0.6%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>10代＋20代で 767名（85.6%）</strong>。30代以上はわずか 14.4%。<br>
+      📌 個別相談（4/16以降77件）の流入では 10代が 41.6% で最多だったのに対し、<strong>LINE層では 20代が 51.6% で最大セグメント</strong>。LINE→個別相談への遷移で 10代の比率が高まる構造（学生比率が高く相談に前のめり）と推察。
+    </p>
+  </section>
+
+  <!-- 年齢細分化 -->
+  <section>
+    <h2>🔍 年齢 内訳（細分化版・4/26以降の選択肢変更後）</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      4/26 から年齢選択肢を細分化（5刻みベース）。本セクションは <strong>細分化選択肢で回答した 444名のみ</strong> を母数とする（4/25 以前の旧選択肢回答 452名は細分化での比較ができないため除外）。
+    </p>
+    <table>
+      <thead><tr><th>年齢層</th><th class="num">人数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge warn">〜19歳</span></td><td class="num">157名</td><td class="num"><span class="pct-bar" style="width:131px;background:var(--warn)"></span>35.4%</td></tr>
+        <tr><td><span class="badge danger">20〜24歳</span></td><td class="num">144名</td><td class="num"><span class="pct-bar" style="width:120px;background:var(--danger)"></span>32.4%</td></tr>
+        <tr><td>25〜29歳</td><td class="num">77名</td><td class="num"><span class="pct-bar" style="width:64px"></span>17.3%</td></tr>
+        <tr><td>30〜34歳</td><td class="num">45名</td><td class="num"><span class="pct-bar" style="width:38px"></span>10.1%</td></tr>
+        <tr><td>35〜39歳</td><td class="num">10名</td><td class="num"><span class="pct-bar" style="width:9px"></span>2.3%</td></tr>
+        <tr><td>40〜44歳</td><td class="num">4名</td><td class="num"><span class="pct-bar" style="width:4px"></span>0.9%</td></tr>
+        <tr><td>45〜49歳</td><td class="num">5名</td><td class="num"><span class="pct-bar" style="width:5px"></span>1.1%</td></tr>
+        <tr><td>50歳以上</td><td class="num">2名</td><td class="num"><span class="pct-bar" style="width:2px"></span>0.5%</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      📌 <strong>「〜19歳」「20〜24歳」の2セグメントで 67.8%（301名）</strong>。実質的に<strong>「〜24歳」が最大ボリューム</strong>。<br>
+      📌 20代の中身を細分化で見ると <strong>20〜24歳（144名）が 25〜29歳（77名）の約2倍</strong> ＝20代の中でも前半に強く偏る。<br>
+      📌 30代も <strong>30〜34歳（45名）：35〜39歳（10名）＝4.5倍</strong> で前半偏重。年齢が上がるほど人数が階段状に減少。
+    </div>
+  </section>
+
+  <!-- 年齢×職業 -->
+  <section>
+    <h2>🧩 年齢 × 職業 クロス</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      年齢は統合版（10代以下／20代／30代／40代／50代以上）／件数（行内割合 %）
+    </p>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>年代</th>
+        <th class="num">学生</th>
+        <th class="num">会社員</th>
+        <th class="num">フリーランス</th>
+        <th class="num">経営者</th>
+        <th class="num">フリーター</th>
+        <th class="num">主婦</th>
+        <th class="num">合計</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>10代以下</td><td class="cell high">286 (93.8%)</td><td class="cell low">13 (4.3%)</td><td class="cell zero">1 (0.3%)</td><td class="cell zero">―</td><td class="cell zero">4 (1.3%)</td><td class="cell zero">1 (0.3%)</td><td class="row-total">305 (34.0%)</td></tr>
+        <tr><td>20代</td><td class="cell mid">158 (34.2%)</td><td class="cell high">271 (58.7%)</td><td class="cell low">14 (3.0%)</td><td class="cell zero">9 (1.9%)</td><td class="cell zero">9 (1.9%)</td><td class="cell zero">1 (0.2%)</td><td class="row-total">462 (51.6%)</td></tr>
+        <tr><td>30代</td><td class="cell zero">―</td><td class="cell high">90 (85.7%)</td><td class="cell low">6 (5.7%)</td><td class="cell low">9 (8.6%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">105 (11.7%)</td></tr>
+        <tr><td>40代</td><td class="cell zero">―</td><td class="cell mid">15 (78.9%)</td><td class="cell zero">1 (5.3%)</td><td class="cell low">2 (10.5%)</td><td class="cell zero">1 (5.3%)</td><td class="cell zero">―</td><td class="row-total">19 (2.1%)</td></tr>
+        <tr><td>50代以上</td><td class="cell zero">―</td><td class="cell">3 (60.0%)</td><td class="cell zero">1 (20.0%)</td><td class="cell zero">1 (20.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">5 (0.6%)</td></tr>
+        <tr><td class="row-total">合計</td><td class="row-total">444</td><td class="row-total">392</td><td class="row-total">23</td><td class="row-total">21</td><td class="row-total">14</td><td class="row-total">2</td><td class="row-total">896</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>10代の93.8%が学生</strong>＝想定通り。<strong>20代は会社員58.7% / 学生34.2%</strong> でほぼ二極構造。<br>
+      📌 経営者・フリーランスは <strong>20〜30代に集中</strong>（合計 38名／全体の 4.2%）。<br>
+      📌 全体最大セルは <strong>「20代×会社員」271名（30.2%）</strong>、次いで <strong>「10代以下×学生」286名（31.9%）</strong>。<strong>この2セルで 全体の 62.1%</strong> を占める。
+    </p>
+  </section>
+
+  <!-- 悩み単体 -->
+  <section>
+    <h2>💭 悩み 単体集計</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      設問：「男磨きで1番悩んでいることを教えてください」／単一回答／母集団 896名
+    </p>
+    <table>
+      <thead><tr><th>悩み</th><th class="num">人数</th><th class="num">構成比</th><th>分布バー</th></tr></thead>
+      <tbody>
+        <tr><td>見た目（顔・体型・ファッション）に自信がない</td><td class="num">326</td><td class="num">36.4%</td><td><div class="bar"><span style="width:100%"></span></div></td></tr>
+        <tr><td>何から始めればいいかわからない / やり方がわからない</td><td class="num">194</td><td class="num">21.7%</td><td><div class="bar"><span style="width:59.5%"></span></div></td></tr>
+        <tr><td>継続できない / 一人だとサボってしまう</td><td class="num">156</td><td class="num">17.4%</td><td><div class="bar"><span style="width:47.9%"></span></div></td></tr>
+        <tr><td>女性との出会い・恋愛がうまくいかない</td><td class="num">120</td><td class="num">13.4%</td><td><div class="bar"><span style="width:36.8%"></span></div></td></tr>
+        <tr><td>自分に自信が持てない / 男としての自信がない</td><td class="num">100</td><td class="num">11.2%</td><td><div class="bar"><span style="width:30.7%"></span></div></td></tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      📌 <strong>「見た目」が単独首位（36.4%）</strong>。ヘア・服装・体型ビフォーアフターが最も刺さる訴求軸。<br>
+      📌 <strong>「何から」「継続」を合算すると 39.1%</strong> ＝ノウハウ整理・伴走を求める層が見た目並みに大きい。商品の<strong>体系化</strong>・<strong>習慣化サポート</strong>訴求も二枚看板になる。<br>
+      📌 <strong>恋愛動機は 13.4%</strong>。中心ではないが、40代では首位（31.6%／後述クロス参照）と層別の刺さり方が大きく変わる。
+    </div>
+  </section>
+
+  <!-- 年齢×悩み -->
+  <section>
+    <h2>🧩 年齢 × 悩み クロス</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      年齢は統合版／件数（行内割合 %）。設問：「男磨きで1番悩んでいることを教えてください」
+    </p>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>年代</th>
+        <th class="num">見た目</th>
+        <th class="num">何から始めれば</th>
+        <th class="num">継続できない</th>
+        <th class="num">出会い・恋愛</th>
+        <th class="num">自信がない</th>
+        <th class="num">合計</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>10代以下</td><td class="cell high">140 (45.9%)</td><td class="cell mid">66 (21.6%)</td><td class="cell">35 (11.5%)</td><td class="cell">37 (12.1%)</td><td class="cell">27 (8.9%)</td><td class="row-total">305</td></tr>
+        <tr><td>20代</td><td class="cell high">147 (31.8%)</td><td class="cell mid">94 (20.3%)</td><td class="cell mid">94 (20.3%)</td><td class="cell">67 (14.5%)</td><td class="cell">60 (13.0%)</td><td class="row-total">462</td></tr>
+        <tr><td>30代</td><td class="cell high">33 (31.4%)</td><td class="cell mid">29 (27.6%)</td><td class="cell mid">22 (21.0%)</td><td class="cell low">9 (8.6%)</td><td class="cell">12 (11.4%)</td><td class="row-total">105</td></tr>
+        <tr><td>40代</td><td class="cell low">3 (15.8%)</td><td class="cell mid">5 (26.3%)</td><td class="cell">4 (21.1%)</td><td class="cell high">6 (31.6%)</td><td class="cell zero">1 (5.3%)</td><td class="row-total">19</td></tr>
+        <tr><td>50代以上</td><td class="cell high">3 (60.0%)</td><td class="cell zero">―</td><td class="cell">1 (20.0%)</td><td class="cell">1 (20.0%)</td><td class="cell zero">―</td><td class="row-total">5</td></tr>
+        <tr><td class="row-total">全体</td><td class="row-total">326 (36.4%)</td><td class="row-total">194 (21.7%)</td><td class="row-total">156 (17.4%)</td><td class="row-total">120 (13.4%)</td><td class="row-total">100 (11.2%)</td><td class="row-total">896</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="highlight">
+      📌 <strong>10代は「見た目」が突出（45.9%）</strong>。ヘアスタイル・服装・体型訴求の刺さり所。<br>
+      📌 <strong>20代は「見た目」「何から」「継続」の三つ巴</strong>（各20〜32%）→ 商品の万能訴求が効く層。<br>
+      📌 <strong>30代は「何から」「継続」が伸びる</strong>（合計 48.6%）→ 体系化・伴走・ロードマップ系の需要強。<br>
+      📌 <strong>40代は唯一「恋愛」がトップ（31.6%）</strong>。同じ商品でも訴求文脈を「恋愛・モテ」に寄せると有効。母数19のため要追加観測。
+    </div>
+  </section>
+
+  <!-- 個別相談との比較 -->
+  <section>
+    <h2>🔗 個別相談（営業側 4/16〜）との構造比較</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      LINE層（896名）と個別相談（77件）の構成比を並べて、流入のどこから絞られているかを可視化。<br>
+      → 個別相談タブ側の詳細はページ上部のタブ <strong>「流入層分析（個別相談・営業）」</strong> から参照。
+    </p>
+
+    <h3>年齢構成の比較</h3>
+    <div class="cross">
+    <table>
+      <thead><tr><th>年代</th><th class="num">LINE登録</th><th class="num">個別相談</th><th class="num">差分</th></tr></thead>
+      <tbody>
+        <tr><td>10代以下</td><td class="num">34.0%</td><td class="num">41.6%</td><td class="num"><span class="badge warn">+7.6pt</span></td></tr>
+        <tr><td>20代</td><td class="num">51.6%</td><td class="num">40.3%</td><td class="num"><span class="badge info">−11.3pt</span></td></tr>
+        <tr><td>30代</td><td class="num">11.7%</td><td class="num">14.3%</td><td class="num"><span class="badge">+2.6pt</span></td></tr>
+        <tr><td>40代以上</td><td class="num">2.7%</td><td class="num">3.9%</td><td class="num"><span class="badge">+1.2pt</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>職業構成の比較</h3>
+    <div class="cross">
+    <table>
+      <thead><tr><th>職業</th><th class="num">LINE登録</th><th class="num">個別相談</th><th class="num">差分</th></tr></thead>
+      <tbody>
+        <tr><td>学生</td><td class="num">49.6%</td><td class="num">52.0%</td><td class="num"><span class="badge">+2.4pt</span></td></tr>
+        <tr><td>会社員</td><td class="num">43.8%</td><td class="num">42.9%</td><td class="num"><span class="badge">−0.9pt</span></td></tr>
+        <tr><td>経営者</td><td class="num">2.3%</td><td class="num">1.3%</td><td class="num"><span class="badge">−1.0pt</span></td></tr>
+        <tr><td>フリーランス・フリーター・他</td><td class="num">4.4%</td><td class="num">3.9%</td><td class="num"><span class="badge">−0.5pt</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>LINE→個別相談で 10代の比率が +7.6pt 上昇</strong>（34.0%→41.6%）。10代は決済力に乏しい層が多いにもかかわらず相談には前のめり。<br>
+      📌 個別相談で 10代＋年収100万以下のスクリーニング対象が <strong>58.4%</strong> を占める構造の上流に、<strong>LINE層の 10代＋20代前半 67.8%</strong> という太い土管がある。
+    </p>
+  </section>
+
+  <!-- ペルソナ -->
+  <section>
+    <h2>👤 主要ペルソナ（流入の太いセル順）</h2>
+    <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div class="kpi" style="border-left:4px solid var(--accent)">
+        <div class="kpi-label">P1：20代会社員</div>
+        <div class="kpi-value accent">271<span style="font-size:14px;color:var(--text-sub)">名 / 30.2%</span></div>
+        <div class="kpi-sub">最大セグメント。決済力◎・継続課題が顕在化（20.3%）。商品の本命ターゲット。</div>
+      </div>
+      <div class="kpi" style="border-left:4px solid var(--info)">
+        <div class="kpi-label">P2：10代学生</div>
+        <div class="kpi-value info">286<span style="font-size:14px;color:var(--text-sub)">名 / 31.9%</span></div>
+        <div class="kpi-sub">人数では最大級だが決済力△。「見た目」45.9%＝外見コンプレックスを抱える未成年。LP/相談の入口で意思確認推奨。</div>
+      </div>
+      <div class="kpi" style="border-left:4px solid var(--good)">
+        <div class="kpi-label">P3：20代学生</div>
+        <div class="kpi-value good">158<span style="font-size:14px;color:var(--text-sub)">名 / 17.6%</span></div>
+        <div class="kpi-sub">大学生中心。バイト収入有り＝決済可能ライン。継続・恋愛系の悩みもバランスよく分布。</div>
+      </div>
+      <div class="kpi" style="border-left:4px solid var(--warn)">
+        <div class="kpi-label">P4：30代会社員</div>
+        <div class="kpi-value">90<span style="font-size:14px;color:var(--text-sub)">名 / 10.0%</span></div>
+        <div class="kpi-sub">「何から」27.6%＋「継続」21.0%＝体系化ニーズ強。決済力高、商品単価耐性も◎。</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:8px">
+      📌 上記4セグメントで <strong>805名（89.8%）</strong> をカバー。Lステップ分岐／訴求コンテンツの優先設計対象はこの4面で十分。
+    </p>
+  </section>
+
+</div>
+
+<!-- ================================================================== -->
+<!-- ============   TAB 2: 流入層分析（個別相談・営業）   ============== -->
+<!-- ================================================================== -->
+<div class="tab-panel" id="tab-sales" role="tabpanel">
+
+  <div class="panel-meta">
     <span>対象：4/16以降の個別相談申込</span>
     <span>データ：77件（テスト除外11件後）</span>
     <span>スクリーニング：4/28改訂版（年収100万以下を職業不問に拡大）</span>
   </div>
-</header>
 
-<div class="nav">
-  ▶ <a href="./line.html">LINE登録者 属性分析（4/20以降）</a> ／ <strong style="color:var(--accent-2)">流入層分析レポート（個別相談・営業／本ページ）</strong>
+  <!-- サマリー -->
+  <section>
+    <h2>📊 サマリー</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">4/16以降 総申込</div><div class="kpi-value">77<span style="font-size:14px;color:var(--text-sub)">件</span></div></div>
+      <div class="kpi"><div class="kpi-label">実施アポ数（実績）</div><div class="kpi-value">27<span style="font-size:14px;color:var(--text-sub)">件</span></div></div>
+      <div class="kpi"><div class="kpi-label">成約数（実績）</div><div class="kpi-value good">4<span style="font-size:14px;color:var(--text-sub)">件</span></div></div>
+      <div class="kpi"><div class="kpi-label">スクリーニング対象</div><div class="kpi-value danger">45<span style="font-size:14px;color:var(--text-sub)">件 (58.4%)</span></div></div>
+    </div>
+
+    <h3>成約率の2軸比較</h3>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      実績ベース＝既実施分も含めた現状値／新スクリーニング適用後＝該当者を母数から除外した数値<br>
+      ※新スクリーニング条件（4/28改訂）：①10代　②年収100万以下（職業不問）　③40代以上
+    </p>
+    <div class="compare">
+      <div class="panel actual">
+        <div class="panel-title"><span>実績ベース（全実施を含む）</span><span class="tag">ACTUAL</span></div>
+        <div class="panel-row"><span>申込</span><strong>77件</strong></div>
+        <div class="panel-row"><span>実施</span><strong>27件</strong></div>
+        <div class="panel-row"><span>成約</span><strong>4件</strong></div>
+        <div class="panel-row"><span>言質</span><strong>5件</strong></div>
+        <div class="panel-row"><span>検討中</span><strong>5件</strong></div>
+        <div class="panel-row"><span>失注</span><strong>13件</strong></div>
+        <div class="panel-row"><span>実施ベース成約率</span><strong>14.8%</strong></div>
+        <div class="panel-row"><span>申込ベース成約率</span><strong>5.2%</strong></div>
+      </div>
+      <div class="panel hypo">
+        <div class="panel-title"><span>新スクリーニング適用後</span><span class="tag">FILTERED</span></div>
+        <div class="panel-row"><span>申込（対象除外）</span><strong>32件</strong></div>
+        <div class="panel-row"><span>実施</span><strong>19件</strong></div>
+        <div class="panel-row"><span>成約</span><strong>4件</strong></div>
+        <div class="panel-row"><span>言質</span><strong>5件</strong></div>
+        <div class="panel-row"><span>検討中</span><strong>3件</strong></div>
+        <div class="panel-row"><span>失注</span><strong>7件</strong></div>
+        <div class="panel-row"><span>実施ベース成約率</span><strong>21.1%</strong></div>
+        <div class="panel-row"><span>申込ベース成約率</span><strong>12.5%</strong></div>
+      </div>
+    </div>
+    <div class="highlight">
+      📌 <strong>新スクリーニング対象45件のうち8件は既にアポ実施済み</strong>。<br>
+      実施8件の内訳：成約0件／検討中2件／失注6件 → 0%成約。スクリーニング適用判断は妥当。<br>
+      📌 <strong>申込ベース成約率は5.2% → 12.5%（2.4倍）</strong>に改善。実施ベースも14.8% → 21.1%へ。
+    </div>
+  </section>
+
+  <!-- 流入の基本属性 -->
+  <section>
+    <h2>👥 流入の基本属性</h2>
+
+    <h3>1-1. スクリーニング層 vs アポ実施対象層</h3>
+    <table>
+      <thead><tr><th>区分</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge danger">スクリーニング対象</span></td><td class="num">45件</td><td class="num">58.4%</td></tr>
+        <tr><td><span class="badge good">アポ実施対象</span></td><td class="num">32件</td><td class="num">41.6%</td></tr>
+      </tbody>
+    </table>
+
+    <h4>スクリーニング理由内訳（条件別の該当人数・重複あり）</h4>
+    <table>
+      <thead><tr><th>理由</th><th class="num">件数</th><th class="num">全体比</th></tr></thead>
+      <tbody>
+        <tr><td>10代（〜19歳）</td><td class="num">32件</td><td class="num"><span class="pct-bar" style="width:84px"></span>41.6%</td></tr>
+        <tr><td>年収100万以下（職業不問）</td><td class="num">42件</td><td class="num"><span class="pct-bar" style="width:110px;background:var(--danger)"></span>54.5%</td></tr>
+        <tr><td>40代以上</td><td class="num">3件</td><td class="num"><span class="pct-bar" style="width:8px"></span>3.9%</td></tr>
+      </tbody>
+    </table>
+
+    <h4>ユニーク該当者45件の重複構造</h4>
+    <table>
+      <thead><tr><th>重複パターン</th><th class="num">件数</th><th class="num">対象45件中</th></tr></thead>
+      <tbody>
+        <tr><td>10代 ＋ 年収100万以下（重複）</td><td class="num">32件</td><td class="num">71.1%</td></tr>
+        <tr><td>年収100万以下 のみ（10代以外）</td><td class="num">10件</td><td class="num">22.2%</td></tr>
+        <tr><td>40代以上 のみ</td><td class="num">3件</td><td class="num">6.7%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 4/28改訂で「年収100万以下を職業不問に拡大」したことで、<strong>10代に重複しない単独「年収100万以下」が10件追加で弾けるように</strong>なった（旧ルールでは20代学生×100万以下のみ対象だったため、20代会社員/フリーター・30代の100万以下を捕捉できなかった）。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>1-2. 年齢別 申込割合</h3>
+    <table>
+      <thead><tr><th>年代</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td>～19歳</td><td class="num">32件</td><td class="num"><span class="pct-bar" style="width:108px;background:var(--danger)"></span>41.6%</td></tr>
+        <tr><td>20〜24歳</td><td class="num">19件</td><td class="num"><span class="pct-bar" style="width:64px"></span>24.7%</td></tr>
+        <tr><td>25〜29歳</td><td class="num">12件</td><td class="num"><span class="pct-bar" style="width:40px"></span>15.6%</td></tr>
+        <tr><td>30〜34歳</td><td class="num">7件</td><td class="num"><span class="pct-bar" style="width:24px"></span>9.1%</td></tr>
+        <tr><td>35〜39歳</td><td class="num">4件</td><td class="num"><span class="pct-bar" style="width:14px"></span>5.2%</td></tr>
+        <tr><td>40〜44歳</td><td class="num">1件</td><td class="num"><span class="pct-bar" style="width:4px"></span>1.3%</td></tr>
+        <tr><td>50歳以上</td><td class="num">2件</td><td class="num"><span class="pct-bar" style="width:7px"></span>2.6%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <h3>1-3. 年齢 × 職業 クロス（全体に占める割合）</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>年代</th>
+        <th class="num">会社員</th>
+        <th class="num">学生</th>
+        <th class="num">経営者</th>
+        <th class="num">フリーター</th>
+        <th class="num">合計</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>～19歳</td><td class="cell zero">―</td><td class="cell high">31件 (40.3%)</td><td class="cell zero">―</td><td class="cell">1件 (1.3%)</td><td class="row-total">32件 (41.6%)</td></tr>
+        <tr><td>20〜24歳</td><td class="cell mid">10件 (13.0%)</td><td class="cell mid">9件 (11.7%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">19件 (24.7%)</td></tr>
+        <tr><td>25〜29歳</td><td class="cell mid">10件 (13.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell">2件 (2.6%)</td><td class="row-total">12件 (15.6%)</td></tr>
+        <tr><td>30〜34歳</td><td class="cell">7件 (9.1%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">7件 (9.1%)</td></tr>
+        <tr><td>35〜39歳</td><td class="cell">4件 (5.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">4件 (5.2%)</td></tr>
+        <tr><td>40〜44歳</td><td class="cell">1件 (1.3%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">1件 (1.3%)</td></tr>
+        <tr><td>50歳以上</td><td class="cell">1件 (1.3%)</td><td class="cell zero">―</td><td class="cell">1件 (1.3%)</td><td class="cell zero">―</td><td class="row-total">2件 (2.6%)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>1-4. 年収別 申込割合</h3>
+    <table>
+      <thead><tr><th>年収</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td>100万円以下</td><td class="num">42件</td><td class="num"><span class="pct-bar" style="width:140px;background:var(--danger)"></span>54.5%</td></tr>
+        <tr><td>100〜300万円</td><td class="num">7件</td><td class="num"><span class="pct-bar" style="width:24px"></span>9.1%</td></tr>
+        <tr><td>300〜500万円</td><td class="num">15件</td><td class="num"><span class="pct-bar" style="width:50px"></span>19.5%</td></tr>
+        <tr><td>500〜1000万円</td><td class="num">12件</td><td class="num"><span class="pct-bar" style="width:40px"></span>15.6%</td></tr>
+        <tr><td>1000万円以上</td><td class="num">1件</td><td class="num"><span class="pct-bar" style="width:4px"></span>1.3%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>申込全体の54.5%が年収100万以下</strong>。うち32件は10代と重複、10件は20代以上の100万以下層。
+    </p>
+  </section>
+
+  <!-- アポ実施対象詳細 -->
+  <section>
+    <h2>📞 アポ実施対象（32件・スクリーニング後）の詳細</h2>
+    <h3>2-1. クレカ有無</h3>
+    <table>
+      <thead><tr><th>クレカ</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td>持っている</td><td class="num">27件</td><td class="num">84.4%</td></tr>
+        <tr><td>持っていない</td><td class="num">4件</td><td class="num">12.5%</td></tr>
+        <tr><td>未記入</td><td class="num">1件</td><td class="num">3.1%</td></tr>
+      </tbody>
+    </table>
+    <h3>2-2. 実施結果内訳（19件実施）</h3>
+    <table>
+      <thead><tr><th>結果</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge good">成約</span></td><td class="num">4件</td><td class="num">21.1%</td></tr>
+        <tr><td><span class="badge info">言質</span></td><td class="num">5件</td><td class="num">26.3%</td></tr>
+        <tr><td><span class="badge warn">検討中</span></td><td class="num">3件</td><td class="num">15.8%</td></tr>
+        <tr><td><span class="badge danger">失注</span></td><td class="num">7件</td><td class="num">36.8%</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 言質5件 -->
+  <section>
+    <h2>🟡 言質 5件 の真因</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:16px">
+      全件スクリーニング除外なし＝優良見込み客。商品ミスマッチによる迷いではなく、外部要因で未確定。
+    </p>
+
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">① 池上健</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div><span class="badge info">時期待ち</span></div>
+      <div class="case-reason"><strong>真因：海外在住・帰国待ち</strong><br>ブラジル出張中で6月上旬帰国予定。オフ会・週1MTGが刺さって参加意欲は強い。LINEフォロー継続中。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">② 千村亮太</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div><span class="badge warn">決済問題</span></div>
+      <div class="case-reason"><strong>真因：債務整理でカード無し</strong><br>サポート内容に大満足、参加意欲MAX。本人発言「ライフティ使えるようになったら審査して、無理なら2か月後に貯金して一括で行く」。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">③ 塩田智宏</span> <span class="case-attr">35-39歳 / 会社員 / 年収300〜500万 / クレカあり</span></div><span class="badge info">時間切れ</span></div>
+      <div class="case-reason"><strong>真因：物理的時間切れ</strong><br>サービス内容に魅力を感じ参加意欲あり。時間の関係で翌日手続き予定。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">④ 山本龍</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div><span class="badge warn">決済問題</span></div>
+      <div class="case-reason"><strong>真因：カード枠不足＋滞納歴で新規不可</strong><br>オファーすんなり通過。クレカ枠10万のみ、過去滞納で新規カード作成不可。28日21:00に決済方法相談の枠を確保済。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">⑤ 田鍋直希</span> <span class="case-attr">20-24歳 / 会社員 / 年収100〜300万 / クレカなし</span></div><span class="badge warn">決済問題</span></div>
+      <div class="case-reason"><strong>真因：カード未所持→作成依頼中</strong><br>23歳工場勤務、変わりたい意欲強く参加意欲あり。カード作成の流れで終話、追跡中。</div>
+    </div>
+    <div class="highlight">
+      📌 <strong>言質5件中3件（60%）が決済手段関連で停滞</strong>。残り2件は時間/物理的制約。商品ミスマッチによる「言質止まり」はゼロ。
+    </div>
+  </section>
+
+  <!-- 失注7件 -->
+  <section>
+    <h2>🔴 失注 7件 の真因分類（スクリーニング後）</h2>
+    <p style="color:#a0a8b0;font-size:13px;margin-bottom:12px">
+      ※旧レポートにあった高屋颯太（年収100万以下）は新スクリーニング条件で除外対象になったため、ここでは扱わない。
+    </p>
+
+    <h3>カテゴリA：営業スキル由来（1件）</h3>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">① 石田太一</span> <span class="case-attr">20-24歳 / 会社員 / 年収500〜1000万 / クレカあり</span></div><span class="badge warn">スキル</span></div>
+      <div class="case-reason"><strong>失注要因：やりたいことが違う</strong><br>振り返り：「過去に本気で取り組んだファクト拾いが少なく失注」「最初は髪型のことが知りたいなどの浅い感じ」。高年収のコンサルで本来買える層、深掘り不足で失注。</div>
+    </div>
+
+    <h3>カテゴリB：商品ミスマッチ（2件）</h3>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">② 遠藤航海</span> <span class="case-attr">30-34歳 / 会社員 / 年収500〜1000万 / クレカあり</span></div><span class="badge danger">ミスマッチ</span></div>
+      <div class="case-reason"><strong>失注要因：やりたいことが違う</strong><br>振り返り：「痩せたいのが第一願望、男磨きへの願望は薄い。パーソナルでいいかもと言われ納得してしまった」。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">③ 吉岡大樹</span> <span class="case-attr">30-34歳 / 会社員（保険営業フルコミ）/ クレカあり</span></div><span class="badge danger">ミスマッチ</span></div>
+      <div class="case-reason"><strong>失注要因：やりたいことが違う</strong><br>振り返り：「狙った女性を落とすなどの<strong>具体的な口説き方のようなものが知りたく参加</strong>」「ある程度女性遊びしたいけど将来は結婚したい等、中途半端な状態」。男磨き商品の対象とずれた目的での流入。</div>
+    </div>
+
+    <h3>カテゴリC：決済問題（1件）</h3>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">④ 野口真言</span> <span class="case-attr">20-24歳 / 会社員 / 年収100〜300万 / クレカなし</span></div><span class="badge warn">決済問題</span></div>
+      <div class="case-reason"><strong>失注要因：金額、タイミング・環境要因</strong><br>振り返り：「親にクレカ作るなと言われている、無理矢理作らせる感じになり親が出てくる懸念。LINEでお断り」。</div>
+    </div>
+
+    <h3>カテゴリD：導線の問題 ＝ 買う気のない層の流入（3件）</h3>
+    <p style="color:#a0a8b0; font-size:13px; margin:-4px 0 12px">セールスのスキル不足ではなく、<strong>そもそも購買意欲のない層／個別相談を「ノウハウ獲得の場」と勘違いした層がアポに乗ってしまっている</strong>ケース。LP・導線設計で弾くべき層。</p>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">⑤ 美根涼太</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div><span class="badge danger">導線</span></div>
+      <div class="case-reason"><strong>失注要因：金額、タイミング・環境要因</strong><br>振り返り：「金がないの一点張り」「やるなら半年後、半年後できてる確率低い、マジで漢してない」。年収・クレカ条件は満たすが<strong>購入意思がほぼゼロで来訪</strong>。営業スキルではひっくり返せない、導線段階で弾くべき層。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">⑥ ニカイドウカイト</span> <span class="case-attr">25-29歳 / 会社員 / 年収100〜300万 / クレカあり</span></div><span class="badge danger">導線</span></div>
+      <div class="case-reason"><strong>失注要因：タイミング・環境要因</strong><br>振り返り：「目標がない、グルコン・オフ会に引け目、かなり時間かかりそう」。<strong>理想像が描けていない情報収集層</strong>。コミット意思なし。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">⑦ 安田卓巳</span> <span class="case-attr">30-34歳 / 会社員（現役美容師・既婚子持ち）/ クレカあり</span></div><span class="badge danger">導線</span></div>
+      <div class="case-reason"><strong>失注要因：未記入（営業の振り返りで明確）</strong><br>振り返り：「広告が流れてきてとりあえず気になって参加」「<strong>この面談はとりあえず何かノウハウやテクニックなどのことを教えてくれる時間だと思い参加</strong>」「これだけやればいいノウハウや心理テクニック教えて欲しい」。完全にノウハウ獲得目的、買う気ゼロ。</div>
+    </div>
+  </section>
+
+  <!-- ノウハウ目的セグメント -->
+  <section>
+    <h2>📚 「個別相談 ＝ ノウハウを教えてもらう場」と勘違いして来ている層 の炙り出し</h2>
+    <p style="color:#a0a8b0">
+      抽出ソースは<strong>申込フォームではなく、営業担当の「振り返り」記述</strong>。申込時に「似合う髪型を知りたい」と書くのは普通であり、それ自体は判定材料にしない。<br>
+      実際の個別相談を担当した営業が、振り返り欄で<strong>「ノウハウやテクニックを教えてくれる時間だと思い参加」「教えてほしいスタンスだった」「具体的な口説き方が知りたく参加」「髪型のことが知りたい等の浅い感じだった」と明記しているケース</strong>のみを対象化。LP上で「ノウハウを教える場ではない」と告知済みだが、それでもどれだけすり抜けているかを実相談ベースで可視化する目的。
+    </p>
+    <p style="color:#a0a8b0">
+      母集団：<strong>4/16以降・実施・新スクリーニング除外後の19件</strong>（4/28改訂版スクリーニング適用）。
+    </p>
+    <table>
+      <thead><tr><th>氏名</th><th>属性</th><th>営業の振り返り記述（該当箇所）</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>安田卓巳</td><td>30-34 / 会社員（美容師・既婚子持ち）</td>
+          <td>「広告が流れてきてとりあえず気になって参加」「最初から抽象的で投げやりな質問が多くて」「<strong>この面談はとりあえず何かノウハウやテクニックなどのことを教えてくれる時間だと思い参加</strong>」「<strong>これだけやればいいノウハウや心理テクニック教えて欲しい</strong>」。本セグメントの<strong>最強烈例</strong>。</td>
+          <td><span class="badge danger">失注</span></td>
+        </tr>
+        <tr>
+          <td>吉岡大樹</td><td>30-34 / 会社員（保険営業）</td>
+          <td>「<strong>狙った女性を落とすなどの具体的な口説き方のようなものが知りたく参加</strong>」。男磨き商品ではなく、特定スキル教習として個別相談を利用しに来ている。</td>
+          <td><span class="badge danger">失注</span></td>
+        </tr>
+        <tr>
+          <td>石田太一</td><td>20-24 / 会社員</td>
+          <td>「最初は<strong>髪型のことが知りたいとかなどの浅い感じ</strong>でした」。ヒアリングで深掘ったがファクト拾い不足で失注。</td>
+          <td><span class="badge danger">失注</span></td>
+        </tr>
+        <tr>
+          <td>尾崎 史</td><td>25-29 / 会社員</td>
+          <td>前回面談で「何からやればいいか分からない」と<strong>すごい抽象的で、教えてほしいスタンスだった</strong>。<strong>再面談＋アンケート記入</strong>で目的を引き出し、覚悟を決めさせて成約。</td>
+          <td><span class="badge ok">成約</span></td>
+        </tr>
+        <tr>
+          <td>藤岡竜也</td><td>20-24 / 会社員</td>
+          <td>現役ラグビー選手。「<strong>自分に似合う服装や髪型ファッションが知りたい</strong>」で入ってきた。深掘りで「やりたいことを仕事にする憧れ」まで引き出し、教育→プレゼンで成約。</td>
+          <td><span class="badge ok">成約</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      📌 <strong>営業の振り返り記述ベースで「ノウハウ目当て」と明確判定できたのは 5件 / 19件中（26.3%）</strong>。LPで「ノウハウを教える場ではない」と告知済みでも、依然<strong>4人に1人がノウハウQ&A目当てで個別相談に乗ってきている</strong>。<br>
+      結果：<strong>成約2 / 失注3 → 成約率40%</strong>（後述参照）。<br>
+      <strong>分かれ目は初動対応</strong>：
+      <ul style="margin:6px 0 6px 22px">
+        <li><span class="badge ok">成約パターン</span> 尾崎（再面談＋目的化アンケート）／藤岡（深掘りで根本欲望に到達）</li>
+        <li><span class="badge danger">失注パターン</span> 石田（深掘り不足）／吉岡（商品ターゲットとずれた目的）／安田（買う気ゼロ＝導線レベルで弾くべき）</li>
+      </ul>
+      →対策：①初動でノウハウ目当てと判定したら<strong>尾崎パターン（アンケート→再面談）</strong>に分岐／②冒頭5分で「ここはノウハウを教える場ではなく覚悟を確認する場」とリフレーミング／③ <strong>安田レベルの強烈ノウハウ目的（"教えてくれる時間だと思って参加"）はLP・申込フォームの段階で意思確認設問を追加し弾く</strong>／④振り返りに「ノウハウ目当てフラグ」を残し、再現性ある対応パターンをナレッジ化。
+    </div>
+  </section>
+
+  <!-- 検討中3件 -->
+  <section>
+    <h2>🟠 検討中 3件 の真因分類（スクリーニング後）</h2>
+    <p style="color:#a0a8b0;font-size:13px;margin-bottom:12px">
+      ※旧レポートの杉浦舜拓（フリーター・年収100万以下）は新スクリーニング条件で除外対象。
+    </p>
+
+    <h3>カテゴリA：決済問題（1件）</h3>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">① 應武春来</span> <span class="case-attr">20-24歳 / 学生 / 年収100〜300万 / クレカなし</span></div><span class="badge warn">決済問題</span></div>
+      <div class="case-reason"><strong>検討要因：タイミング・環境要因</strong><br>振り返り：「リョータの大ファン、カード未所持でまだ学生、強引な押しを控えた」。意欲はあるが決済手段なし。</div>
+    </div>
+
+    <h3>カテゴリB：営業スキル由来（2件）</h3>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">② 岩下弘貴</span> <span class="case-attr">30-34歳 / 会社員 / 年収300〜500万 / クレカあり</span></div><span class="badge warn">スキル</span></div>
+      <div class="case-reason"><strong>検討要因：未記入</strong><br>振り返り：「口だけで根本変えようとしてきたファクトがないことにもっと踏み込めば良かった」。深掘り不足で即決逃した。</div>
+    </div>
+    <div class="case">
+      <div class="case-header"><div><span class="case-name">③ 永井優多</span> <span class="case-attr">25-29歳 / 会社員 / 年収500〜1000万 / クレカあり</span></div><span class="badge warn">スキル</span></div>
+      <div class="case-reason"><strong>検討要因：金額</strong><br>振り返り：「痛みを認識させきれず、金額ネック。理想だけ膨らませて課題明確化しきれなかった」。年収500-1000万なので決済力はある。</div>
+    </div>
+  </section>
+
+  <!-- 失注/検討 集計 -->
+  <section>
+    <h2>📊 失注・検討中 10件の構造集計（スクリーニング後）</h2>
+    <table>
+      <thead><tr><th>カテゴリ</th><th class="num">件数</th><th class="num">割合</th><th>該当者</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge danger">導線の問題（買う気のない層流入・ノウハウ目的）</span></td><td class="num">3件</td><td class="num">30.0%</td><td>美根・ニカイドウ・安田</td></tr>
+        <tr><td><span class="badge warn">営業スキル由来</span></td><td class="num">3件</td><td class="num">30.0%</td><td>石田・岩下・永井</td></tr>
+        <tr><td><span class="badge danger">商品ミスマッチ</span></td><td class="num">2件</td><td class="num">20.0%</td><td>遠藤・吉岡</td></tr>
+        <tr><td><span class="badge warn">決済問題</span></td><td class="num">2件</td><td class="num">20.0%</td><td>野口・應武</td></tr>
+      </tbody>
+    </table>
+  </section>
+
 </div>
-
-<!-- ============= サマリー ============= -->
-<section>
-  <h2>📊 サマリー</h2>
-
-  <div class="kpi-grid">
-    <div class="kpi">
-      <div class="kpi-label">4/16以降 総申込</div>
-      <div class="kpi-value">77<span style="font-size:14px;color:var(--text-sub)">件</span></div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">実施アポ数（実績）</div>
-      <div class="kpi-value">27<span style="font-size:14px;color:var(--text-sub)">件</span></div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">成約数（実績）</div>
-      <div class="kpi-value good">4<span style="font-size:14px;color:var(--text-sub)">件</span></div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">スクリーニング対象</div>
-      <div class="kpi-value danger">45<span style="font-size:14px;color:var(--text-sub)">件 (58.4%)</span></div>
-    </div>
-  </div>
-
-  <h3>成約率の2軸比較</h3>
-  <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
-    実績ベース＝既実施分も含めた現状値／新スクリーニング適用後＝該当者を母数から除外した数値<br>
-    ※新スクリーニング条件（4/28改訂）：①10代　②年収100万以下（職業不問）　③40代以上
-  </p>
-
-  <div class="compare">
-    <div class="panel actual">
-      <div class="panel-title">
-        <span>実績ベース（全実施を含む）</span>
-        <span class="tag">ACTUAL</span>
-      </div>
-      <div class="panel-row"><span>申込</span><strong>77件</strong></div>
-      <div class="panel-row"><span>実施</span><strong>27件</strong></div>
-      <div class="panel-row"><span>成約</span><strong>4件</strong></div>
-      <div class="panel-row"><span>言質</span><strong>5件</strong></div>
-      <div class="panel-row"><span>検討中</span><strong>5件</strong></div>
-      <div class="panel-row"><span>失注</span><strong>13件</strong></div>
-      <div class="panel-row"><span>実施ベース成約率</span><strong>14.8%</strong></div>
-      <div class="panel-row"><span>申込ベース成約率</span><strong>5.2%</strong></div>
-    </div>
-    <div class="panel hypo">
-      <div class="panel-title">
-        <span>新スクリーニング適用後</span>
-        <span class="tag">FILTERED</span>
-      </div>
-      <div class="panel-row"><span>申込（対象除外）</span><strong>32件</strong></div>
-      <div class="panel-row"><span>実施</span><strong>19件</strong></div>
-      <div class="panel-row"><span>成約</span><strong>4件</strong></div>
-      <div class="panel-row"><span>言質</span><strong>5件</strong></div>
-      <div class="panel-row"><span>検討中</span><strong>3件</strong></div>
-      <div class="panel-row"><span>失注</span><strong>7件</strong></div>
-      <div class="panel-row"><span>実施ベース成約率</span><strong>21.1%</strong></div>
-      <div class="panel-row"><span>申込ベース成約率</span><strong>12.5%</strong></div>
-    </div>
-  </div>
-
-  <div class="highlight">
-    📌 <strong>新スクリーニング対象45件のうち8件は既にアポ実施済み</strong>。<br>
-    実施8件の内訳：成約0件／検討中2件／失注6件 → 0%成約。スクリーニング適用判断は妥当。<br>
-    📌 <strong>申込ベース成約率は5.2% → 12.5%（2.4倍）</strong>に改善。実施ベースも14.8% → 21.1%へ。
-  </div>
-</section>
-
-<!-- ============= 流入の基本属性 ============= -->
-<section>
-  <h2>👥 流入の基本属性</h2>
-
-  <h3>1-1. スクリーニング層 vs アポ実施対象層</h3>
-  <table>
-    <thead><tr><th>区分</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
-    <tbody>
-      <tr><td><span class="badge danger">スクリーニング対象</span></td><td class="num">45件</td><td class="num">58.4%</td></tr>
-      <tr><td><span class="badge good">アポ実施対象</span></td><td class="num">32件</td><td class="num">41.6%</td></tr>
-    </tbody>
-  </table>
-
-  <h4>スクリーニング理由内訳（条件別の該当人数・重複あり）</h4>
-  <table>
-    <thead><tr><th>理由</th><th class="num">件数</th><th class="num">全体比</th></tr></thead>
-    <tbody>
-      <tr><td>10代（〜19歳）</td><td class="num">32件</td><td class="num"><span class="pct-bar" style="width:84px"></span>41.6%</td></tr>
-      <tr><td>年収100万以下（職業不問）</td><td class="num">42件</td><td class="num"><span class="pct-bar" style="width:110px;background:var(--danger)"></span>54.5%</td></tr>
-      <tr><td>40代以上</td><td class="num">3件</td><td class="num"><span class="pct-bar" style="width:8px"></span>3.9%</td></tr>
-    </tbody>
-  </table>
-
-  <h4>ユニーク該当者45件の重複構造</h4>
-  <table>
-    <thead><tr><th>重複パターン</th><th class="num">件数</th><th class="num">対象45件中</th></tr></thead>
-    <tbody>
-      <tr><td>10代 ＋ 年収100万以下（重複）</td><td class="num">32件</td><td class="num">71.1%</td></tr>
-      <tr><td>年収100万以下 のみ（10代以外）</td><td class="num">10件</td><td class="num">22.2%</td></tr>
-      <tr><td>40代以上 のみ</td><td class="num">3件</td><td class="num">6.7%</td></tr>
-    </tbody>
-  </table>
-  <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
-    📌 4/28改訂で「年収100万以下を職業不問に拡大」したことで、<strong>10代に重複しない単独「年収100万以下」が10件追加で弾けるように</strong>なった（旧ルールでは20代学生×100万以下のみ対象だったため、20代会社員/フリーター・30代の100万以下を捕捉できなかった）。
-  </p>
-
-  <div class="divider"></div>
-
-  <h3>1-2. 年齢別 申込割合</h3>
-  <table>
-    <thead><tr><th>年代</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
-    <tbody>
-      <tr><td>～19歳</td><td class="num">32件</td><td class="num"><span class="pct-bar" style="width:108px;background:var(--danger)"></span>41.6%</td></tr>
-      <tr><td>20〜24歳</td><td class="num">19件</td><td class="num"><span class="pct-bar" style="width:64px"></span>24.7%</td></tr>
-      <tr><td>25〜29歳</td><td class="num">12件</td><td class="num"><span class="pct-bar" style="width:40px"></span>15.6%</td></tr>
-      <tr><td>30〜34歳</td><td class="num">7件</td><td class="num"><span class="pct-bar" style="width:24px"></span>9.1%</td></tr>
-      <tr><td>35〜39歳</td><td class="num">4件</td><td class="num"><span class="pct-bar" style="width:14px"></span>5.2%</td></tr>
-      <tr><td>40〜44歳</td><td class="num">1件</td><td class="num"><span class="pct-bar" style="width:4px"></span>1.3%</td></tr>
-      <tr><td>50歳以上</td><td class="num">2件</td><td class="num"><span class="pct-bar" style="width:7px"></span>2.6%</td></tr>
-    </tbody>
-  </table>
-
-  <div class="divider"></div>
-
-  <h3>1-3. 年齢 × 職業 クロス（全体に占める割合）</h3>
-  <div class="cross">
-  <table>
-    <thead><tr>
-      <th>年代</th>
-      <th class="num">会社員</th>
-      <th class="num">学生</th>
-      <th class="num">経営者</th>
-      <th class="num">フリーター</th>
-      <th class="num">合計</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>～19歳</td><td class="cell zero">―</td><td class="cell high">31件 (40.3%)</td><td class="cell zero">―</td><td class="cell">1件 (1.3%)</td><td class="row-total">32件 (41.6%)</td></tr>
-      <tr><td>20〜24歳</td><td class="cell mid">10件 (13.0%)</td><td class="cell mid">9件 (11.7%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">19件 (24.7%)</td></tr>
-      <tr><td>25〜29歳</td><td class="cell mid">10件 (13.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell">2件 (2.6%)</td><td class="row-total">12件 (15.6%)</td></tr>
-      <tr><td>30〜34歳</td><td class="cell">7件 (9.1%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">7件 (9.1%)</td></tr>
-      <tr><td>35〜39歳</td><td class="cell">4件 (5.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">4件 (5.2%)</td></tr>
-      <tr><td>40〜44歳</td><td class="cell">1件 (1.3%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">1件 (1.3%)</td></tr>
-      <tr><td>50歳以上</td><td class="cell">1件 (1.3%)</td><td class="cell zero">―</td><td class="cell">1件 (1.3%)</td><td class="cell zero">―</td><td class="row-total">2件 (2.6%)</td></tr>
-    </tbody>
-  </table>
-  </div>
-
-  <div class="divider"></div>
-
-  <h3>1-4. 年収別 申込割合</h3>
-  <table>
-    <thead><tr><th>年収</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
-    <tbody>
-      <tr><td>100万円以下</td><td class="num">42件</td><td class="num"><span class="pct-bar" style="width:140px;background:var(--danger)"></span>54.5%</td></tr>
-      <tr><td>100〜300万円</td><td class="num">7件</td><td class="num"><span class="pct-bar" style="width:24px"></span>9.1%</td></tr>
-      <tr><td>300〜500万円</td><td class="num">15件</td><td class="num"><span class="pct-bar" style="width:50px"></span>19.5%</td></tr>
-      <tr><td>500〜1000万円</td><td class="num">12件</td><td class="num"><span class="pct-bar" style="width:40px"></span>15.6%</td></tr>
-      <tr><td>1000万円以上</td><td class="num">1件</td><td class="num"><span class="pct-bar" style="width:4px"></span>1.3%</td></tr>
-    </tbody>
-  </table>
-  <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
-    📌 <strong>申込全体の54.5%が年収100万以下</strong>。うち32件は10代と重複、10件は20代以上の100万以下層。
-  </p>
-</section>
-
-<!-- ============= アポ実施対象詳細 ============= -->
-<section>
-  <h2>📞 アポ実施対象（32件・スクリーニング後）の詳細</h2>
-
-  <h3>2-1. クレカ有無</h3>
-  <table>
-    <thead><tr><th>クレカ</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
-    <tbody>
-      <tr><td>持っている</td><td class="num">27件</td><td class="num">84.4%</td></tr>
-      <tr><td>持っていない</td><td class="num">4件</td><td class="num">12.5%</td></tr>
-      <tr><td>未記入</td><td class="num">1件</td><td class="num">3.1%</td></tr>
-    </tbody>
-  </table>
-
-  <h3>2-2. 実施結果内訳（19件実施）</h3>
-  <table>
-    <thead><tr><th>結果</th><th class="num">件数</th><th class="num">割合</th></tr></thead>
-    <tbody>
-      <tr><td><span class="badge good">成約</span></td><td class="num">4件</td><td class="num">21.1%</td></tr>
-      <tr><td><span class="badge info">言質</span></td><td class="num">5件</td><td class="num">26.3%</td></tr>
-      <tr><td><span class="badge warn">検討中</span></td><td class="num">3件</td><td class="num">15.8%</td></tr>
-      <tr><td><span class="badge danger">失注</span></td><td class="num">7件</td><td class="num">36.8%</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- ============= 言質5件 ============= -->
-<section>
-  <h2>🟡 言質 5件 の真因</h2>
-  <p style="font-size:13px;color:var(--text-sub);margin-bottom:16px">
-    全件スクリーニング除外なし＝優良見込み客。商品ミスマッチによる迷いではなく、外部要因で未確定。
-  </p>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">① 池上健</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div>
-      <span class="badge info">時期待ち</span>
-    </div>
-    <div class="case-reason">
-      <strong>真因：海外在住・帰国待ち</strong><br>
-      ブラジル出張中で6月上旬帰国予定。オフ会・週1MTGが刺さって参加意欲は強い。LINEフォロー継続中。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">② 千村亮太</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div>
-      <span class="badge warn">決済問題</span>
-    </div>
-    <div class="case-reason">
-      <strong>真因：債務整理でカード無し</strong><br>
-      サポート内容に大満足、参加意欲MAX。本人発言「ライフティ使えるようになったら審査して、無理なら2か月後に貯金して一括で行く」。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">③ 塩田智宏</span> <span class="case-attr">35-39歳 / 会社員 / 年収300〜500万 / クレカあり</span></div>
-      <span class="badge info">時間切れ</span>
-    </div>
-    <div class="case-reason">
-      <strong>真因：物理的時間切れ</strong><br>
-      サービス内容に魅力を感じ参加意欲あり。時間の関係で翌日手続き予定。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">④ 山本龍</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div>
-      <span class="badge warn">決済問題</span>
-    </div>
-    <div class="case-reason">
-      <strong>真因：カード枠不足＋滞納歴で新規不可</strong><br>
-      オファーすんなり通過。クレカ枠10万のみ、過去滞納で新規カード作成不可。28日21:00に決済方法相談の枠を確保済。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">⑤ 田鍋直希</span> <span class="case-attr">20-24歳 / 会社員 / 年収100〜300万 / クレカなし</span></div>
-      <span class="badge warn">決済問題</span>
-    </div>
-    <div class="case-reason">
-      <strong>真因：カード未所持→作成依頼中</strong><br>
-      23歳工場勤務、変わりたい意欲強く参加意欲あり。カード作成の流れで終話、追跡中。
-    </div>
-  </div>
-
-  <div class="highlight">
-    📌 <strong>言質5件中3件（60%）が決済手段関連で停滞</strong>。残り2件は時間/物理的制約。商品ミスマッチによる「言質止まり」はゼロ。
-  </div>
-</section>
-
-<!-- ============= 失注7件 ============= -->
-<section>
-  <h2>🔴 失注 7件 の真因分類（スクリーニング後）</h2>
-  <p style="color:#a0a8b0;font-size:13px;margin-bottom:12px">
-    ※旧レポートにあった高屋颯太（年収100万以下）は新スクリーニング条件で除外対象になったため、ここでは扱わない。
-  </p>
-
-  <h3>カテゴリA：営業スキル由来（1件）</h3>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">① 石田太一</span> <span class="case-attr">20-24歳 / 会社員 / 年収500〜1000万 / クレカあり</span></div>
-      <span class="badge warn">スキル</span>
-    </div>
-    <div class="case-reason">
-      <strong>失注要因：やりたいことが違う</strong><br>
-      振り返り：「過去に本気で取り組んだファクト拾いが少なく失注」「最初は髪型のことが知りたいなどの浅い感じ」。高年収のコンサルで本来買える層、深掘り不足で失注。
-    </div>
-  </div>
-
-  <h3>カテゴリB：商品ミスマッチ（2件）</h3>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">② 遠藤航海</span> <span class="case-attr">30-34歳 / 会社員 / 年収500〜1000万 / クレカあり</span></div>
-      <span class="badge danger">ミスマッチ</span>
-    </div>
-    <div class="case-reason">
-      <strong>失注要因：やりたいことが違う</strong><br>
-      振り返り：「痩せたいのが第一願望、男磨きへの願望は薄い。パーソナルでいいかもと言われ納得してしまった」。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">③ 吉岡大樹</span> <span class="case-attr">30-34歳 / 会社員（保険営業フルコミ）/ クレカあり</span></div>
-      <span class="badge danger">ミスマッチ</span>
-    </div>
-    <div class="case-reason">
-      <strong>失注要因：やりたいことが違う</strong><br>
-      振り返り：「狙った女性を落とすなどの<strong>具体的な口説き方のようなものが知りたく参加</strong>」「ある程度女性遊びしたいけど将来は結婚したい等、中途半端な状態」。男磨き商品の対象とずれた目的での流入。
-    </div>
-  </div>
-
-  <h3>カテゴリC：決済問題（1件）</h3>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">④ 野口真言</span> <span class="case-attr">20-24歳 / 会社員 / 年収100〜300万 / クレカなし</span></div>
-      <span class="badge warn">決済問題</span>
-    </div>
-    <div class="case-reason">
-      <strong>失注要因：金額、タイミング・環境要因</strong><br>
-      振り返り：「親にクレカ作るなと言われている、無理矢理作らせる感じになり親が出てくる懸念。LINEでお断り」。
-    </div>
-  </div>
-
-  <h3>カテゴリD：導線の問題 ＝ 買う気のない層の流入（3件）</h3>
-  <p style="color:#a0a8b0; font-size:13px; margin:-4px 0 12px">セールスのスキル不足ではなく、<strong>そもそも購買意欲のない層／個別相談を「ノウハウ獲得の場」と勘違いした層がアポに乗ってしまっている</strong>ケース。LP・導線設計で弾くべき層。</p>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">⑤ 美根涼太</span> <span class="case-attr">25-29歳 / 会社員 / 年収300〜500万 / クレカあり</span></div>
-      <span class="badge danger">導線</span>
-    </div>
-    <div class="case-reason">
-      <strong>失注要因：金額、タイミング・環境要因</strong><br>
-      振り返り：「金がないの一点張り」「やるなら半年後、半年後できてる確率低い、マジで漢してない」。年収・クレカ条件は満たすが<strong>購入意思がほぼゼロで来訪</strong>。営業スキルではひっくり返せない、導線段階で弾くべき層。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">⑥ ニカイドウカイト</span> <span class="case-attr">25-29歳 / 会社員 / 年収100〜300万 / クレカあり</span></div>
-      <span class="badge danger">導線</span>
-    </div>
-    <div class="case-reason">
-      <strong>失注要因：タイミング・環境要因</strong><br>
-      振り返り：「目標がない、グルコン・オフ会に引け目、かなり時間かかりそう」。<strong>理想像が描けていない情報収集層</strong>。コミット意思なし。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">⑦ 安田卓巳</span> <span class="case-attr">30-34歳 / 会社員（現役美容師・既婚子持ち）/ クレカあり</span></div>
-      <span class="badge danger">導線</span>
-    </div>
-    <div class="case-reason">
-      <strong>失注要因：未記入（営業の振り返りで明確）</strong><br>
-      振り返り：「広告が流れてきてとりあえず気になって参加」「<strong>この面談はとりあえず何かノウハウやテクニックなどのことを教えてくれる時間だと思い参加</strong>」「これだけやればいいノウハウや心理テクニック教えて欲しい」。完全にノウハウ獲得目的、買う気ゼロ。
-    </div>
-  </div>
-</section>
-
-<!-- ============= ノウハウ目的セグメント ============= -->
-<section>
-  <h2>📚 「個別相談 ＝ ノウハウを教えてもらう場」と勘違いして来ている層 の炙り出し</h2>
-  <p style="color:#a0a8b0">
-    抽出ソースは<strong>申込フォームではなく、営業担当の「振り返り」記述</strong>。申込時に「似合う髪型を知りたい」と書くのは普通であり、それ自体は判定材料にしない。<br>
-    実際の個別相談を担当した営業が、振り返り欄で<strong>「ノウハウやテクニックを教えてくれる時間だと思い参加」「教えてほしいスタンスだった」「具体的な口説き方が知りたく参加」「髪型のことが知りたい等の浅い感じだった」と明記しているケース</strong>のみを対象化。LP上で「ノウハウを教える場ではない」と告知済みだが、それでもどれだけすり抜けているかを実相談ベースで可視化する目的。
-  </p>
-
-  <p style="color:#a0a8b0">
-    母集団：<strong>4/16以降・実施・新スクリーニング除外後の19件</strong>（4/28改訂版スクリーニング適用）。
-  </p>
-
-  <table>
-    <thead><tr><th>氏名</th><th>属性</th><th>営業の振り返り記述（該当箇所）</th><th>結果</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>安田卓巳</td><td>30-34 / 会社員（美容師・既婚子持ち）</td>
-        <td>「広告が流れてきてとりあえず気になって参加」「最初から抽象的で投げやりな質問が多くて」「<strong>この面談はとりあえず何かノウハウやテクニックなどのことを教えてくれる時間だと思い参加</strong>」「<strong>これだけやればいいノウハウや心理テクニック教えて欲しい</strong>」。本セグメントの<strong>最強烈例</strong>。</td>
-        <td><span class="badge danger">失注</span></td>
-      </tr>
-      <tr>
-        <td>吉岡大樹</td><td>30-34 / 会社員（保険営業）</td>
-        <td>「<strong>狙った女性を落とすなどの具体的な口説き方のようなものが知りたく参加</strong>」。男磨き商品ではなく、特定スキル教習として個別相談を利用しに来ている。</td>
-        <td><span class="badge danger">失注</span></td>
-      </tr>
-      <tr>
-        <td>石田太一</td><td>20-24 / 会社員</td>
-        <td>「最初は<strong>髪型のことが知りたいとかなどの浅い感じ</strong>でした」。ヒアリングで深掘ったがファクト拾い不足で失注。</td>
-        <td><span class="badge danger">失注</span></td>
-      </tr>
-      <tr>
-        <td>尾崎 史</td><td>25-29 / 会社員</td>
-        <td>前回面談で「何からやればいいか分からない」と<strong>すごい抽象的で、教えてほしいスタンスだった</strong>。<strong>再面談＋アンケート記入</strong>で目的を引き出し、覚悟を決めさせて成約。</td>
-        <td><span class="badge ok">成約</span></td>
-      </tr>
-      <tr>
-        <td>藤岡竜也</td><td>20-24 / 会社員</td>
-        <td>現役ラグビー選手。「<strong>自分に似合う服装や髪型ファッションが知りたい</strong>」で入ってきた。深掘りで「やりたいことを仕事にする憧れ」まで引き出し、教育→プレゼンで成約。</td>
-        <td><span class="badge ok">成約</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="highlight">
-    📌 <strong>営業の振り返り記述ベースで「ノウハウ目当て」と明確判定できたのは 5件 / 19件中（26.3%）</strong>。LPで「ノウハウを教える場ではない」と告知済みでも、依然<strong>4人に1人がノウハウQ&A目当てで個別相談に乗ってきている</strong>。<br>
-    結果：<strong>成約2 / 失注3 → 成約率40%</strong>（後述参照）。<br>
-    <strong>分かれ目は初動対応</strong>：
-    <ul style="margin:6px 0 6px 22px">
-      <li><span class="badge ok">成約パターン</span> 尾崎（再面談＋目的化アンケート）／藤岡（深掘りで根本欲望に到達）</li>
-      <li><span class="badge danger">失注パターン</span> 石田（深掘り不足）／吉岡（商品ターゲットとずれた目的）／安田（買う気ゼロ＝導線レベルで弾くべき）</li>
-    </ul>
-    →対策：①初動でノウハウ目当てと判定したら<strong>尾崎パターン（アンケート→再面談）</strong>に分岐／②冒頭5分で「ここはノウハウを教える場ではなく覚悟を確認する場」とリフレーミング／③ <strong>安田レベルの強烈ノウハウ目的（"教えてくれる時間だと思って参加"）はLP・申込フォームの段階で意思確認設問を追加し弾く</strong>／④振り返りに「ノウハウ目当てフラグ」を残し、再現性ある対応パターンをナレッジ化。
-  </div>
-</section>
-
-<!-- ============= 検討中3件 ============= -->
-<section>
-  <h2>🟠 検討中 3件 の真因分類（スクリーニング後）</h2>
-  <p style="color:#a0a8b0;font-size:13px;margin-bottom:12px">
-    ※旧レポートの杉浦舜拓（フリーター・年収100万以下）は新スクリーニング条件で除外対象。
-  </p>
-
-  <h3>カテゴリA：決済問題（1件）</h3>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">① 應武春来</span> <span class="case-attr">20-24歳 / 学生 / 年収100〜300万 / クレカなし</span></div>
-      <span class="badge warn">決済問題</span>
-    </div>
-    <div class="case-reason">
-      <strong>検討要因：タイミング・環境要因</strong><br>
-      振り返り：「リョータの大ファン、カード未所持でまだ学生、強引な押しを控えた」。意欲はあるが決済手段なし。
-    </div>
-  </div>
-
-  <h3>カテゴリB：営業スキル由来（2件）</h3>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">② 岩下弘貴</span> <span class="case-attr">30-34歳 / 会社員 / 年収300〜500万 / クレカあり</span></div>
-      <span class="badge warn">スキル</span>
-    </div>
-    <div class="case-reason">
-      <strong>検討要因：未記入</strong><br>
-      振り返り：「口だけで根本変えようとしてきたファクトがないことにもっと踏み込めば良かった」。深掘り不足で即決逃した。
-    </div>
-  </div>
-
-  <div class="case">
-    <div class="case-header">
-      <div><span class="case-name">③ 永井優多</span> <span class="case-attr">25-29歳 / 会社員 / 年収500〜1000万 / クレカあり</span></div>
-      <span class="badge warn">スキル</span>
-    </div>
-    <div class="case-reason">
-      <strong>検討要因：金額</strong><br>
-      振り返り：「痛みを認識させきれず、金額ネック。理想だけ膨らませて課題明確化しきれなかった」。年収500-1000万なので決済力はある。
-    </div>
-  </div>
-</section>
-
-<!-- ============= 失注/検討 集計 ============= -->
-<section>
-  <h2>📊 失注・検討中 10件の構造集計（スクリーニング後）</h2>
-  <table>
-    <thead><tr><th>カテゴリ</th><th class="num">件数</th><th class="num">割合</th><th>該当者</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><span class="badge danger">導線の問題（買う気のない層流入・ノウハウ目的）</span></td>
-        <td class="num">3件</td><td class="num">30.0%</td>
-        <td>美根・ニカイドウ・安田</td>
-      </tr>
-      <tr>
-        <td><span class="badge warn">営業スキル由来</span></td>
-        <td class="num">3件</td><td class="num">30.0%</td>
-        <td>石田・岩下・永井</td>
-      </tr>
-      <tr>
-        <td><span class="badge danger">商品ミスマッチ</span></td>
-        <td class="num">2件</td><td class="num">20.0%</td>
-        <td>遠藤・吉岡</td>
-      </tr>
-      <tr>
-        <td><span class="badge warn">決済問題</span></td>
-        <td class="num">2件</td><td class="num">20.0%</td>
-        <td>野口・應武</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
 
 <footer>
   <dl>
-    <dt>データソース</dt><dd>【Men's Rise】営業シート - 個別相談.csv</dd>
-    <dt>母集団</dt><dd>4/16以降申込 77件（テスト除外11件後）</dd>
+    <dt>データソース</dt><dd>LINE登録者CSV（登録者_20260428151453.csv）／【Men's Rise】営業シート - 個別相談.csv</dd>
+    <dt>母集団</dt><dd>LINE：4/20以降アンケ回答 896名 ／ 個別相談：4/16以降申込 77件（テスト除外11件後）</dd>
     <dt>適用ルール</dt><dd>2026/4/28改訂版スクリーニング3条件（10代・年収100万以下※職業不問・40代以上）</dd>
     <dt>分析日</dt><dd>2026-04-28</dd>
   </dl>
 </footer>
 
 </div>
+
+<script>
+(function(){
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-panel');
+  function activate(name){
+    tabs.forEach(t => {
+      const on = t.dataset.tab === name;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+    if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab)));
+  const initial = (location.hash || '#line').slice(1);
+  if (document.querySelector('.tab[data-tab="' + initial + '"]')) activate(initial);
+})();
+</script>
+
 </body>
 </html>

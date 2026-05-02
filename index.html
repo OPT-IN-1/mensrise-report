@@ -201,15 +201,15 @@
 </header>
 
 <div class="tabs" role="tablist">
-  <button class="tab active" data-tab="survey" role="tab" aria-selected="true">LINEヒアリングアンケート（5/1配信・n=508）</button>
-  <button class="tab" data-tab="line" role="tab" aria-selected="false">LINE登録者 属性分析（4/20以降）</button>
+  <button class="tab active" data-tab="line" role="tab" aria-selected="true">LINE登録者 属性分析（4/20以降）</button>
   <button class="tab" data-tab="sales" role="tab" aria-selected="false">流入層分析（個別相談・営業 4/16以降）</button>
+  <button class="tab" data-tab="survey" role="tab" aria-selected="false">LINEヒアリングアンケート（5/1配信・n=508）</button>
 </div>
 
 <!-- ================================================================== -->
 <!-- ============   TAB 1: LINE登録者 属性分析   ====================== -->
 <!-- ================================================================== -->
-<div class="tab-panel" id="tab-line" role="tabpanel">
+<div class="tab-panel active" id="tab-line" role="tabpanel">
 
   <div class="panel-meta">
     <span>対象：4/20以降にアンケートを回答したLINE登録者</span>
@@ -857,7 +857,7 @@
 <!-- ================================================================== -->
 <!-- ============   TAB 3: LINEヒアリングアンケート (n=508) ============ -->
 <!-- ================================================================== -->
-<div class="tab-panel active" id="tab-survey" role="tabpanel">
+<div class="tab-panel" id="tab-survey" role="tabpanel">
 
   <div class="panel-meta">
     <span>対象：5/1配信のLINE一斉ヒアリングアンケート回答者</span>
@@ -1564,7 +1564,7 @@
     });
   }
   tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab)));
-  const initial = (location.hash || '#survey').slice(1);
+  const initial = (location.hash || '#line').slice(1);
   if (document.querySelector('.tab[data-tab="' + initial + '"]')) activate(initial);
 })();
 </script>

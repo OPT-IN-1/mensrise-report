@@ -204,6 +204,7 @@
   <button class="tab active" data-tab="line" role="tab" aria-selected="true">LINE登録者 属性分析（4/20以降）</button>
   <button class="tab" data-tab="sales" role="tab" aria-selected="false">流入層分析（個別相談・営業 4/16以降）</button>
   <button class="tab" data-tab="survey" role="tab" aria-selected="false">LINEヒアリングアンケート（5/1配信・n=546）</button>
+  <button class="tab" data-tab="needs" role="tab" aria-selected="false">年代別ニーズ分析（申込CSV n=207）</button>
 </div>
 
 <!-- ================================================================== -->
@@ -1241,6 +1242,381 @@
       <strong>7. 「恋愛・モテ」はLINE登録時点では出てこない</strong><br>
       自由記述で恋愛言及は1〜4%と微弱。一方、4/28分析では40代の個別相談で「恋愛」がトップ31.6%。<br>
       → <strong>LINE登録段階では「自己改善全般」の顔で来て、個別相談で本音の「恋愛」が出る</strong>構造。LINEの初期教育で「恋愛も含めた男磨き全般」を打ち出すと刺さる。
+    </div>
+  </section>
+
+</div>
+
+<!-- ================================================================== -->
+<!-- ============   TAB 4: 年代別ニーズ分析（n=207）   ============= -->
+<!-- ================================================================== -->
+<div class="tab-panel" id="tab-needs" role="tabpanel">
+
+  <div class="panel-meta">
+    <span>対象：申込CSV全期間（テスト除外後）</span>
+    <span>データ：207件（4/16以降フィルタ無し）</span>
+    <span>目的：年代別ニーズを把握し、訴求コピーを最適化する</span>
+  </div>
+
+  <!-- サマリー -->
+  <section>
+    <h2>📊 サマリー</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">分析対象（申込全件）</div><div class="kpi-value">207<span style="font-size:14px;color:var(--text-sub)">件</span></div></div>
+      <div class="kpi"><div class="kpi-label">10代</div><div class="kpi-value">62<span style="font-size:14px;color:var(--text-sub)">件 (30%)</span></div></div>
+      <div class="kpi"><div class="kpi-label">20代（前半+後半）</div><div class="kpi-value good">101<span style="font-size:14px;color:var(--text-sub)">件 (49%)</span></div></div>
+      <div class="kpi"><div class="kpi-label">30代</div><div class="kpi-value info">34<span style="font-size:14px;color:var(--text-sub)">件 (16%)</span></div></div>
+    </div>
+    <p style="font-size:13px;color:var(--text-sub)">
+      「悩み」「どのような未来を手に入れたいか」「聞きたいこと」3欄を横断で読み込み、10カテゴリのキーワード辞書でテーマ抽出（複数該当あり、% は当該年代内の出現率）。
+    </p>
+  </section>
+
+  <!-- 年代別ニーズ -->
+  <section>
+    <h2>👥 年代別ニーズ ランキング</h2>
+
+    <h3>🟦 10代（n=62 / 学生58＝94%）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">件数</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>見た目（顔・肌・髪型・ファッション）</td><td class="num">49</td><td class="num"><span class="pct-bar" style="width:158px;background:var(--danger)"></span>79.0%</td></tr>
+        <tr><td>自信・メンタル</td><td class="num">46</td><td class="num"><span class="pct-bar" style="width:148px;background:var(--danger)"></span>74.2%</td></tr>
+        <tr><td>何から始めれば（方向性不明）</td><td class="num">42</td><td class="num"><span class="pct-bar" style="width:135px;background:var(--warn)"></span>67.7%</td></tr>
+        <tr><td>恋愛・モテ</td><td class="num">34</td><td class="num"><span class="pct-bar" style="width:110px"></span>54.8%</td></tr>
+        <tr><td>体型・筋トレ</td><td class="num">26</td><td class="num"><span class="pct-bar" style="width:84px"></span>41.9%</td></tr>
+        <tr><td>継続・習慣化</td><td class="num">17</td><td class="num"><span class="pct-bar" style="width:55px"></span>27.4%</td></tr>
+        <tr><td>内面・在り方</td><td class="num">15</td><td class="num"><span class="pct-bar" style="width:48px"></span>24.2%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      💬 代表的な生声：「<strong>何から手をつければいいかわからない</strong>」「色々な美容系の人が発信してるけど多すぎて何を最優先にやるべきか」「<strong>自分の顔がブサイクだと毎日思って鏡を見るのに抵抗がある</strong>」
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>🟩 20代前半（n=64 / 学生31・会社員28・フリーター3・フリーランス2）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">件数</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>見た目</td><td class="num">39</td><td class="num"><span class="pct-bar" style="width:122px"></span>60.9%</td></tr>
+        <tr><td>自信・メンタル</td><td class="num">37</td><td class="num"><span class="pct-bar" style="width:116px"></span>57.8%</td></tr>
+        <tr><td>恋愛・モテ</td><td class="num">37</td><td class="num"><span class="pct-bar" style="width:116px"></span>57.8%</td></tr>
+        <tr><td>何から始めれば</td><td class="num">36</td><td class="num"><span class="pct-bar" style="width:112px"></span>56.2%</td></tr>
+        <tr><td>内面・在り方 ↑</td><td class="num">24</td><td class="num"><span class="pct-bar" style="width:75px"></span>37.5%</td></tr>
+        <tr><td>継続・習慣化 ↑</td><td class="num">22</td><td class="num"><span class="pct-bar" style="width:69px"></span>34.4%</td></tr>
+        <tr><td>体型・筋トレ</td><td class="num">19</td><td class="num"><span class="pct-bar" style="width:59px"></span>29.7%</td></tr>
+        <tr><td>時間・行動力</td><td class="num">16</td><td class="num"><span class="pct-bar" style="width:50px"></span>25.0%</td></tr>
+        <tr><td>仕事・キャリア・収入 ↑</td><td class="num">15</td><td class="num"><span class="pct-bar" style="width:47px"></span>23.4%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      💬 「<strong>外見ばっかり注視してきて中身が1ミリも変わってない</strong>陰キャの非モテ」「<strong>続かない自分を変えたい</strong>」「客観的な意見が欲しい・将来の指針が欲しい」<br>
+      📌 10代から「内面・在り方」「継続」「仕事」が急増 → <strong>"見た目だけじゃダメ"と気づき始める転換期</strong>。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>🟨 20代後半（n=37 / 会社員28＝76%）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">件数</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>見た目</td><td class="num">23</td><td class="num"><span class="pct-bar" style="width:124px"></span>62.2%</td></tr>
+        <tr><td>何から始めれば</td><td class="num">20</td><td class="num"><span class="pct-bar" style="width:108px"></span>54.1%</td></tr>
+        <tr><td>自信・メンタル</td><td class="num">17</td><td class="num"><span class="pct-bar" style="width:92px"></span>45.9%</td></tr>
+        <tr><td>恋愛・モテ</td><td class="num">16</td><td class="num"><span class="pct-bar" style="width:86px"></span>43.2%</td></tr>
+        <tr><td>継続・習慣化 ↑</td><td class="num">15</td><td class="num"><span class="pct-bar" style="width:81px"></span>40.5%</td></tr>
+        <tr><td>体型・筋トレ ↑</td><td class="num">15</td><td class="num"><span class="pct-bar" style="width:81px"></span>40.5%</td></tr>
+        <tr><td>仕事・キャリア・収入</td><td class="num">11</td><td class="num"><span class="pct-bar" style="width:59px"></span>29.7%</td></tr>
+        <tr><td>内面・在り方</td><td class="num">9</td><td class="num"><span class="pct-bar" style="width:48px"></span>24.3%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      💬 「<strong>30になる年。今年絶対自分を変えたい</strong>」「<strong>20代最後。痩せたいと思い続けて結局痩せられていない</strong>」「自信を持ってかっこいいサラリーマンに」「<strong>鏡を見るのを楽しくしたい</strong>」<br>
+      📌 「<strong>30歳の壁</strong>」が原動力。<strong>仕事のパフォーマンス × 見た目</strong>の両軸で動く。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>🟧 30代前半（n=21 / 会社員18＝86%）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">件数</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>恋愛・モテ <strong>★ 全年代トップ</strong></td><td class="num">12</td><td class="num"><span class="pct-bar" style="width:114px;background:var(--danger)"></span>57.1%</td></tr>
+        <tr><td>何から始めれば</td><td class="num">11</td><td class="num"><span class="pct-bar" style="width:105px"></span>52.4%</td></tr>
+        <tr><td>見た目</td><td class="num">11</td><td class="num"><span class="pct-bar" style="width:105px"></span>52.4%</td></tr>
+        <tr><td>自信・メンタル</td><td class="num">10</td><td class="num"><span class="pct-bar" style="width:95px"></span>47.6%</td></tr>
+        <tr><td>仕事・キャリア・収入 <strong>★ 全年代トップ</strong></td><td class="num">9</td><td class="num"><span class="pct-bar" style="width:86px;background:var(--info)"></span>42.9%</td></tr>
+        <tr><td>体型・筋トレ</td><td class="num">5</td><td class="num"><span class="pct-bar" style="width:48px"></span>23.8%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      💬 「<strong>もっと覇気を出したい。男性女性共に惹きつける魅力</strong>が弱い」「<strong>経営者が相手の仕事</strong>で堂々と自信に満ち溢れる見た目に」「ロールモデルが欲しい」「1歳の子供にパパはカッコいいと認識されたい」<br>
+      📌 ビジネスシーンでの<strong>覇気・第一印象・舐められなさ</strong>がキー。「モテ＝仕事の成果」と直結。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>🟥 30代後半（n=13 / 会社員8・経営者4）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">件数</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>自信・メンタル <strong>★ 全年代トップ</strong></td><td class="num">10</td><td class="num"><span class="pct-bar" style="width:154px;background:var(--danger)"></span>76.9%</td></tr>
+        <tr><td>恋愛・モテ</td><td class="num">7</td><td class="num"><span class="pct-bar" style="width:108px"></span>53.8%</td></tr>
+        <tr><td>見た目</td><td class="num">6</td><td class="num"><span class="pct-bar" style="width:92px"></span>46.2%</td></tr>
+        <tr><td>何から始めれば</td><td class="num">5</td><td class="num"><span class="pct-bar" style="width:77px"></span>38.5%</td></tr>
+        <tr><td>仕事・キャリア・収入</td><td class="num">4</td><td class="num"><span class="pct-bar" style="width:62px"></span>30.8%</td></tr>
+        <tr><td>時間・行動力</td><td class="num">4</td><td class="num"><span class="pct-bar" style="width:62px"></span>30.8%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      💬 「<strong>男らしいとは言われず</strong>悩む。100%別れを告げられ恋愛を終えてる」「アルコール依存から抜け出せない」「<strong>35歳からでもメンズモデルとして活躍したい</strong>」<br>
+      📌 「<strong>父・夫としての自分</strong>」「<strong>家族に誇られる男</strong>」が動機の中核。再起・逆転ストーリー。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>⬛ 40代（n=7 / 会社員3・経営者3・フリーランス1）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">件数</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>自信・メンタル</td><td class="num">4</td><td class="num"><span class="pct-bar" style="width:114px"></span>57.1%</td></tr>
+        <tr><td>何から始めれば</td><td class="num">4</td><td class="num"><span class="pct-bar" style="width:114px"></span>57.1%</td></tr>
+        <tr><td>恋愛・モテ</td><td class="num">4</td><td class="num"><span class="pct-bar" style="width:114px"></span>57.1%</td></tr>
+        <tr><td>内面・在り方</td><td class="num">3</td><td class="num"><span class="pct-bar" style="width:86px;background:var(--info)"></span>42.9%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      💬 「<strong>年齢的に失敗できないので正しい順序で効率よく</strong>」「アラフォーでもここまで磨けるというメッセージを周りに伝えたい」「裸で海・プール・風呂で<strong>尊敬の眼差しで見られたい</strong>」<br>
+      📌 <strong>時間効率・年齢ハンデ前提の「正解志向」</strong>。経営者は「俺がロールモデル」訴求が刺さる唯一のセグメント。
+    </p>
+  </section>
+
+  <!-- 年代×職業 -->
+  <section>
+    <h2>🔍 年代×職業 ニーズの差異（コアターゲット深掘り）</h2>
+    <p style="color:var(--text-sub);font-size:13px;margin-bottom:16px">
+      n≥3 の主要セルのみ。同じ年代でも<strong>職業で必要な訴求が大きく変わる</strong>ため、20-30代会社員（成約者層と完全一致）を中心に分析。
+    </p>
+
+    <h3>20代前半 学生 vs 会社員（最大ボリューム層）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">学生 (n=31)</th><th class="num">会社員 (n=28)</th><th class="num">差</th></tr></thead>
+      <tbody>
+        <tr><td>恋愛・モテ</td><td class="num">48%</td><td class="num">71%</td><td class="num"><span class="badge danger">+23pt 会社員</span></td></tr>
+        <tr><td>見た目</td><td class="num">58%</td><td class="num">68%</td><td class="num"><span class="badge warn">+10pt 会社員</span></td></tr>
+        <tr><td>内面・在り方</td><td class="num">48%</td><td class="num">29%</td><td class="num"><span class="badge info">+19pt 学生</span></td></tr>
+        <tr><td>継続・習慣化</td><td class="num">45%</td><td class="num">25%</td><td class="num"><span class="badge info">+20pt 学生</span></td></tr>
+        <tr><td>時間・行動力</td><td class="num">39%</td><td class="num">14%</td><td class="num"><span class="badge info">+25pt 学生</span></td></tr>
+        <tr><td>仕事・キャリア</td><td class="num">10%</td><td class="num">21%</td><td class="num"><span class="badge warn">+11pt 会社員</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>学生＝「自分のあり方・生活習慣」型</strong>／<strong>会社員＝「モテ・見た目・即実利」型</strong>。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>20代後半 会社員（n=28・成約多発セル）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>見た目</td><td class="num">64%</td></tr>
+        <tr><td>何から始めれば</td><td class="num">57%</td></tr>
+        <tr><td>自信・メンタル</td><td class="num">46%</td></tr>
+        <tr><td>体型・筋トレ</td><td class="num">43%</td></tr>
+        <tr><td>恋愛・モテ</td><td class="num">43%</td></tr>
+        <tr><td>仕事・キャリア・収入</td><td class="num">32%</td></tr>
+        <tr><td>継続・習慣化</td><td class="num">32%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 「<strong>30歳目前の体型崩れ</strong>」と「<strong>ビジネス成果</strong>」が同居する転換期。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>30代前半 会社員（n=18）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>恋愛・モテ</td><td class="num">61%</td></tr>
+        <tr><td>何から始めれば</td><td class="num">56%</td></tr>
+        <tr><td>見た目</td><td class="num">56%</td></tr>
+        <tr><td>自信・メンタル</td><td class="num">50%</td></tr>
+        <tr><td>仕事・キャリア</td><td class="num">44%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 既婚者でも<strong>モテたい願望が継続</strong>。仕事相手にビビらない覇気が強いニーズ。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>30代後半（経営者 vs 会社員）</h3>
+    <table>
+      <thead><tr><th>テーマ</th><th class="num">会社員 (n=8)</th><th class="num">経営者 (n=4)</th></tr></thead>
+      <tbody>
+        <tr><td>自信・メンタル</td><td class="num"><strong>88%</strong></td><td class="num">50%</td></tr>
+        <tr><td>恋愛・モテ</td><td class="num">50%</td><td class="num">50%</td></tr>
+        <tr><td>仕事・キャリア</td><td class="num">12%</td><td class="num"><strong>50%</strong></td></tr>
+        <tr><td>何から始めれば</td><td class="num">38%</td><td class="num">50%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>会社員は自己肯定感欠乏が深刻</strong>（自信ニーズ88%）／<strong>経営者は全方位で次のレベルを求める</strong>。
+    </p>
+  </section>
+
+  <!-- 訴求3軸 -->
+  <section>
+    <h2>🎯 訴求3軸（コアターゲット 20-30代会社員 n=82 共通）</h2>
+    <p style="color:var(--text-sub);font-size:13px;margin-bottom:16px">
+      生声を横断して見えた<strong>共通の痛み</strong>と、それに刺さる訴求コピー候補。
+    </p>
+
+    <h3>軸1：「正解迷子からの解放」</h3>
+    <div class="case">
+      <div class="case-reason">
+        <strong>痛み</strong>：YouTube／インスタの情報を漁り続け、何が自分に合うか永久にわからない<br>
+        <strong>生声</strong>：「YouTubeで垢抜け方法の動画を見すぎてどれを始めればいいか分からない」「変わろうと様々なコンサルでアドバイスを受けたが上手く変われず<strong>何が正しいのか分からない</strong>」<br>
+        <strong>コピー候補</strong>：
+        <ul style="margin:6px 0 0 22px">
+          <li>「<strong>もう、自分で正解を探さなくていい。</strong>」</li>
+          <li>「<strong>動画を100本見ても変わらなかったあなたへ。</strong>」</li>
+          <li>「<strong>情報を集める時期は終わりにしよう。</strong>」</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>軸2：「孤独な努力からの解放」</h3>
+    <div class="case">
+      <div class="case-reason">
+        <strong>痛み</strong>：一人だとサボる／甘える／継続しない自分が嫌い<br>
+        <strong>生声</strong>：「<strong>自分を見てくれる、監視してくれる人</strong>がいるとできる気がする」「自分でできる男磨きに<strong>限界を感じる</strong>。もっと上を見てる人とともに頑張れる環境に身を置きたい」<br>
+        <strong>コピー候補</strong>：
+        <ul style="margin:6px 0 0 22px">
+          <li>「<strong>1人で続かなかったあなたへ。</strong>」</li>
+          <li>「<strong>意志ではなく、環境で変わる。</strong>」</li>
+          <li>「<strong>同じ温度の仲間と、本気で変わる場所。</strong>」</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>軸3：「努力が裏切らない自分」へ</h3>
+    <div class="case">
+      <div class="case-reason">
+        <strong>痛み</strong>：見た目／筋トレ／スキンケアやってるのに自信が持てない・鏡が嫌い<br>
+        <strong>生声</strong>：「<strong>鏡を見ることや写真撮られることが苦手</strong>」「外見ばっかり注視してきて<strong>中身が1ミリも変わってない</strong>陰キャの非モテ」「なりたい自分と真逆の方向に日に日になってる」<br>
+        <strong>コピー候補</strong>：
+        <ul style="margin:6px 0 0 22px">
+          <li>「<strong>鏡が嫌いだった俺が、鏡で笑える日まで。</strong>」</li>
+          <li>「<strong>外見じゃ、もう変わらない。</strong>」</li>
+          <li>「<strong>努力が裏切らない男磨きへ。</strong>」</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 年代別フックワード -->
+  <section>
+    <h2>📌 年代別 フックワード集（A/Bテスト用）</h2>
+    <table>
+      <thead><tr><th>年代</th><th>刺さるフック</th><th>避けるべき訴求</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>10代</strong></td>
+          <td>「何から始めればいいかわからない君へ」「自分に合う正解がわからない」「鏡が嫌い」</td>
+          <td>起業／年収／キャリア（刺さらない）</td>
+        </tr>
+        <tr>
+          <td><strong>20代前半</strong></td>
+          <td>「外見だけじゃない、内面と将来設計」「<strong>続かない自分</strong>を断ち切る」「指針が欲しい」「営業で売れる男は見た目から」</td>
+          <td>単純な"モテノウハウ"（覚醒層は浅さを嫌う）</td>
+        </tr>
+        <tr>
+          <td><strong>20代後半</strong></td>
+          <td>「<strong>30歳目前</strong>で本気で変わる」「鏡を見て嫌な自分」「仕事×見た目」「20代最後の1年、何を残すか」</td>
+          <td>学生っぽい入門訴求</td>
+        </tr>
+        <tr>
+          <td><strong>30代前半</strong></td>
+          <td>「<strong>覇気・存在感・第一印象</strong>」「経営者相手にビビらない男」「家族と仕事の両立」「<strong>舐められない男</strong>」</td>
+          <td>若さ／初心者訴求</td>
+        </tr>
+        <tr>
+          <td><strong>30代後半</strong></td>
+          <td>「<strong>父・夫として誇られる</strong>」「妻・娘に憧れられるパパ」「依存・諦めから抜ける」「35歳からでも男は化ける」</td>
+          <td>チャラいモテ訴求</td>
+        </tr>
+        <tr>
+          <td><strong>40代</strong></td>
+          <td>「<strong>正しい順序で効率よく</strong>」「年齢ハンデを超える」「<strong>俺がロールモデルになる</strong>」</td>
+          <td>試行錯誤／とりあえず系</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 既成約者から逆算 -->
+  <section>
+    <h2>✨ 既成約者から逆算した「刺さるトリガー」5つ</h2>
+    <table>
+      <thead><tr><th>トリガー</th><th>該当ケース</th><th>訴求への翻訳</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>本音の欲望を引き出された</strong></td>
+          <td>黒川・山根・藤岡</td>
+          <td>「綺麗事じゃない、<strong>本当のあなたの欲を言語化する場</strong>」</td>
+        </tr>
+        <tr>
+          <td><strong>覚悟を確認された</strong></td>
+          <td>内海・丹羽・丸田</td>
+          <td>「ノウハウを教える場じゃない。<strong>覚悟を確認する場</strong>」</td>
+        </tr>
+        <tr>
+          <td><strong>続けてきたが変わらない悔しさ</strong></td>
+          <td>内海・千村・丸田</td>
+          <td>「<strong>頑張ってきた人ほど、響く理由がある</strong>」</td>
+        </tr>
+        <tr>
+          <td><strong>20代最後／30歳の節目</strong></td>
+          <td>丸田・有路</td>
+          <td>「<strong>節目の1年を、最高の自分で迎える</strong>」</td>
+        </tr>
+        <tr>
+          <td><strong>オールマイト的"漢"訴求</strong></td>
+          <td>兼松・新井田</td>
+          <td>「<strong>結果は自分で捻じ曲げて達成するもの</strong>」</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 推奨メッセージ設計 -->
+  <section>
+    <h2>📝 推奨：LP/配信のメッセージ設計</h2>
+
+    <h3>メインヘッドライン候補（A/Bテスト用）</h3>
+    <div class="highlight">
+      <ol style="margin:0 0 0 22px">
+        <li><strong>「YouTubeじゃ、もう変わらない。」</strong></li>
+        <li><strong>「鏡が嫌いだった俺が、鏡で笑える日まで。」</strong></li>
+        <li><strong>「努力が、裏切らない男磨きへ。」</strong></li>
+        <li><strong>「1人で続かなかったあなたへ。」</strong></li>
+        <li><strong>「29歳までに本気で動かないと、もう間に合わない。」</strong></li>
+      </ol>
+    </div>
+
+    <h3>個別相談誘導文（"教えてもらう場じゃない"を明示）</h3>
+    <div class="highlight">
+      <p style="margin:0">
+        「ここはノウハウを教える場ではありません。<br>
+        <strong>あなたが本気で変わる覚悟があるかを、一緒に確認する場</strong>です。」
+      </p>
+      <p style="margin:8px 0 0;font-size:12px;color:var(--text-sub)">
+        → 安田・前田型（ノウハウ目当て・興味本位）を上流で弾く効果。
+      </p>
     </div>
   </section>
 

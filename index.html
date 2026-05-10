@@ -1005,6 +1005,217 @@
     </table>
   </section>
 
+  <!-- 月次推移 -->
+  <section>
+    <h2>📈 月次 流入属性の推移</h2>
+    <p style="color:var(--text-sub);font-size:13px;margin-bottom:16px">
+      申込CSV全期間（2/1〜5/10）を月別に並べて、<strong>流入層の属性がどう変化しているか</strong>を可視化。<br>
+      ※3月は申込0件（モニター募集休止期間／導線切替期間）／<strong>5月は1〜10日時点の進行中データ</strong>。
+    </p>
+
+    <h3>1. 月別 申込数 × スクリーニング × 成約</h3>
+    <table>
+      <thead><tr>
+        <th>月</th>
+        <th class="num">申込</th>
+        <th class="num">スクリーニング対象</th>
+        <th class="num">通過率</th>
+        <th class="num">実施</th>
+        <th class="num">成約</th>
+        <th class="num">申込ベース成約率</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>2026-02</strong></td>
+          <td class="num">93</td>
+          <td class="num">30 (32%)</td>
+          <td class="num"><span class="badge good">68%</span></td>
+          <td class="num">37</td>
+          <td class="num"><strong>14</strong></td>
+          <td class="num"><span class="badge good">15.1%</span></td>
+        </tr>
+        <tr>
+          <td>2026-03</td>
+          <td class="num" colspan="6" style="text-align:center;color:var(--text-sub)">― 申込ゼロ（モニター募集休止／導線切替期間）―</td>
+        </tr>
+        <tr>
+          <td><strong>2026-04</strong></td>
+          <td class="num">95</td>
+          <td class="num">58 (61%)</td>
+          <td class="num"><span class="badge warn">39%</span></td>
+          <td class="num">38</td>
+          <td class="num">9</td>
+          <td class="num"><span class="badge warn">9.5%</span></td>
+        </tr>
+        <tr>
+          <td><strong>2026-05</strong> <span class="badge info">進行中（1-10日のみ）</span></td>
+          <td class="num">42</td>
+          <td class="num">26 (62%)</td>
+          <td class="num"><span class="badge warn">38%</span></td>
+          <td class="num">5</td>
+          <td class="num">1</td>
+          <td class="num"><span class="badge danger">2.4%</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      📌 <strong>2月→4月でスクリーニング通過率が68% → 39%（−29pt）に半減</strong>。流入層の質が大きく変化。<br>
+      📌 <strong>申込ベース成約率も15.1% → 9.5%</strong>へ急落。<br>
+      📌 5月は実施が進行中（5/10時点で実施5件のみ）のため成約率の最終評価は要待機。
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>2. 月別 年代構成（%は当該月内）</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>月</th>
+        <th class="num">10代</th>
+        <th class="num">20-24</th>
+        <th class="num">25-29</th>
+        <th class="num">30-34</th>
+        <th class="num">35-39</th>
+        <th class="num">40+</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>2月</strong></td><td class="cell low">14%</td><td class="cell mid">37%</td><td class="cell">24%</td><td class="cell">12%</td><td class="cell">10%</td><td class="cell low">4%</td></tr>
+        <tr><td><strong>4月</strong></td><td class="cell high">42% ↑↑</td><td class="cell">27%</td><td class="cell low">14%</td><td class="cell low">7%</td><td class="cell low">4%</td><td class="cell low">5%</td></tr>
+        <tr><td><strong>5月</strong></td><td class="cell high">48% ↑</td><td class="cell">21%</td><td class="cell low">17%</td><td class="cell low">12%</td><td class="cell zero">―</td><td class="cell low">2%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>10代比率：14% → 42% → 48%</strong>と急増。2月は20-30代会社員中心のシニア寄り構成だったが、4月以降は10代主力に転換。<br>
+      📌 <strong>30-39歳（コアターゲット）は22% → 11% → 12%</strong>と半減。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>3. 月別 職業構成</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>月</th>
+        <th class="num">学生</th>
+        <th class="num">会社員</th>
+        <th class="num">フリーター</th>
+        <th class="num">フリーランス</th>
+        <th class="num">経営者</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>2月</strong></td><td class="cell">33%</td><td class="cell mid">45%</td><td class="cell low">5%</td><td class="cell low">8%</td><td class="cell"><strong>9%</strong></td></tr>
+        <tr><td><strong>4月</strong></td><td class="cell mid">51% ↑</td><td class="cell mid">42%</td><td class="cell low">4%</td><td class="cell zero">―</td><td class="cell low">3%</td></tr>
+        <tr><td><strong>5月</strong></td><td class="cell mid">55% ↑</td><td class="cell">38%</td><td class="cell low">5%</td><td class="cell low">2%</td><td class="cell zero">―</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>2月は経営者9%＋フリーランス8%＝17%が高単価層</strong>。4月以降は<strong>合計3%まで激減</strong>＝高決済力ビジネス層の流入消失。<br>
+      📌 学生比率：33% → 51% → 55%と上昇。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>4. 月別 年収構成</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>月</th>
+        <th class="num">100万以下</th>
+        <th class="num">100-300</th>
+        <th class="num">300-500</th>
+        <th class="num">500-1000</th>
+        <th class="num">1000万以上</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>2月</strong></td><td class="cell">27%</td><td class="cell">19%</td><td class="cell mid">24%</td><td class="cell mid">24%</td><td class="cell"><strong>7%</strong></td></tr>
+        <tr><td><strong>4月</strong></td><td class="cell high">54% ↑</td><td class="cell low">11%</td><td class="cell">19%</td><td class="cell">14%</td><td class="cell low">3%</td></tr>
+        <tr><td><strong>5月</strong></td><td class="cell high">57% ↑</td><td class="cell">19%</td><td class="cell low">12%</td><td class="cell low">10%</td><td class="cell low">2%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>年収100万以下が27% → 54% → 57%に倍増</strong>。<strong>500-1000万＋1000万以上の高収入層は31% → 17% → 12%へ半減</strong>。<br>
+      → <strong>収入面でも明確に質低下のシグナル</strong>。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>5. 月別 意向度構成</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>月</th>
+        <th class="num">決めて今すぐ</th>
+        <th class="num">ほぼ決めている</th>
+        <th class="num">前向きに検討</th>
+        <th class="num">悩んでいる</th>
+        <th class="num">あまり考えてない</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>2月</strong></td><td class="cell">14%</td><td class="cell">15%</td><td class="cell mid">52%</td><td class="cell">19%</td><td class="cell zero">―</td></tr>
+        <tr><td><strong>4月</strong></td><td class="cell low">4%</td><td class="cell low">8%</td><td class="cell mid">41%</td><td class="cell mid">38% ↑</td><td class="cell">8%</td></tr>
+        <tr><td><strong>5月</strong></td><td class="cell low">7%</td><td class="cell zero">―</td><td class="cell">29%</td><td class="cell high">48% ↑</td><td class="cell">17%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>「決めている／ほぼ決めている」上位2階層：29% → 12% → 7%</strong>と激減。<br>
+      📌 <strong>「悩んでいる／あまり考えてない」下位2階層：19% → 46% → 65%</strong>と急増。<br>
+      → <strong>申込時点での購買意思が大幅に弱化</strong>している。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>6. 月別 主要フロント経路</h3>
+    <p style="font-size:12px;color:var(--text-sub);margin-bottom:6px">
+      ※2月はフロント登録経路の取得が未実装（97.8%が未取得）のため、4-5月のみ比較表示。
+    </p>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>チャネル</th>
+        <th class="num">4月</th>
+        <th class="num">5月（10日まで）</th>
+        <th>傾向</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>YT51-19夏までに垢抜け</td><td class="num">24件 (25%)</td><td class="num">17件 (41%)</td><td><span class="badge good">5月で主力動画化</span></td></tr>
+        <tr><td>51-17髪型完全攻略</td><td class="num">20件 (21%)</td><td class="num">7件 (17%)</td><td>横ばい</td></tr>
+        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="num">10件 (11%)</td><td class="num">2件 (5%)</td><td><span class="badge warn">減少</span></td></tr>
+        <tr><td>YT51チャンネルページ</td><td class="num">7件 (7%)</td><td class="num">4件 (10%)</td><td>横ばい</td></tr>
+        <tr><td>YT51-5フェイスライン</td><td class="num">1件 (1%)</td><td class="num">3件 (7%)</td><td><span class="badge info">新規拡大</span></td></tr>
+        <tr><td>YT51-20女性に執着するな</td><td class="num">0件</td><td class="num">3件 (7%)</td><td><span class="badge info">新規拡大</span></td></tr>
+        <tr><td>51-8ブスになるルール</td><td class="num">7件 (7%)</td><td class="num">0件</td><td><span class="badge warn">枯渇</span></td></tr>
+        <tr><td>51-11教訓</td><td class="num">7件 (7%)</td><td class="num">2件 (5%)</td><td>減少</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>5月は YT51-19一強</strong>（41%）。51-8（高効率動画）からの流入が枯渇。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>7. 月次サマリー（流入質の変化）</h3>
+    <div class="highlight">
+      <strong>2月は"高単価ビジネス層中心"の構成</strong>だったが、<strong>4-5月は"10代学生中心"に大きく転換</strong>。
+      <ul style="margin:8px 0 0 22px">
+        <li>10代比率：<strong>14% → 42% → 48%</strong></li>
+        <li>経営者＋フリーランス：<strong>17% → 3% → 2%</strong></li>
+        <li>年収500万超：<strong>31% → 17% → 12%</strong></li>
+        <li>意向度上位（決めている＋ほぼ決めている）：<strong>29% → 12% → 7%</strong></li>
+        <li>スクリーニング通過率：<strong>68% → 39% → 38%</strong></li>
+        <li>申込ベース成約率：<strong>15.1% → 9.5% → 2.4%（進行中）</strong></li>
+      </ul>
+      <p style="margin:10px 0 0">
+        🔑 <strong>背景仮説</strong>：4月から導線が「リョータ_エバーステップ配信／エバー診断ツール経由」中心に切替。<strong>YouTube → LINE → 個別相談の自動配信ファネル</strong>を組んだことで、<strong>10代学生の"とりあえず登録"層が大量流入</strong>するようになり、ビジネス層が相対的に薄まった構造。<br>
+        → 質の高い20-30代会社員・経営者層を再獲得するには<strong>該当層に刺さる動画／LP／訴求</strong>を別ファネルで追加するか、<strong>申込フォームの覚悟確認設問</strong>で意向度の弱い層をスクリーニング前に弾く運用が有効。
+      </p>
+    </div>
+  </section>
+
   <!-- 意向度分析 -->
   <section>
     <h2>🎯 意向度 別 流入・成約分析</h2>

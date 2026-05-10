@@ -1005,6 +1005,144 @@
     </table>
   </section>
 
+  <!-- 意向度分析 -->
+  <section>
+    <h2>🎯 意向度 別 流入・成約分析</h2>
+    <p style="color:var(--text-sub);font-size:13px;margin-bottom:16px">
+      申込フォームで「入会意向度」を5段階で自己申告してもらった値の分析。<strong>申告通りの意向度が成約率に反映されているか</strong>を検証。<br>
+      母数：4/16以降申込137件。
+    </p>
+
+    <h3>1. 意向度の分布</h3>
+    <table>
+      <thead><tr>
+        <th>意向度</th>
+        <th class="num">全申込 (n=137)</th>
+        <th class="num">スクリーニング後 (n=53)</th>
+        <th class="num">スクリーニング対象 (n=84)</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge good">入会を決めており今すぐ始めたい</span></td>
+          <td class="num">7件 (5.1%)</td>
+          <td class="num">3件 (5.7%)</td>
+          <td class="num">4件 (4.8%)</td>
+        </tr>
+        <tr>
+          <td><span class="badge good">入会をほぼ決めている</span></td>
+          <td class="num">8件 (5.8%)</td>
+          <td class="num">4件 (7.5%)</td>
+          <td class="num">4件 (4.8%)</td>
+        </tr>
+        <tr>
+          <td><span class="badge info">入会を前向きに検討している</span></td>
+          <td class="num">51件 (37.2%)</td>
+          <td class="num">23件 (43.4%)</td>
+          <td class="num">28件 (33.3%)</td>
+        </tr>
+        <tr>
+          <td><span class="badge warn">入会するか悩んでいる</span></td>
+          <td class="num">56件 (40.9%)</td>
+          <td class="num">16件 (30.2%)</td>
+          <td class="num">40件 (47.6%)</td>
+        </tr>
+        <tr>
+          <td><span class="badge danger">入会をあまり考えていない</span></td>
+          <td class="num">15件 (10.9%)</td>
+          <td class="num">7件 (13.2%)</td>
+          <td class="num">8件 (9.5%)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>「悩んでいる」が最大40.9%</strong>。「決めている／ほぼ決めている」上位2階層は合計わずか<strong>10.9%</strong>。<br>
+      📌 スクリーニング対象は<strong>「悩んでいる」比率がさらに高い（47.6%）</strong>＝意向度の弱い層が多い。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>2. 意向度 × 申込→アポ実施率（全申込）</h3>
+    <table>
+      <thead><tr>
+        <th>意向度</th>
+        <th class="num">申込</th>
+        <th class="num">実施</th>
+        <th class="num">キャンセル</th>
+        <th class="num">対象外</th>
+        <th class="num">未実施</th>
+        <th class="num">実施率</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="badge good">入会を決めており今すぐ始めたい</span></td><td class="num">7</td><td class="num">4</td><td class="num">0</td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge good">57.1%</span></td></tr>
+        <tr><td><span class="badge good">入会をほぼ決めている</span></td><td class="num">8</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge good">62.5%</span></td></tr>
+        <tr><td><span class="badge info">入会を前向きに検討している</span></td><td class="num">51</td><td class="num">20</td><td class="num">1</td><td class="num">5</td><td class="num">25</td><td class="num"><span class="badge info">39.2%</span></td></tr>
+        <tr><td><span class="badge warn">入会するか悩んでいる</span></td><td class="num">56</td><td class="num">12</td><td class="num">2</td><td class="num">5</td><td class="num">37</td><td class="num"><span class="badge warn">21.4%</span></td></tr>
+        <tr><td><span class="badge danger">入会をあまり考えていない</span></td><td class="num">15</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">11</td><td class="num"><span class="badge danger">13.3%</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>意向度通りに実施率は綺麗に並ぶ</strong>（57% → 13%）。意向度の自己申告は<strong>"アポ実施まで進むか"の予測には機能</strong>している。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>3. 意向度 × 結果（スクリーニング後・実施35件）</h3>
+    <table>
+      <thead><tr>
+        <th>意向度</th>
+        <th class="num">実施</th>
+        <th class="num">成約</th>
+        <th class="num">言質</th>
+        <th class="num">検討</th>
+        <th class="num">失注</th>
+        <th class="num">成約率</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="badge good">入会を決めており今すぐ始めたい</span></td><td class="num">3</td><td class="num"><strong>0</strong></td><td class="num">0</td><td class="num">1</td><td class="num">2</td><td class="num"><span class="badge danger">0.0%</span></td></tr>
+        <tr><td><span class="badge good">入会をほぼ決めている</span></td><td class="num">4</td><td class="num"><strong>2</strong></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num"><span class="badge good">50.0%</span></td></tr>
+        <tr><td><span class="badge info">入会を前向きに検討している</span></td><td class="num">16</td><td class="num"><strong>7</strong></td><td class="num">4</td><td class="num">0</td><td class="num">5</td><td class="num"><span class="badge good">43.8%</span></td></tr>
+        <tr><td><span class="badge warn">入会するか悩んでいる</span></td><td class="num">11</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">8</td><td class="num"><span class="badge warn">9.1%</span></td></tr>
+        <tr><td><span class="badge danger">入会をあまり考えていない</span></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num"><span class="badge danger">0.0%</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      📌 <strong>意外な発見：「入会を決めており今すぐ始めたい」の成約率は0%</strong>（3件中 失注2/検討1）。<br>
+      → "強気の申告"は<strong>実態と乖離</strong>している可能性。決済力不足／勢いだけ／過剰自己申告型のリスク。<br>
+      📌 <strong>真の高効率ゾーンは「ほぼ決めている」「前向きに検討」</strong>（成約率 43.8〜50%）。<strong>合計9件成約／全成約10件中90%</strong>がこの2階層から出ている。<br>
+      📌 <strong>「悩んでいる」「あまり考えていない」</strong>はアポしても成約率9.1%以下＝LP/申込フォームで意向度確認をしっかり取る価値あり。<br>
+      → <strong>営業オペ案：「ほぼ決めている／前向きに検討」を最優先枠で対応／「悩んでいる」は事前ヒアリングで覚悟確認、「あまり考えていない」は実施判断慎重に</strong>。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>4. 意向度 × 年代（全申込）</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>意向度</th>
+        <th class="num">10代</th>
+        <th class="num">20-24</th>
+        <th class="num">25-29</th>
+        <th class="num">30代</th>
+        <th class="num">40代+</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="badge good">決めており今すぐ</span></td><td class="cell mid">43%</td><td class="cell">29%</td><td class="cell zero">―</td><td class="cell low">14%</td><td class="cell low">14%</td></tr>
+        <tr><td><span class="badge good">ほぼ決めている</span></td><td class="cell">38%</td><td class="cell low">25%</td><td class="cell">38%</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td><span class="badge info">前向きに検討</span></td><td class="cell">35%</td><td class="cell">35%</td><td class="cell low">12%</td><td class="cell low">10%</td><td class="cell low">8%</td></tr>
+        <tr><td><span class="badge warn">悩んでいる</span></td><td class="cell high">52%</td><td class="cell low">20%</td><td class="cell low">14%</td><td class="cell low">12%</td><td class="cell low">2%</td></tr>
+        <tr><td><span class="badge danger">あまり考えていない</span></td><td class="cell mid">47%</td><td class="cell low">13%</td><td class="cell low">20%</td><td class="cell low">20%</td><td class="cell zero">―</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>「悩んでいる」は10代が52%</strong>＝そもそも決済力ない層の意向度低下。<br>
+      📌 <strong>「ほぼ決めている」は10-29歳に集中</strong>（38%/25%/38%）＝20代以降の購買意思は明確に出やすい。<br>
+      📌 30代以上は意向度のバラツキが小さく、申込時点である程度クロージング前進可能な層。
+    </p>
+  </section>
+
   <!-- アポ実施対象詳細 -->
   <section>
     <h2>📞 アポ実施対象（53件・スクリーニング後）の詳細</h2>

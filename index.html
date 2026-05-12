@@ -196,7 +196,7 @@
   <h1>メンズライズ 統合分析レポート</h1>
   <div class="meta">
     <span>分析日：2026-05-12</span>
-    <span>5タブ構成：LINE登録者属性 ／ 流入層 ／ 登録経路別 ／ LINEヒアリング ／ 年代別ニーズ</span>
+    <span>6タブ構成：LINE登録者属性 ／ 流入層 ／ 登録経路別 ／ 5月限定 ／ LINEヒアリング ／ 年代別ニーズ</span>
   </div>
 </header>
 
@@ -204,6 +204,7 @@
   <button class="tab active" data-tab="line" role="tab" aria-selected="true">LINE登録者 属性分析（4/20以降）</button>
   <button class="tab" data-tab="sales" role="tab" aria-selected="false">流入層分析（個別相談・営業 4/16以降）</button>
   <button class="tab" data-tab="channel" role="tab" aria-selected="false">登録経路別 分析</button>
+  <button class="tab" data-tab="may" role="tab" aria-selected="false">5月限定 流入分析</button>
   <button class="tab" data-tab="survey" role="tab" aria-selected="false">LINEヒアリングアンケート（5/1配信・n=546）</button>
   <button class="tab" data-tab="needs" role="tab" aria-selected="false">年代別ニーズ分析（申込CSV n=207）</button>
 </div>
@@ -1819,6 +1820,208 @@
 
   </section>
   <!-- ============ ここまで セクションB ============ -->
+
+</div>
+
+<!-- ================================================================== -->
+<!-- ============   TAB MAY: 5月限定 流入分析   ======================== -->
+<!-- ================================================================== -->
+<div class="tab-panel" id="tab-may" role="tabpanel">
+
+  <div class="panel-meta">
+    <span>対象期間：2026/5/1 〜 5/31</span>
+    <span>LINE登録：1,252名 ／ 個別相談：54件</span>
+    <span>用途：5月単月の流入動向を全期間と比較</span>
+  </div>
+
+  <!-- サマリー -->
+  <section>
+    <h2>📊 5月サマリー</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">LINE登録（5月）</div><div class="kpi-value accent">1,252<span style="font-size:14px;color:var(--text-sub)">名</span></div><div class="kpi-sub">全期間2,454の51%</div></div>
+      <div class="kpi"><div class="kpi-label">個別相談申込（5月）</div><div class="kpi-value info">54<span style="font-size:14px;color:var(--text-sub)">件</span></div><div class="kpi-sub">全期間148の36.5%</div></div>
+      <div class="kpi"><div class="kpi-label">5月スクリーニング通過</div><div class="kpi-value">22<span style="font-size:14px;color:var(--text-sub)">件 / 40.7%</span></div></div>
+      <div class="kpi"><div class="kpi-label">5月実施</div><div class="kpi-value warn">8<span style="font-size:14px;color:var(--text-sub)">件</span></div><div class="kpi-sub">未実施33件＝大半が今後</div></div>
+      <div class="kpi"><div class="kpi-label">5月成約</div><div class="kpi-value good">1<span style="font-size:14px;color:var(--text-sub)">件 / 1.9%</span></div><div class="kpi-sub">実施未消化のため低水準</div></div>
+      <div class="kpi"><div class="kpi-label">target(20-30代)比率</div><div class="kpi-value info">60.3%<span style="font-size:14px;color:var(--text-sub)"></span></div><div class="kpi-sub">LINE層 755/1,252</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:8px">
+      ※ 5月の個別相談は<strong>実施が間に合っていない段階</strong>のため成約率が低く見える。スクリーニング通過率と申込数で評価する方が実態に近い。
+    </p>
+  </section>
+
+  <!-- ============ A. LINE登録 5月 ============ -->
+  <section style="border-top:3px solid var(--accent);padding-top:24px;margin-top:24px">
+    <h2 style="font-size:24px;border:none;background:none;padding:0;margin-bottom:16px">━━ A. LINE登録 5月限定（n=1,252）━━</h2>
+
+    <!-- 職業 -->
+    <h3>A-1. 職業内訳</h3>
+    <table>
+      <thead><tr><th>職業</th><th class="num">人数</th><th class="num">5月%</th><th class="num">全期間%</th><th class="num">差分</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge good">学生</span></td><td class="num">629</td><td class="num">50.2%</td><td class="num">49.6%</td><td class="num"><span class="badge">+0.6pt</span></td></tr>
+        <tr><td><span class="badge info">会社員</span></td><td class="num">527</td><td class="num">42.1%</td><td class="num">43.0%</td><td class="num"><span class="badge">−0.9pt</span></td></tr>
+        <tr><td>フリーター</td><td class="num">37</td><td class="num">3.0%</td><td class="num">2.5%</td><td class="num"><span class="badge">+0.5pt</span></td></tr>
+        <tr><td>経営者</td><td class="num">29</td><td class="num">2.3%</td><td class="num">2.3%</td><td class="num"><span class="badge">±0pt</span></td></tr>
+        <tr><td>フリーランス</td><td class="num">26</td><td class="num">2.1%</td><td class="num">2.3%</td><td class="num"><span class="badge">−0.2pt</span></td></tr>
+        <tr><td>主婦</td><td class="num">4</td><td class="num">0.3%</td><td class="num">0.3%</td><td class="num"><span class="badge">±0pt</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- 年齢統合 -->
+    <h3>A-2. 年代内訳（統合）</h3>
+    <table>
+      <thead><tr><th>年代</th><th class="num">人数</th><th class="num">5月%</th><th class="num">全期間%</th><th class="num">差分</th></tr></thead>
+      <tbody>
+        <tr><td>10代以下</td><td class="num">458</td><td class="num">36.6%</td><td class="num">35.7%</td><td class="num"><span class="badge warn">+0.9pt</span></td></tr>
+        <tr><td><span class="badge danger">20代</span></td><td class="num">603</td><td class="num">48.2%</td><td class="num">49.4%</td><td class="num"><span class="badge info">−1.2pt</span></td></tr>
+        <tr><td>30代</td><td class="num">152</td><td class="num">12.1%</td><td class="num">11.8%</td><td class="num"><span class="badge">+0.3pt</span></td></tr>
+        <tr><td>40代</td><td class="num">37</td><td class="num">3.0%</td><td class="num">2.7%</td><td class="num"><span class="badge">+0.3pt</span></td></tr>
+        <tr><td>50代以上</td><td class="num">2</td><td class="num">0.2%</td><td class="num">0.3%</td><td class="num"><span class="badge">−0.1pt</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- 年齢細分化 -->
+    <h3>A-3. 年齢細分化（5月のみ全件・5刻み回答済）</h3>
+    <table>
+      <thead><tr><th>年齢層</th><th class="num">人数</th><th class="num">5月%</th><th class="num">全期間%(n=2,002)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge warn">〜19歳</span></td><td class="num">458</td><td class="num">36.6%</td><td class="num">36.4%</td></tr>
+        <tr><td><span class="badge danger">20〜24歳</span></td><td class="num">361</td><td class="num">28.8%</td><td class="num">29.8%</td></tr>
+        <tr><td>25〜29歳</td><td class="num">242</td><td class="num">19.3%</td><td class="num">18.7%</td></tr>
+        <tr><td>30〜34歳</td><td class="num">103</td><td class="num">8.2%</td><td class="num">8.6%</td></tr>
+        <tr><td>35〜39歳</td><td class="num">49</td><td class="num">3.9%</td><td class="num">3.3%</td></tr>
+        <tr><td>40〜44歳</td><td class="num">26</td><td class="num">2.1%</td><td class="num">1.9%</td></tr>
+        <tr><td>45〜49歳</td><td class="num">11</td><td class="num">0.9%</td><td class="num">0.9%</td></tr>
+        <tr><td>50歳以上</td><td class="num">2</td><td class="num">0.2%</td><td class="num">0.2%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 5月単月では <strong>10代以下＋20-24歳 = 65.4%</strong>（全期間66.2%とほぼ同水準）。<strong>25-29歳と30-34歳の合算が27.5%</strong> でtarget本命の20代後半〜30代前半比率は安定。
+    </p>
+
+    <!-- 年齢×職業 cross -->
+    <h3>A-4. 年代×職業 クロス（5月のみ・全体比%）</h3>
+    <div class="cross">
+    <table>
+      <thead><tr><th>年代</th><th class="num">学生</th><th class="num">会社員</th><th class="num">フリーランス</th><th class="num">経営者</th><th class="num">フリーター</th><th class="num">主婦</th><th class="num">合計</th></tr></thead>
+      <tbody>
+        <tr><td>10代以下</td><td class="cell high">436 (34.8%)</td><td class="cell low">13 (1.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">8 (0.6%)</td><td class="cell zero">1 (0.1%)</td><td class="row-total">458 (36.6%)</td></tr>
+        <tr><td>20代</td><td class="cell mid">192 (15.3%)</td><td class="cell high">362 (28.9%)</td><td class="cell low">13 (1.0%)</td><td class="cell zero">9 (0.7%)</td><td class="cell zero">24 (1.9%)</td><td class="cell zero">3 (0.2%)</td><td class="row-total">603 (48.2%)</td></tr>
+        <tr><td>30代</td><td class="cell zero">1 (0.1%)</td><td class="cell high">124 (9.9%)</td><td class="cell low">12 (1.0%)</td><td class="cell low">11 (0.9%)</td><td class="cell zero">4 (0.3%)</td><td class="cell zero">―</td><td class="row-total">152 (12.1%)</td></tr>
+        <tr><td>40代</td><td class="cell zero">―</td><td class="cell mid">27 (2.2%)</td><td class="cell zero">1 (0.1%)</td><td class="cell low">8 (0.6%)</td><td class="cell zero">1 (0.1%)</td><td class="cell zero">―</td><td class="row-total">37 (3.0%)</td></tr>
+        <tr><td>50代以上</td><td class="cell zero">―</td><td class="cell">1 (0.1%)</td><td class="cell zero">―</td><td class="cell zero">1 (0.1%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="row-total">2 (0.2%)</td></tr>
+        <tr><td class="row-total">合計</td><td class="row-total">629</td><td class="row-total">527</td><td class="row-total">26</td><td class="row-total">29</td><td class="row-total">37</td><td class="row-total">4</td><td class="row-total">1,252</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 5月単月の最大セルは <strong>「10代以下×学生」436名（34.8%）</strong>、次いで <strong>「20代×会社員」362名（28.9%）</strong>。<strong>2セルで63.7%</strong>＝全期間の63.4%とほぼ同じ構造。<br>
+      📌 <strong>「30代×会社員」124名（9.9%）／「20代×学生」192名（15.3%）</strong> で4セル合計89.0%。
+    </p>
+
+    <!-- 悩み -->
+    <h3>A-5. 悩み（5月のみ）</h3>
+    <table>
+      <thead><tr><th>悩み</th><th class="num">人数</th><th class="num">5月%</th><th class="num">全期間%</th><th class="num">差分</th></tr></thead>
+      <tbody>
+        <tr><td>見た目（顔・体型・ファッション）に自信がない</td><td class="num">408</td><td class="num">32.6%</td><td class="num">34.3%</td><td class="num"><span class="badge info">−1.7pt</span></td></tr>
+        <tr><td>何から始めればいいかわからない / やり方がわからない</td><td class="num">293</td><td class="num">23.4%</td><td class="num">22.7%</td><td class="num"><span class="badge">+0.7pt</span></td></tr>
+        <tr><td>継続できない / 一人だとサボってしまう</td><td class="num">197</td><td class="num">15.7%</td><td class="num">16.3%</td><td class="num"><span class="badge">−0.6pt</span></td></tr>
+        <tr><td>自分に自信が持てない / 男としての自信がない</td><td class="num">184</td><td class="num">14.7%</td><td class="num">13.0%</td><td class="num"><span class="badge warn">+1.7pt</span></td></tr>
+        <tr><td>女性との出会い・恋愛がうまくいかない</td><td class="num">170</td><td class="num">13.6%</td><td class="num">13.8%</td><td class="num"><span class="badge">−0.2pt</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 5月は <strong>「自信がない」+1.7pt上昇／「見た目」−1.7pt減少</strong> ＝悩み軸の重心がやや内面側に寄った。「自信」と「恋愛」は4位5位入れ替わり。
+    </p>
+  </section>
+
+  <!-- ============ B. 個別相談 5月 ============ -->
+  <section style="border-top:3px solid var(--accent);padding-top:24px;margin-top:48px">
+    <h2 style="font-size:24px;border:none;background:none;padding:0;margin-bottom:16px">━━ B. 個別相談 5月限定（n=54）━━</h2>
+
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:16px">
+      ※ 5月の個別相談54件のうち実施済はまだ8件のみ。残り46件は今後実施＝<strong>結果指標（成約率等）は時期的に過小評価</strong>。流入量とスクリーニング通過率で評価。
+    </p>
+
+    <!-- B-1 結果サマリー -->
+    <h3>B-1. 5月個別相談 結果サマリー</h3>
+    <table>
+      <thead><tr><th>指標</th><th class="num">5月のみ</th><th class="num">全期間</th><th class="num">差分</th></tr></thead>
+      <tbody>
+        <tr><td>申込</td><td class="num">54件</td><td class="num">148件</td><td class="num">5月が36.5%</td></tr>
+        <tr><td>スクリーニング通過</td><td class="num">22件 (40.7%)</td><td class="num">62件 (41.9%)</td><td class="num"><span class="badge">−1.2pt</span></td></tr>
+        <tr><td>実施</td><td class="num">8件</td><td class="num">46件</td><td class="num"><span class="badge warn">未実施46件</span></td></tr>
+        <tr><td>成約</td><td class="num">1件 (1.9%)</td><td class="num">10件 (6.8%)</td><td class="num"><span class="badge info">時期要因</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- B-2 フロント経路 5月 -->
+    <h3>B-2. フロント登録経路（5月個別相談）</h3>
+    <table>
+      <thead><tr><th>フロント経路</th><th class="num">申込</th><th class="num">通過</th><th class="num">通過率</th><th class="num">実施</th><th class="num">成約</th></tr></thead>
+      <tbody>
+        <tr><td><strong>YT51-19夏までに垢抜け</strong></td><td class="num">18</td><td class="num">8</td><td class="num">44%</td><td class="num">4</td><td class="num"><strong>1</strong></td></tr>
+        <tr><td>51-17髪型完全攻略</td><td class="num">9</td><td class="num">1</td><td class="num"><span class="badge danger">11%</span></td><td class="num">1</td><td class="num">0</td></tr>
+        <tr><td><strong>YT51-20女性に執着するな</strong> <span class="badge info">通過率最高</span></td><td class="num">9</td><td class="num">5</td><td class="num"><span class="badge good">56%</span></td><td class="num">0</td><td class="num">0</td></tr>
+        <tr><td>YT51チャンネルページ</td><td class="num">5</td><td class="num">1</td><td class="num">20%</td><td class="num">0</td><td class="num">0</td></tr>
+        <tr><td>51-11教訓</td><td class="num">3</td><td class="num">3</td><td class="num"><span class="badge good">100%</span></td><td class="num">1</td><td class="num">0</td></tr>
+        <tr><td>YT51-5フェイスライン</td><td class="num">3</td><td class="num">2</td><td class="num">67%</td><td class="num">2</td><td class="num">0</td></tr>
+        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="num">3</td><td class="num">2</td><td class="num">67%</td><td class="num">0</td><td class="num">0</td></tr>
+        <tr><td>その他</td><td class="num">4</td><td class="num">0</td><td class="num">0%</td><td class="num">0</td><td class="num">0</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      📌 <strong>5月はYT51-19（18件）と YT51-20（9件）が2強</strong>。YT51-20が前月までに無かった枠で同率2位に浮上＝<strong>新規拡大チャネル</strong>。<br>
+      📌 <strong>YT51-20は通過率56%＋実施0</strong>＝未実施5件の中に質の高いリードが眠っている可能性高い。<strong>実施優先化推奨</strong>。<br>
+      📌 <strong>51-17髪型完全攻略は申込9件・通過率11%</strong>＝5月単月でも低効率継続。CTA／訴求要見直し。<br>
+      📌 <strong>51-11教訓は通過率100%</strong>（3件中3件通過）＝量は少ないが純度最高。
+    </p>
+    </div>
+
+    <!-- B-3 個別相談登録経路 5月 -->
+    <h3>B-3. 個別相談登録経路（5月）</h3>
+    <table>
+      <thead><tr><th>個別相談登録経路</th><th class="num">申込</th><th class="num">構成比</th><th class="num">通過</th><th class="num">通過率</th><th class="num">実施</th><th class="num">成約</th></tr></thead>
+      <tbody>
+        <tr><td><strong>リョータ_エバーステップ配信経由</strong></td><td class="num">37</td><td class="num">68.5%</td><td class="num">15</td><td class="num">41%</td><td class="num">5</td><td class="num"><strong>1</strong></td></tr>
+        <tr><td><strong>リョータ_エバー診断ツール経由</strong></td><td class="num">16</td><td class="num">29.6%</td><td class="num">7</td><td class="num">44%</td><td class="num">3</td><td class="num">0</td></tr>
+        <tr><td>①リョータ＿新ハウス経由</td><td class="num">1</td><td class="num">1.9%</td><td class="num">0</td><td class="num">0%</td><td class="num">0</td><td class="num">0</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 5月の通過率はほぼ同率（配信41% / 診断44%）。<strong>診断ツール経由が16件（29.6%）に増加</strong>＝全期間の31.8%と同水準を維持。<br>
+      📌 旧ハウス経由は5月ゼロ＝完全に枯渇。
+    </p>
+
+    <!-- B-4 年代/職業分布 -->
+    <h3>B-4. 5月個別相談 年代・職業分布</h3>
+    <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+      <div class="kpi"><div class="kpi-label">年代</div>
+        <div style="font-size:13px;line-height:1.8;color:var(--text)">
+          10代：25 (46.3%)<br>
+          20-24歳：9 (16.7%)<br>
+          25-29歳：12 (22.2%)<br>
+          30-34歳：6 (11.1%)<br>
+          35-39歳：1 (1.9%)<br>
+          40代以上：1 (1.9%)
+        </div>
+      </div>
+      <div class="kpi"><div class="kpi-label">職業</div>
+        <div style="font-size:13px;line-height:1.8;color:var(--text)">
+          学生：29 (53.7%)<br>
+          会社員：22 (40.7%)<br>
+          フリーター：2 (3.7%)<br>
+          フリーランス：1 (1.9%)
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:8px">
+      📌 5月個別相談は <strong>10代46.3% ＋ 学生53.7%</strong>＝全期間とほぼ同じ構造。流入の質の偏りは変わらない。<br>
+      📌 <strong>20代後半（25-29歳）22.2%</strong>がやや厚め。target本命層の集まりは健全。
+    </p>
+  </section>
 
 </div>
 

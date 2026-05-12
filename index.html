@@ -2419,10 +2419,10 @@
     type:'doughnut',
     data:{
       labels:['スクリーニング対象','アポ実施対象'],
-      datasets:[{ data:[84,53], backgroundColor:[C.danger,C.good], borderColor:C.bg, borderWidth:2 }]
+      datasets:[{ data:[90,59], backgroundColor:[C.danger,C.good], borderColor:C.bg, borderWidth:2 }]
     },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'60%',
-      plugins:{ legend:{position:'bottom'}, tooltip:{ callbacks:{ label:c=>`${c.label}: ${c.parsed}件 (${pct(c.parsed,137)})` }}}
+      plugins:{ legend:{position:'bottom'}, tooltip:{ callbacks:{ label:c=>`${c.label}: ${c.parsed}件 (${pct(c.parsed,149)})` }}}
     }
   });
 
@@ -2431,10 +2431,10 @@
     type:'bar',
     data:{
       labels:['年収100万以下','10代（〜19歳）','40代以上'],
-      datasets:[{ data:[75,60,6], backgroundColor:[C.danger,C.warn,C.gray], borderRadius:4 }]
+      datasets:[{ data:[80,65,6], backgroundColor:[C.danger,C.warn,C.gray], borderRadius:4 }]
     },
     options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>`${c.parsed.x}件 (${pct(c.parsed.x,137)})` }}},
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>`${c.parsed.x}件 (${pct(c.parsed.x,149)})` }}},
       scales:{
         x:{ grid:{color:C.border}, ticks:{color:C.textSub} },
         y:{ grid:{display:false}, ticks:{color:C.text} }
@@ -2448,13 +2448,13 @@
     data:{
       labels:['〜19歳','20〜24歳','25〜29歳','30〜34歳','35〜39歳','40〜44歳','50歳以上'],
       datasets:[{
-        data:[60,35,20,12,4,4,2],
+        data:[65,35,25,13,5,4,2],
         backgroundColor:[C.danger,C.warn,C.warn,C.info,C.info,C.gray,C.gray],
         borderRadius:4
       }]
     },
     options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>`${c.parsed.x}件 (${pct(c.parsed.x,137)})` }}},
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>`${c.parsed.x}件 (${pct(c.parsed.x,149)})` }}},
       scales:{
         x:{ grid:{color:C.border}, ticks:{color:C.textSub} },
         y:{ grid:{display:false}, ticks:{color:C.text} }
@@ -2468,13 +2468,13 @@
     data:{
       labels:['100万円以下','100〜300万円','300〜500万円','500〜1000万円','1000万円以上'],
       datasets:[{
-        data:[75,18,23,17,4],
+        data:[80,20,25,20,4],
         backgroundColor:[C.danger,C.warn,C.gold,C.good,C.purple],
         borderRadius:4
       }]
     },
     options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>`${c.parsed.x}件 (${pct(c.parsed.x,137)})` }}},
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>`${c.parsed.x}件 (${pct(c.parsed.x,149)})` }}},
       scales:{
         x:{ grid:{color:C.border}, ticks:{color:C.textSub} },
         y:{ grid:{display:false}, ticks:{color:C.text} }
@@ -2482,27 +2482,27 @@
     }
   });
 
-  // 13. 実施結果35件 (doughnut)
+  // 13. 実施結果38件 (doughnut)
   mk('ch-sales-result', {
     type:'doughnut',
     data:{
       labels:['成約','言質','検討中','失注'],
-      datasets:[{ data:[10,7,2,16], backgroundColor:[C.good,C.info,C.warn,C.danger], borderColor:C.bg, borderWidth:2 }]
+      datasets:[{ data:[10,7,3,18], backgroundColor:[C.good,C.info,C.warn,C.danger], borderColor:C.bg, borderWidth:2 }]
     },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'58%',
-      plugins:{ legend:{position:'right'}, tooltip:{ callbacks:{ label:c=>`${c.label}: ${c.parsed}件 (${pct(c.parsed,35)})` }}}
+      plugins:{ legend:{position:'right'}, tooltip:{ callbacks:{ label:c=>`${c.label}: ${c.parsed}件 (${pct(c.parsed,38)})` }}}
     }
   });
 
-  // 14. 失注/検討18件 真因カテゴリ (doughnut)
+  // 14. 失注/検討21件 真因カテゴリ (doughnut)
   mk('ch-sales-cause', {
     type:'doughnut',
     data:{
       labels:['営業スキル由来','導線の問題（買う気なし・ノウハウ目的・興味本位）','決済問題','商品ミスマッチ'],
-      datasets:[{ data:[7,5,4,2], backgroundColor:[C.warn,C.danger,C.info,C.purple], borderColor:C.bg, borderWidth:2 }]
+      datasets:[{ data:[7,7,5,2], backgroundColor:[C.warn,C.danger,C.info,C.purple], borderColor:C.bg, borderWidth:2 }]
     },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'58%',
-      plugins:{ legend:{position:'right'}, tooltip:{ callbacks:{ label:c=>`${c.label}: ${c.parsed}件 (${pct(c.parsed,18)})` }}}
+      plugins:{ legend:{position:'right'}, tooltip:{ callbacks:{ label:c=>`${c.label}: ${c.parsed}件 (${pct(c.parsed,21)})` }}}
     }
   });
 

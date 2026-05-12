@@ -1272,15 +1272,26 @@
 <div class="tab-panel" id="tab-channel" role="tabpanel">
 
   <div class="panel-meta">
-    <span>対象：4/20以降のLINE登録者2,454名／4/16以降の個別相談149件</span>
-    <span>軸：登録経路（YouTube動画／IG／その他導線）</span>
-    <span>用途：どの動画／導線が「質の高い見込み客」を連れてくるかの可視化</span>
+    <span>対象：LINE登録2,454名／個別相談148件</span>
+    <span>軸：2系統の経路（フロント／個別相談）を別物として分析</span>
   </div>
 
-  <!-- 【1】LINE登録者 経路別 属性 -->
+  <div class="highlight" style="margin-bottom:32px">
+    <strong>⚠️ 「登録経路」は2系統あり、別物として扱う</strong><br>
+    <strong>A. フロント登録経路</strong>：<span style="color:var(--accent-2)">どの動画/導線からLINE登録に流入したか</span>（YouTube動画別／IG／コメント欄など 15+経路）<br>
+    <strong>B. 個別相談登録経路</strong>：<span style="color:var(--accent-2)">どのLステップ経路で個別相談申込に至ったか</span>（エバーステップ配信／診断ツール／ハウス系 4経路）<br>
+    AはLINE登録の入口チャネル分析、Bは個別相談移行の導線分析。<strong>同じ申込でもAとBは別の値を持つ</strong>。
+  </div>
+
+  <!-- ============ セクションA: フロント登録経路 ============ -->
+  <section style="border-top:3px solid var(--accent);padding-top:24px;margin-top:16px">
+  <h2 style="font-size:26px;border:none;background:none;padding:0;margin-bottom:8px">━━ A. フロント登録経路 ━━</h2>
+  <p style="font-size:13px;color:var(--text-sub);margin-bottom:24px"><strong>LINE登録時にどの動画/導線から入ってきたか</strong>。LINE側で動画CTAごとの属性、個別相談側でチャネルごとの成約効率を分析。</p>
+
+  <!-- A-1 LINE登録者 経路別 属性 -->
   <!-- 登録経路別 属性分析 -->
   <section>
-    <h2>🛤️ 登録経路別 属性分析</h2>
+    <h2>🛤️ A-1. LINE登録者 経路別 属性分析</h2>
     <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
       登録者CSV2系統（5/12時点）を突合し、年齢・職業・登録経路の3項目すべてが判明している <strong>2,453名</strong> を対象に、登録経路ごとの構成を集計（4/20以降登録分）。<br>
       ※n≥10の主要15経路を表示、それ未満は「その他」に集約／割合は<strong>各経路内の構成比</strong>。
@@ -1420,12 +1431,12 @@
   </section>
 
 
-  <!-- 【2】個別相談 経路別 流入 -->
+  <!-- A-2 個別相談 経路別 流入 -->
   <!-- フロント登録経路分析 -->
   <section>
-    <h2>📺 フロント登録経路 別 流入分析</h2>
+    <h2>📺 A-2. 個別相談側で見る フロント登録経路 別 流入分析</h2>
     <p style="color:var(--text-sub);font-size:13px;margin-bottom:16px">
-      LINE登録時に「どの動画／導線から入ってきたか」のソース別分析。<strong>どの動画が"質の高い見込み客"を連れてくるか</strong>を可視化。<br>
+      個別相談に申し込んだ人の<strong>LINE登録時のフロント経路</strong>。<strong>どの動画が"質の高い見込み客（個別相談まで進む層）"を連れてくるか</strong>を可視化。<br>
       母数：4/16以降申込148件（テスト除外後・5/12営業シート）。同経路でも申込のみで未実施＝LINE離脱が多い場合あり。
     </p>
 
@@ -1642,7 +1653,172 @@
       </tbody>
     </table>
   </section>
+  </section>
+  <!-- ============ ここまで セクションA ============ -->
 
+  <!-- ============ セクションB: 個別相談登録経路 ============ -->
+  <section style="border-top:3px solid var(--accent);padding-top:24px;margin-top:48px">
+  <h2 style="font-size:26px;border:none;background:none;padding:0;margin-bottom:8px">━━ B. 個別相談登録経路 ━━</h2>
+  <p style="font-size:13px;color:var(--text-sub);margin-bottom:24px"><strong>個別相談に申し込む際にどのLステップ経路を通ったか</strong>。Aの「LINE登録の入口」とは別の、<strong>「個別相談への移行導線」</strong>の効率分析。母数：個別相談148件（4/16以降・テスト除外）。</p>
+
+  <!-- B-1 経路別 通過率/成約率 -->
+  <section>
+    <h2>🔀 B-1. 個別相談登録経路 別 通過率・成約率</h2>
+    <table>
+      <thead><tr>
+        <th>個別相談登録経路</th>
+        <th class="num">申込</th>
+        <th class="num">構成比</th>
+        <th class="num">スクリーニング通過</th>
+        <th class="num">通過率</th>
+        <th class="num">実施</th>
+        <th class="num">成約</th>
+        <th class="num">申込→成約率</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>リョータ_エバーステップ配信経由</strong> <span class="badge good">主力</span></td>
+          <td class="num">96</td>
+          <td class="num">64.9%</td>
+          <td class="num">35</td>
+          <td class="num">36%</td>
+          <td class="num">25</td>
+          <td class="num"><strong>5</strong></td>
+          <td class="num">5.2%</td>
+        </tr>
+        <tr>
+          <td><strong>リョータ_エバー診断ツール経由</strong> <span class="badge good">高効率</span></td>
+          <td class="num">47</td>
+          <td class="num">31.8%</td>
+          <td class="num">22</td>
+          <td class="num"><span class="badge good">47%</span></td>
+          <td class="num">20</td>
+          <td class="num"><strong>5</strong></td>
+          <td class="num"><span class="badge good">10.6%</span></td>
+        </tr>
+        <tr>
+          <td>①リョータ＿新ハウス経由</td>
+          <td class="num">4</td>
+          <td class="num">2.7%</td>
+          <td class="num">1</td>
+          <td class="num">25%</td>
+          <td class="num">1</td>
+          <td class="num">0</td>
+          <td class="num">0.0%</td>
+        </tr>
+        <tr>
+          <td>②リョータ＿旧ハウス経由</td>
+          <td class="num">1</td>
+          <td class="num">0.7%</td>
+          <td class="num">0</td>
+          <td class="num">0%</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">―</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      📌 <strong>診断ツール経由の成約率が配信経由の2倍（10.6% vs 5.2%）</strong>。診断ツール経由は <strong>スクリーニング通過率も47%（配信36%）</strong>と target純度が高い。<br>
+      📌 <strong>配信経由は申込96件で母数最大だが、10代45%＋学生51%</strong>＝量は出るが target外比率が高い構造。<br>
+      📌 <strong>診断ツール経由は10代38%＋会社員47%</strong>＝配信経由より2-7pt会社員比率が高く、20代〜30代前半のtarget純度が高い。<br>
+      📌 <strong>ハウス系（新・旧）は計5件で母数極小</strong>。新ハウスは学生100%で決済力課題。導線見直し or 配信頻度上げ要。<br>
+      → <strong>診断ツール訴求への投資シフトを優先</strong>。配信経由は量は確保しつつ、配信内のスクリーニング訴求（年齢・年収）を強化。
+    </div>
+  </section>
+
+  <!-- B-2 経路 × 年代 -->
+  <section>
+    <h3>B-2. 個別相談登録経路 × 年代</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>登録経路</th>
+        <th class="num">n</th>
+        <th class="num">10代</th>
+        <th class="num">20-24</th>
+        <th class="num">25-29</th>
+        <th class="num">30-34</th>
+        <th class="num">35-39</th>
+        <th class="num">40+</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>エバーステップ配信経由</td><td class="num">96</td><td class="cell mid">43 (45%)</td><td class="cell">25 (26%)</td><td class="cell">17 (18%)</td><td class="cell low">5 (5%)</td><td class="cell low">3 (3%)</td><td class="cell low">3 (3%)</td></tr>
+        <tr><td><strong>エバー診断ツール経由</strong></td><td class="num">47</td><td class="cell mid">18 (38%)</td><td class="cell">9 (19%)</td><td class="cell">8 (17%)</td><td class="cell"><strong>8 (17%)</strong></td><td class="cell low">1 (2%)</td><td class="cell low">3 (6%)</td></tr>
+        <tr><td>新ハウス経由</td><td class="num">4</td><td class="cell high">3 (75%)</td><td class="cell">1 (25%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>旧ハウス経由</td><td class="num">1</td><td class="cell high">1 (100%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>診断ツール経由は30-34歳が17%</strong>と他経路の3倍以上＝<strong>target層（30代前半社会人）を最も効率的に拾える経路</strong>。<br>
+      📌 配信経由は10代45%と若年層偏重。診断ツール経由は10代38%と相対的に低い。
+    </p>
+  </section>
+
+  <!-- B-3 経路 × 職業 -->
+  <section>
+    <h3>B-3. 個別相談登録経路 × 職業</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>登録経路</th>
+        <th class="num">n</th>
+        <th class="num">学生</th>
+        <th class="num">会社員</th>
+        <th class="num">フリーター</th>
+        <th class="num">フリーランス</th>
+        <th class="num">経営者</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>エバーステップ配信経由</td><td class="num">96</td><td class="cell mid">49 (51%)</td><td class="cell mid">39 (41%)</td><td class="cell low">5 (5%)</td><td class="cell low">1 (1%)</td><td class="cell low">2 (2%)</td></tr>
+        <tr><td><strong>エバー診断ツール経由</strong></td><td class="num">47</td><td class="cell mid">23 (49%)</td><td class="cell mid"><strong>22 (47%)</strong></td><td class="cell low">1 (2%)</td><td class="cell zero">―</td><td class="cell low">1 (2%)</td></tr>
+        <tr><td>新ハウス経由</td><td class="num">4</td><td class="cell high">4 (100%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>旧ハウス経由</td><td class="num">1</td><td class="cell high">1 (100%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>診断ツール経由は会社員47%（target本命）</strong>＝配信経由の41%より+6pt。決済力のあるtarget層を引き寄せている。<br>
+      📌 ハウス系は学生100%で母数極小＝target外。
+    </p>
+  </section>
+
+  <!-- B-4 ROI評価 -->
+  <section>
+    <h3>B-4. 個別相談登録経路 ROI評価</h3>
+    <table>
+      <thead><tr>
+        <th>評価</th>
+        <th>経路</th>
+        <th>判断ロジック</th>
+        <th>推奨アクション</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge good">★ 強化</span></td>
+          <td>リョータ_エバー診断ツール経由</td>
+          <td>成約率10.6%（配信2倍）／会社員47%／30-34歳17%でtarget純度最高</td>
+          <td>診断ツール露出を最優先化／訴求テキスト改善</td>
+        </tr>
+        <tr>
+          <td><span class="badge info">継続＋改善</span></td>
+          <td>リョータ_エバーステップ配信経由</td>
+          <td>申込量は主力だが10代45%＋学生51%でtarget外比率が高い</td>
+          <td>配信内スクリーニング訴求（年齢・年収）追加</td>
+        </tr>
+        <tr>
+          <td><span class="badge warn">母数不足</span></td>
+          <td>ハウス系（新・旧）</td>
+          <td>合計5件・全員学生＝決済力課題＋データ不足</td>
+          <td>露出見直し or 当面様子見</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  </section>
+  <!-- ============ ここまで セクションB ============ -->
 
 </div>
 

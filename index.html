@@ -196,13 +196,14 @@
   <h1>メンズライズ 統合分析レポート</h1>
   <div class="meta">
     <span>分析日：2026-05-12</span>
-    <span>3タブ構成：LINE登録者属性 ／ 流入層 ／ LINEヒアリング</span>
+    <span>5タブ構成：LINE登録者属性 ／ 流入層 ／ 登録経路別 ／ LINEヒアリング ／ 年代別ニーズ</span>
   </div>
 </header>
 
 <div class="tabs" role="tablist">
   <button class="tab active" data-tab="line" role="tab" aria-selected="true">LINE登録者 属性分析（4/20以降）</button>
   <button class="tab" data-tab="sales" role="tab" aria-selected="false">流入層分析（個別相談・営業 4/16以降）</button>
+  <button class="tab" data-tab="channel" role="tab" aria-selected="false">登録経路別 分析</button>
   <button class="tab" data-tab="survey" role="tab" aria-selected="false">LINEヒアリングアンケート（5/1配信・n=546）</button>
   <button class="tab" data-tab="needs" role="tab" aria-selected="false">年代別ニーズ分析（申込CSV n=207）</button>
 </div>
@@ -443,147 +444,6 @@
     </div>
   </section>
 
-  <!-- 登録経路別 属性分析 -->
-  <section>
-    <h2>🛤️ 登録経路別 属性分析</h2>
-    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
-      登録者CSV2系統（5/12時点）を突合し、年齢・職業・登録経路の3項目すべてが判明している <strong>2,453名</strong> を対象に、登録経路ごとの構成を集計（4/20以降登録分）。<br>
-      ※n≥10の主要15経路を表示、それ未満は「その他」に集約／割合は<strong>各経路内の構成比</strong>。
-    </p>
-
-    <h3>表1：登録経路 × 年代</h3>
-    <details class="data-table" open><summary>クロス集計テーブル</summary>
-    <div class="cross">
-    <table>
-      <thead><tr>
-        <th>登録経路</th>
-        <th class="num">n</th>
-        <th class="num">10代以下</th>
-        <th class="num">20代</th>
-        <th class="num">30代</th>
-        <th class="num">40代</th>
-        <th class="num">50代以上</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>YT51-19夏までに垢抜け</td><td class="row-total">1,280</td><td class="cell mid">445 (34.8%)</td><td class="cell high">668 (52.2%)</td><td class="cell">134 (10.5%)</td><td class="cell low">26 (2.0%)</td><td class="cell zero">7 (0.5%)</td></tr>
-        <tr><td>51-17髪型完全攻略</td><td class="row-total">288</td><td class="cell mid">85 (29.5%)</td><td class="cell high">158 (54.9%)</td><td class="cell">38 (13.2%)</td><td class="cell low">6 (2.1%)</td><td class="cell zero">1 (0.3%)</td></tr>
-        <tr><td>YT51-20女性に執着するな</td><td class="row-total">209</td><td class="cell mid">70 (33.5%)</td><td class="cell high">100 (47.8%)</td><td class="cell">27 (12.9%)</td><td class="cell low">12 (5.7%)</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51-19垢抜けコメント欄</td><td class="row-total">180</td><td class="cell high">84 (46.7%)</td><td class="cell mid">73 (40.6%)</td><td class="cell">19 (10.6%)</td><td class="cell zero">4 (2.2%)</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51チャンネルページ</td><td class="row-total">140</td><td class="cell high">61 (43.6%)</td><td class="cell mid">56 (40.0%)</td><td class="cell">16 (11.4%)</td><td class="cell low">7 (5.0%)</td><td class="cell zero">―</td></tr>
-        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="row-total">110</td><td class="cell mid">32 (29.1%)</td><td class="cell high">50 (45.5%)</td><td class="cell mid">25 (22.7%)</td><td class="cell low">3 (2.7%)</td><td class="cell zero">―</td></tr>
-        <tr><td>51-18スマホデトックス</td><td class="row-total">46</td><td class="cell high">20 (43.5%)</td><td class="cell mid">18 (39.1%)</td><td class="cell">7 (15.2%)</td><td class="cell zero">1 (2.2%)</td><td class="cell zero">―</td></tr>
-        <tr><td>IG_リョータ_プロフ</td><td class="row-total">34</td><td class="cell low">8 (23.5%)</td><td class="cell high">19 (55.9%)</td><td class="cell mid">7 (20.6%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>旧LINE経由</td><td class="row-total">34</td><td class="cell mid">10 (29.4%)</td><td class="cell high">17 (50.0%)</td><td class="cell low">3 (8.8%)</td><td class="cell">4 (11.8%)</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51-1男磨き完全攻略</td><td class="row-total">33</td><td class="cell mid">13 (39.4%)</td><td class="cell high">17 (51.5%)</td><td class="cell low">3 (9.1%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51-5フェイスライン</td><td class="row-total">23</td><td class="cell high">14 (60.9%)</td><td class="cell">4 (17.4%)</td><td class="cell">4 (17.4%)</td><td class="cell low">1 (4.3%)</td><td class="cell zero">―</td></tr>
-        <tr><td>51-11教訓</td><td class="row-total">16</td><td class="cell low">3 (18.8%)</td><td class="cell high">12 (75.0%)</td><td class="cell low">1 (6.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>51-8ブスになるルール</td><td class="row-total">12</td><td class="cell high">7 (58.3%)</td><td class="cell mid">4 (33.3%)</td><td class="cell zero">―</td><td class="cell low">1 (8.3%)</td><td class="cell zero">―</td></tr>
-        <tr><td>YT過去動画フェイスライン</td><td class="row-total">11</td><td class="cell high">9 (81.8%)</td><td class="cell">2 (18.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr style="background:rgba(255,200,80,.06)"><td>51-13ドーパミンデトックス <span style="font-size:10px;color:var(--accent)">★新</span></td><td class="row-total">10</td><td class="cell high">5 (50.0%)</td><td class="cell mid">4 (40.0%)</td><td class="cell low">1 (10.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>その他（n&lt;10の経路集約）</td><td class="row-total">27</td><td class="cell mid">11 (40.7%)</td><td class="cell mid">11 (40.7%)</td><td class="cell">4 (14.8%)</td><td class="cell low">1 (3.7%)</td><td class="cell zero">―</td></tr>
-        <tr><td class="row-total">全体</td><td class="row-total">2,453</td><td class="row-total">877 (35.8%)</td><td class="row-total">1,213 (49.4%)</td><td class="row-total">289 (11.8%)</td><td class="row-total">66 (2.7%)</td><td class="row-total">8 (0.3%)</td></tr>
-      </tbody>
-    </table>
-    </div>
-    </details>
-    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
-      📌 <strong>主流経路（YT夏までに垢抜け／髪型完全攻略／筋トレ食事）はいずれも20代がボリューム首位（46〜55%）</strong>＋10代3割で構成。<br>
-      📌 <strong>「YT51-20女性に執着するな」(n=209)が前回108→209に倍増</strong>。40代5.7%と中年層比率が主流経路より依然高い＝恋愛動機の中年層を引き込む特異性持続。<br>
-      📌 <strong>「コメント欄／フェイスライン／過去動画フェイスライン／ブスになるルール／ドーパミンデトックス」は10代比率が47〜82%</strong>と突出。短尺・刺激的タイトルは若年層を強く引き込む。<br>
-      📌 <strong>「51-11教訓」は20代75.0%</strong>と社会人寄り、<strong>Instagram経由は20代56%＋30代21%</strong>で年齢層が上にずれる経路。
-    </p>
-
-    <h3 style="margin-top:32px">表2：登録経路 × 職業</h3>
-    <details class="data-table" open><summary>クロス集計テーブル</summary>
-    <div class="cross">
-    <table>
-      <thead><tr>
-        <th>登録経路</th>
-        <th class="num">n</th>
-        <th class="num">学生</th>
-        <th class="num">会社員</th>
-        <th class="num">フリーランス</th>
-        <th class="num">経営者</th>
-        <th class="num">フリーター</th>
-        <th class="num">主婦</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>YT51-19夏までに垢抜け</td><td class="row-total">1,280</td><td class="cell high">643 (50.2%)</td><td class="cell high">552 (43.1%)</td><td class="cell low">26 (2.0%)</td><td class="cell low">26 (2.0%)</td><td class="cell low">30 (2.3%)</td><td class="cell zero">3 (0.2%)</td></tr>
-        <tr><td>51-17髪型完全攻略</td><td class="row-total">288</td><td class="cell high">134 (46.5%)</td><td class="cell high">137 (47.6%)</td><td class="cell low">8 (2.8%)</td><td class="cell low">4 (1.4%)</td><td class="cell low">5 (1.7%)</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51-20女性に執着するな</td><td class="row-total">209</td><td class="cell high">93 (44.5%)</td><td class="cell high">92 (44.0%)</td><td class="cell low">5 (2.4%)</td><td class="cell low">7 (3.3%)</td><td class="cell mid">10 (4.8%)</td><td class="cell zero">2 (1.0%)</td></tr>
-        <tr><td>YT51-19垢抜けコメント欄</td><td class="row-total">180</td><td class="cell high">101 (56.1%)</td><td class="cell mid">70 (38.9%)</td><td class="cell low">6 (3.3%)</td><td class="cell low">3 (1.7%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51チャンネルページ</td><td class="row-total">140</td><td class="cell high">73 (52.1%)</td><td class="cell mid">57 (40.7%)</td><td class="cell low">3 (2.1%)</td><td class="cell low">3 (2.1%)</td><td class="cell low">3 (2.1%)</td><td class="cell zero">1 (0.7%)</td></tr>
-        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="row-total">110</td><td class="cell high">50 (45.5%)</td><td class="cell high">51 (46.4%)</td><td class="cell low">2 (1.8%)</td><td class="cell low">5 (4.5%)</td><td class="cell low">2 (1.8%)</td><td class="cell zero">―</td></tr>
-        <tr><td>51-18スマホデトックス</td><td class="row-total">46</td><td class="cell high">27 (58.7%)</td><td class="cell mid">15 (32.6%)</td><td class="cell low">1 (2.2%)</td><td class="cell low">2 (4.3%)</td><td class="cell low">1 (2.2%)</td><td class="cell zero">―</td></tr>
-        <tr><td>IG_リョータ_プロフ</td><td class="row-total">34</td><td class="cell mid">10 (29.4%)</td><td class="cell high">20 (58.8%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">1 (2.9%)</td><td class="cell zero">1 (2.9%)</td></tr>
-        <tr><td>旧LINE経由</td><td class="row-total">34</td><td class="cell high">16 (47.1%)</td><td class="cell mid">14 (41.2%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">2 (5.9%)</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51-1男磨き完全攻略</td><td class="row-total">33</td><td class="cell high">19 (57.6%)</td><td class="cell mid">12 (36.4%)</td><td class="cell low">1 (3.0%)</td><td class="cell low">1 (3.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>YT51-5フェイスライン</td><td class="row-total">23</td><td class="cell high">14 (60.9%)</td><td class="cell mid">8 (34.8%)</td><td class="cell zero">―</td><td class="cell low">1 (4.3%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>51-11教訓</td><td class="row-total">16</td><td class="cell mid">5 (31.2%)</td><td class="cell high">9 (56.2%)</td><td class="cell zero">―</td><td class="cell low">1 (6.2%)</td><td class="cell low">1 (6.2%)</td><td class="cell zero">―</td></tr>
-        <tr><td>51-8ブスになるルール</td><td class="row-total">12</td><td class="cell high">6 (50.0%)</td><td class="cell mid">4 (33.3%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell mid">2 (16.7%)</td><td class="cell zero">―</td></tr>
-        <tr><td>YT過去動画フェイスライン</td><td class="row-total">11</td><td class="cell high">8 (72.7%)</td><td class="cell mid">2 (18.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell low">1 (9.1%)</td><td class="cell zero">―</td></tr>
-        <tr style="background:rgba(255,200,80,.06)"><td>51-13ドーパミンデトックス <span style="font-size:10px;color:var(--accent)">★新</span></td><td class="row-total">10</td><td class="cell mid">4 (40.0%)</td><td class="cell">1 (10.0%)</td><td class="cell mid">2 (20.0%)</td><td class="cell zero">―</td><td class="cell high">3 (30.0%)</td><td class="cell zero">―</td></tr>
-        <tr><td>その他（n&lt;10の経路集約）</td><td class="row-total">27</td><td class="cell high">15 (55.6%)</td><td class="cell mid">10 (37.0%)</td><td class="cell zero">―</td><td class="cell low">1 (3.7%)</td><td class="cell low">1 (3.7%)</td><td class="cell zero">―</td></tr>
-        <tr><td class="row-total">全体</td><td class="row-total">2,453</td><td class="row-total">1,218 (49.7%)</td><td class="row-total">1,054 (43.0%)</td><td class="row-total">56 (2.3%)</td><td class="row-total">56 (2.3%)</td><td class="row-total">62 (2.5%)</td><td class="row-total">7 (0.3%)</td></tr>
-      </tbody>
-    </table>
-    </div>
-    </details>
-    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
-      📌 <strong>「学生＋会社員」が9割超え</strong>はどの経路も共通。<br>
-      📌 <strong>会社員比率が高い経路：IG_リョータ_プロフ58.8% ／ 51-11教訓56.2% ／ 髪型完全攻略47.6% ／ 筋トレ食事46.4%</strong>＝商材検討余力のある層。<br>
-      📌 <strong>学生比率が高い経路：YT過去動画フェイスライン72.7% ／ フェイスライン60.9% ／ スマホデトックス58.7% ／ YT51-1男磨き完全攻略57.6% ／ コメント欄56.1%</strong>＝決済力課題が出やすい入口。<br>
-      📌 <strong>「ドーパミンデトックス」(n=10) はフリーター30.0%・フリーランス20.0%</strong>と他経路と異質な職業構成。<strong>「YT51-20女性に執着するな」はフリーター4.8%＋経営者3.3%</strong>と多様性あり。
-    </p>
-
-    <h3 style="margin-top:32px">表3：登録経路 × 年代 × 職業（経路内TOP5セル）</h3>
-    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
-      各経路の最大セグメントを上位5セルまで表示（経路内%）。
-    </p>
-    <details class="data-table" open><summary>クロス集計テーブル</summary>
-    <div class="cross">
-    <table>
-      <thead><tr>
-        <th>登録経路</th>
-        <th class="num">n</th>
-        <th>1位セグメント</th>
-        <th>2位</th>
-        <th>3位</th>
-        <th>4位</th>
-        <th>5位</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>YT51-19夏までに垢抜け</td><td class="row-total">1,280</td><td class="cell high">10代以下×学生 32.8%</td><td class="cell high">20代×会社員 31.0%</td><td class="cell mid">20代×学生 17.4%</td><td class="cell">30代×会社員 8.8%</td><td class="cell low">40代×会社員 1.6%</td></tr>
-        <tr><td>51-17髪型完全攻略</td><td class="row-total">288</td><td class="cell high">20代×会社員 35.1%</td><td class="cell high">10代以下×学生 28.8%</td><td class="cell mid">20代×学生 17.4%</td><td class="cell">30代×会社員 10.1%</td><td class="cell low">30代×フリーランス 1.7%</td></tr>
-        <tr><td>YT51-20女性に執着するな</td><td class="row-total">209</td><td class="cell high">10代以下×学生 30.1%</td><td class="cell mid">20代×会社員 27.8%</td><td class="cell">20代×学生 14.4%</td><td class="cell">30代×会社員 10.5%</td><td class="cell low">40代×会社員 3.8%</td></tr>
-        <tr><td>YT51-19垢抜けコメント欄</td><td class="row-total">180</td><td class="cell high">10代以下×学生 43.9%</td><td class="cell mid">20代×会社員 26.7%</td><td class="cell">20代×学生 12.2%</td><td class="cell low">30代×会社員 7.2%</td><td class="cell low">10代以下×会社員 2.8%</td></tr>
-        <tr><td>YT51チャンネルページ</td><td class="row-total">140</td><td class="cell high">10代以下×学生 41.4%</td><td class="cell mid">20代×会社員 25.0%</td><td class="cell">20代×学生 10.7%</td><td class="cell">30代×会社員 10.7%</td><td class="cell low">40代×会社員 4.3%</td></tr>
-        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="row-total">110</td><td class="cell high">10代以下×学生 28.2%</td><td class="cell mid">20代×会社員 24.5%</td><td class="cell mid">30代×会社員 19.1%</td><td class="cell mid">20代×学生 17.3%</td><td class="cell low">20代×経営者 1.8%</td></tr>
-        <tr><td>51-18スマホデトックス</td><td class="row-total">46</td><td class="cell high">10代以下×学生 41.3%</td><td class="cell mid">20代×会社員 17.4%</td><td class="cell mid">20代×学生 17.4%</td><td class="cell">30代×会社員 13.0%</td><td class="cell low">10代以下×会社員 2.2%</td></tr>
-        <tr style="background:rgba(75,180,255,.05)"><td><strong>IG_リョータ_プロフ</strong></td><td class="row-total">34</td><td class="cell high">20代×会社員 41.2%</td><td class="cell mid">10代以下×学生 20.6%</td><td class="cell mid">30代×会社員 17.6%</td><td class="cell">20代×学生 8.8%</td><td class="cell low">10代以下×主婦 2.9%</td></tr>
-        <tr><td>旧LINE経由</td><td class="row-total">34</td><td class="cell high">10代以下×学生 26.5%</td><td class="cell high">20代×会社員 26.5%</td><td class="cell mid">20代×学生 20.6%</td><td class="cell low">30代×会社員 8.8%</td><td class="cell low">40代×会社員 5.9%</td></tr>
-        <tr><td>YT51-1男磨き完全攻略</td><td class="row-total">33</td><td class="cell high">10代以下×学生 39.4%</td><td class="cell mid">20代×会社員 27.3%</td><td class="cell">20代×学生 18.2%</td><td class="cell low">30代×会社員 9.1%</td><td class="cell low">20代×フリーランス 3.0%</td></tr>
-        <tr><td>YT51-5フェイスライン</td><td class="row-total">23</td><td class="cell high">10代以下×学生 56.5%</td><td class="cell mid">30代×会社員 17.4%</td><td class="cell">20代×会社員 13.0%</td><td class="cell low">10代以下×会社員 4.3%</td><td class="cell low">20代×学生 4.3%</td></tr>
-        <tr><td>51-11教訓</td><td class="row-total">16</td><td class="cell high">20代×会社員 50.0%</td><td class="cell mid">10代以下×学生 18.8%</td><td class="cell">20代×学生 12.5%</td><td class="cell low">20代×フリーター 6.2%</td><td class="cell low">20代×経営者 6.2%</td></tr>
-        <tr><td>51-8ブスになるルール</td><td class="row-total">12</td><td class="cell high">10代以下×学生 41.7%</td><td class="cell mid">20代×会社員 25.0%</td><td class="cell mid">10代以下×フリーター 16.7%</td><td class="cell low">20代×学生 8.3%</td><td class="cell low">40代×会社員 8.3%</td></tr>
-        <tr><td>YT過去動画フェイスライン</td><td class="row-total">11</td><td class="cell high">10代以下×学生 72.7%</td><td class="cell low">10代以下×会社員 9.1%</td><td class="cell low">20代×フリーター 9.1%</td><td class="cell low">20代×会社員 9.1%</td><td class="cell zero">―</td></tr>
-        <tr style="background:rgba(255,200,80,.06)"><td>51-13ドーパミンデトックス <span style="font-size:10px;color:var(--accent)">★新</span></td><td class="row-total">10</td><td class="cell high">10代以下×学生 30.0%</td><td class="cell mid">10代以下×フリーター 20.0%</td><td class="cell mid">20代×フリーランス 20.0%</td><td class="cell low">20代×フリーター 10.0%</td><td class="cell low">20代×学生 10.0%</td></tr>
-      </tbody>
-    </table>
-    </div>
-    </details>
-
-    <div class="highlight">
-      📌 <strong>主要経路の最大セグメントは「10代以下×学生」と「20代×会社員」の二強パターン</strong>。両者で経路内の60〜80%を占める。<br>
-      📌 <strong>「髪型完全攻略」「51-11教訓」「IG_リョータ_プロフ」は20代×会社員が首位（35〜50%）</strong>＝決済力ある会社員が最大セル。LP導線・有料コンテンツ送客優先候補。<br>
-      📌 <strong>「IG_リョータ_プロフ」は依然異質：20代会社員41.2%＋30代会社員17.6%で社会人会社員が約6割</strong>。商材販売・高単価訴求の本命入口。<br>
-      📌 <strong>「YT51-20女性に執着するな」(n=209)は前回比でほぼ倍増</strong>。10代×学生30.1%＋20代×会社員27.8%とバランス型で40代×会社員3.8%も含む新規流入チャネル。<br>
-      📌 <strong>「ドーパミンデトックス」(n=10) は学生40%＋フリーター30%＋フリーランス20%</strong>と決済力低めの層に偏る。<br>
-      📌 「フェイスライン」「過去動画フェイスライン」「YT51-1男磨き完全攻略」「コメント欄」「スマホデトックス」は<strong>10代×学生が4〜7割</strong>と若年層偏重。教育系・無料プログラム送客向き。<br>
-      📌 ボリューム最大の <strong>「YT51-19夏までに垢抜け」(全体の52.2%)</strong> は10代学生＋20代会社員＋20代学生＋30代会社員の四本柱で経路内90.0%。万能訴求型。
-    </div>
-  </section>
-
   <!-- 個別相談との比較 -->
   <section>
     <h2>🔗 個別相談（営業側 4/16〜）との構造比較</h2>
@@ -799,215 +659,6 @@
     <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
       📌 <strong>申込全体の53.7%が年収100万以下</strong>。うち61件は10代と重複、19件は20代以上の100万以下層。
     </p>
-  </section>
-
-  <!-- フロント登録経路分析 -->
-  <section>
-    <h2>📺 フロント登録経路 別 流入分析</h2>
-    <p style="color:var(--text-sub);font-size:13px;margin-bottom:16px">
-      LINE登録時に「どの動画／導線から入ってきたか」のソース別分析。<strong>どの動画が"質の高い見込み客"を連れてくるか</strong>を可視化。<br>
-      母数：4/16以降申込149件。同経路でも申込のみで未実施＝LINE離脱が多い場合あり。
-    </p>
-
-    <h3>1. チャネル別 流入数 × スクリーニング通過率 × 成約数</h3>
-    <table>
-      <thead><tr>
-        <th>チャネル</th>
-        <th class="num">申込</th>
-        <th class="num">構成比</th>
-        <th class="num">スクリーニング通過</th>
-        <th class="num">通過率</th>
-        <th class="num">実施</th>
-        <th class="num">成約</th>
-        <th class="num">申込→成約率</th>
-      </tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>YT51-19夏までに垢抜け</strong> <span class="badge good">主力</span></td>
-          <td class="num">42</td>
-          <td class="num">28.2%</td>
-          <td class="num">16</td>
-          <td class="num">38%</td>
-          <td class="num">10</td>
-          <td class="num"><strong>5</strong></td>
-          <td class="num"><span class="badge good">11.9%</span></td>
-        </tr>
-        <tr>
-          <td>その他YT/LINE経由（少数経路集約）</td>
-          <td class="num">36</td>
-          <td class="num">24.2%</td>
-          <td class="num">16</td>
-          <td class="num">44%</td>
-          <td class="num">8</td>
-          <td class="num">1</td>
-          <td class="num">2.8%</td>
-        </tr>
-        <tr>
-          <td>51-17髪型完全攻略 <span class="badge warn">効率悪</span></td>
-          <td class="num">29</td>
-          <td class="num">19.5%</td>
-          <td class="num">10</td>
-          <td class="num">34%</td>
-          <td class="num">11</td>
-          <td class="num">1</td>
-          <td class="num"><span class="badge warn">3.4%</span></td>
-        </tr>
-        <tr>
-          <td>51-12かっこいい体を作る筋トレ食事 <span class="badge danger">成約0</span></td>
-          <td class="num">13</td>
-          <td class="num">8.7%</td>
-          <td class="num">6</td>
-          <td class="num">46%</td>
-          <td class="num">5</td>
-          <td class="num">0</td>
-          <td class="num"><span class="badge danger">0.0%</span></td>
-        </tr>
-        <tr>
-          <td>YT51チャンネルページ <span class="badge danger">学生82%</span></td>
-          <td class="num">12</td>
-          <td class="num">8.1%</td>
-          <td class="num">3</td>
-          <td class="num"><span class="badge danger">25%</span></td>
-          <td class="num">3</td>
-          <td class="num">1</td>
-          <td class="num">8.3%</td>
-        </tr>
-        <tr>
-          <td>51-11教訓 <span class="badge good">高効率</span></td>
-          <td class="num">10</td>
-          <td class="num">6.7%</td>
-          <td class="num">5</td>
-          <td class="num">50%</td>
-          <td class="num">4</td>
-          <td class="num">1</td>
-          <td class="num"><span class="badge good">10.0%</span></td>
-        </tr>
-        <tr>
-          <td>51-8ブスになるルール <span class="badge good">最高効率</span></td>
-          <td class="num">7</td>
-          <td class="num">5.1%</td>
-          <td class="num">3</td>
-          <td class="num">43%</td>
-          <td class="num">5</td>
-          <td class="num">1</td>
-          <td class="num"><span class="badge good">14.3%</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="highlight">
-      📌 <strong>成約10件中5件（50%）が「YT51-19夏までに垢抜け」経由</strong>。圧倒的な主力チャネル。<br>
-      📌 <strong>申込→成約率トップ3</strong>：51-8ブスになるルール（14.3%）／YT51-19夏までに垢抜け（12.2%）／51-11教訓（11.1%）。<br>
-      📌 <strong>要警戒</strong>：51-12かっこいい体を作る筋トレ食事（成約0/12件）／51-17髪型完全攻略（成約1/27件＝3.7%）／YT51チャンネルページ（通過率18%・10代偏重）。<br>
-      → <strong>主力動画への露出強化</strong>＋<strong>低効率チャネルのCTA見直し or 訴求差別化</strong>が直近のレバー。
-    </div>
-
-    <div class="divider"></div>
-
-    <h3>2. チャネル × 年代構成（%は当該チャネル内）</h3>
-    <div class="cross">
-    <table>
-      <thead><tr>
-        <th>チャネル</th>
-        <th class="num">n</th>
-        <th class="num">10代</th>
-        <th class="num">20-24</th>
-        <th class="num">25-29</th>
-        <th class="num">30-34</th>
-        <th class="num">35-39</th>
-        <th class="num">40+</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>YT51-19夏までに垢抜け</td><td class="num">41</td><td class="cell mid">46%</td><td class="cell">24%</td><td class="cell">15%</td><td class="cell">12%</td><td class="cell zero">―</td><td class="cell low">2%</td></tr>
-        <tr><td>その他YT/LINE経由</td><td class="num">30</td><td class="cell mid">43%</td><td class="cell">17%</td><td class="cell">17%</td><td class="cell low">7%</td><td class="cell">10%</td><td class="cell low">7%</td></tr>
-        <tr><td>51-17髪型完全攻略</td><td class="num">27</td><td class="cell mid">44%</td><td class="cell">30%</td><td class="cell">15%</td><td class="cell low">7%</td><td class="cell low">4%</td><td class="cell zero">―</td></tr>
-        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="num">12</td><td class="cell">25%</td><td class="cell mid">42%</td><td class="cell low">8%</td><td class="cell low">8%</td><td class="cell zero">―</td><td class="cell">17%</td></tr>
-        <tr><td><strong>YT51チャンネルページ</strong></td><td class="num">11</td><td class="cell high"><strong>73%</strong></td><td class="cell low">9%</td><td class="cell low">9%</td><td class="cell low">9%</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>51-11教訓</td><td class="num">9</td><td class="cell">33%</td><td class="cell mid">44%</td><td class="cell">22%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>51-8ブスになるルール</td><td class="num">7</td><td class="cell">29%</td><td class="cell">29%</td><td class="cell low">14%</td><td class="cell low">14%</td><td class="cell zero">―</td><td class="cell low">14%</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
-      📌 <strong>YT51チャンネルページは10代73%で偏重</strong>＝チャンネル登録から流れる層が若年層中心。<br>
-      📌 <strong>51-11教訓・51-12筋トレ食事は20-24歳がトップ</strong>＝20代前半に刺さる動画。<br>
-      📌 <strong>YT51-19夏までに垢抜けは10代-30代まで幅広く</strong>＝主力動画として機能。
-    </p>
-
-    <div class="divider"></div>
-
-    <h3>3. チャネル × 職業構成（%は当該チャネル内）</h3>
-    <div class="cross">
-    <table>
-      <thead><tr>
-        <th>チャネル</th>
-        <th class="num">n</th>
-        <th class="num">学生</th>
-        <th class="num">会社員</th>
-        <th class="num">フリーター</th>
-        <th class="num">フリーランス</th>
-        <th class="num">経営者</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>YT51-19夏までに垢抜け</td><td class="num">41</td><td class="cell mid">46%</td><td class="cell mid">44%</td><td class="cell low">10%</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>その他YT/LINE経由</td><td class="num">30</td><td class="cell mid">47%</td><td class="cell mid">50%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell low">3%</td></tr>
-        <tr><td>51-17髪型完全攻略</td><td class="num">27</td><td class="cell mid">52%</td><td class="cell mid">37%</td><td class="cell low">7%</td><td class="cell low">4%</td><td class="cell zero">―</td></tr>
-        <tr><td><strong>51-12かっこいい体を作る筋トレ食事</strong></td><td class="num">12</td><td class="cell mid">50%</td><td class="cell">33%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell"><strong>17%</strong></td></tr>
-        <tr><td><strong>YT51チャンネルページ</strong></td><td class="num">11</td><td class="cell high"><strong>82%</strong></td><td class="cell low">18%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>51-11教訓</td><td class="num">9</td><td class="cell mid">56%</td><td class="cell mid">44%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-        <tr><td>51-8ブスになるルール</td><td class="num">7</td><td class="cell mid">57%</td><td class="cell mid">43%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
-      📌 <strong>51-12かっこいい体を作る筋トレ食事は経営者比率17%</strong>＝唯一の経営者流入源。ただし成約0件＝経営者層への商品マッチング要見直し。<br>
-      📌 <strong>YT51チャンネルページは学生82%</strong>＝スクリーニングで弾かれる層が大半（決済力不足）。<br>
-      📌 <strong>YT51-19・その他YT・51-11・51-8</strong>は学生:会社員がほぼ拮抗（46-57% : 37-50%）＝バランス良好。
-    </p>
-
-    <div class="divider"></div>
-
-    <h3>4. ROI評価マトリクス</h3>
-    <table>
-      <thead><tr>
-        <th>評価</th>
-        <th>チャネル</th>
-        <th>判断ロジック</th>
-        <th>推奨アクション</th>
-      </tr></thead>
-      <tbody>
-        <tr>
-          <td><span class="badge good">★ 強化</span></td>
-          <td>YT51-19夏までに垢抜け</td>
-          <td>申込数1位×成約数1位×幅広い年代</td>
-          <td>露出最大化／類似動画の量産</td>
-        </tr>
-        <tr>
-          <td><span class="badge good">★ 強化</span></td>
-          <td>51-11教訓 / 51-8ブスになるルール</td>
-          <td>申込→成約率11-14%で最高効率</td>
-          <td>露出予算追加・ピン留め</td>
-        </tr>
-        <tr>
-          <td><span class="badge info">継続観測</span></td>
-          <td>51-17髪型完全攻略</td>
-          <td>申込3位だが成約率3.7%＝低効率</td>
-          <td>サムネ／訴求改善でCV率改善試験</td>
-        </tr>
-        <tr>
-          <td><span class="badge warn">要改善</span></td>
-          <td>51-12かっこいい体を作る筋トレ食事</td>
-          <td>成約0/12件・経営者偏重</td>
-          <td>動画CTAを「経営者向けプレミアム」訴求に変更検討</td>
-        </tr>
-        <tr>
-          <td><span class="badge danger">要見直し</span></td>
-          <td>YT51チャンネルページ</td>
-          <td>10代82%・スクリーニング通過18%＝大半が弾かれる</td>
-          <td>チャンネル概要欄CTAを20代以上向けに調整</td>
-        </tr>
-      </tbody>
-    </table>
   </section>
 
   <!-- 月次推移 -->
@@ -1615,7 +1266,374 @@
 </div>
 
 <!-- ================================================================== -->
-<!-- ============   TAB 3: LINEヒアリングアンケート (n=546) ============ -->
+<!-- ================================================================== -->
+<!-- ============   TAB 3: 登録経路別 分析   ========================== -->
+<!-- ================================================================== -->
+<div class="tab-panel" id="tab-channel" role="tabpanel">
+
+  <div class="panel-meta">
+    <span>対象：4/20以降のLINE登録者2,454名／4/16以降の個別相談149件</span>
+    <span>軸：登録経路（YouTube動画／IG／その他導線）</span>
+    <span>用途：どの動画／導線が「質の高い見込み客」を連れてくるかの可視化</span>
+  </div>
+
+  <!-- 【1】LINE登録者 経路別 属性 -->
+  <!-- 登録経路別 属性分析 -->
+  <section>
+    <h2>🛤️ 登録経路別 属性分析</h2>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      登録者CSV2系統（5/12時点）を突合し、年齢・職業・登録経路の3項目すべてが判明している <strong>2,453名</strong> を対象に、登録経路ごとの構成を集計（4/20以降登録分）。<br>
+      ※n≥10の主要15経路を表示、それ未満は「その他」に集約／割合は<strong>各経路内の構成比</strong>。
+    </p>
+
+    <h3>表1：登録経路 × 年代</h3>
+    <details class="data-table" open><summary>クロス集計テーブル</summary>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>登録経路</th>
+        <th class="num">n</th>
+        <th class="num">10代以下</th>
+        <th class="num">20代</th>
+        <th class="num">30代</th>
+        <th class="num">40代</th>
+        <th class="num">50代以上</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>YT51-19夏までに垢抜け</td><td class="row-total">1,280</td><td class="cell mid">445 (34.8%)</td><td class="cell high">668 (52.2%)</td><td class="cell">134 (10.5%)</td><td class="cell low">26 (2.0%)</td><td class="cell zero">7 (0.5%)</td></tr>
+        <tr><td>51-17髪型完全攻略</td><td class="row-total">288</td><td class="cell mid">85 (29.5%)</td><td class="cell high">158 (54.9%)</td><td class="cell">38 (13.2%)</td><td class="cell low">6 (2.1%)</td><td class="cell zero">1 (0.3%)</td></tr>
+        <tr><td>YT51-20女性に執着するな</td><td class="row-total">209</td><td class="cell mid">70 (33.5%)</td><td class="cell high">100 (47.8%)</td><td class="cell">27 (12.9%)</td><td class="cell low">12 (5.7%)</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51-19垢抜けコメント欄</td><td class="row-total">180</td><td class="cell high">84 (46.7%)</td><td class="cell mid">73 (40.6%)</td><td class="cell">19 (10.6%)</td><td class="cell zero">4 (2.2%)</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51チャンネルページ</td><td class="row-total">140</td><td class="cell high">61 (43.6%)</td><td class="cell mid">56 (40.0%)</td><td class="cell">16 (11.4%)</td><td class="cell low">7 (5.0%)</td><td class="cell zero">―</td></tr>
+        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="row-total">110</td><td class="cell mid">32 (29.1%)</td><td class="cell high">50 (45.5%)</td><td class="cell mid">25 (22.7%)</td><td class="cell low">3 (2.7%)</td><td class="cell zero">―</td></tr>
+        <tr><td>51-18スマホデトックス</td><td class="row-total">46</td><td class="cell high">20 (43.5%)</td><td class="cell mid">18 (39.1%)</td><td class="cell">7 (15.2%)</td><td class="cell zero">1 (2.2%)</td><td class="cell zero">―</td></tr>
+        <tr><td>IG_リョータ_プロフ</td><td class="row-total">34</td><td class="cell low">8 (23.5%)</td><td class="cell high">19 (55.9%)</td><td class="cell mid">7 (20.6%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>旧LINE経由</td><td class="row-total">34</td><td class="cell mid">10 (29.4%)</td><td class="cell high">17 (50.0%)</td><td class="cell low">3 (8.8%)</td><td class="cell">4 (11.8%)</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51-1男磨き完全攻略</td><td class="row-total">33</td><td class="cell mid">13 (39.4%)</td><td class="cell high">17 (51.5%)</td><td class="cell low">3 (9.1%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51-5フェイスライン</td><td class="row-total">23</td><td class="cell high">14 (60.9%)</td><td class="cell">4 (17.4%)</td><td class="cell">4 (17.4%)</td><td class="cell low">1 (4.3%)</td><td class="cell zero">―</td></tr>
+        <tr><td>51-11教訓</td><td class="row-total">16</td><td class="cell low">3 (18.8%)</td><td class="cell high">12 (75.0%)</td><td class="cell low">1 (6.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>51-8ブスになるルール</td><td class="row-total">12</td><td class="cell high">7 (58.3%)</td><td class="cell mid">4 (33.3%)</td><td class="cell zero">―</td><td class="cell low">1 (8.3%)</td><td class="cell zero">―</td></tr>
+        <tr><td>YT過去動画フェイスライン</td><td class="row-total">11</td><td class="cell high">9 (81.8%)</td><td class="cell">2 (18.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr style="background:rgba(255,200,80,.06)"><td>51-13ドーパミンデトックス <span style="font-size:10px;color:var(--accent)">★新</span></td><td class="row-total">10</td><td class="cell high">5 (50.0%)</td><td class="cell mid">4 (40.0%)</td><td class="cell low">1 (10.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>その他（n&lt;10の経路集約）</td><td class="row-total">27</td><td class="cell mid">11 (40.7%)</td><td class="cell mid">11 (40.7%)</td><td class="cell">4 (14.8%)</td><td class="cell low">1 (3.7%)</td><td class="cell zero">―</td></tr>
+        <tr><td class="row-total">全体</td><td class="row-total">2,453</td><td class="row-total">877 (35.8%)</td><td class="row-total">1,213 (49.4%)</td><td class="row-total">289 (11.8%)</td><td class="row-total">66 (2.7%)</td><td class="row-total">8 (0.3%)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    </details>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>主流経路（YT夏までに垢抜け／髪型完全攻略／筋トレ食事）はいずれも20代がボリューム首位（46〜55%）</strong>＋10代3割で構成。<br>
+      📌 <strong>「YT51-20女性に執着するな」(n=209)が前回108→209に倍増</strong>。40代5.7%と中年層比率が主流経路より依然高い＝恋愛動機の中年層を引き込む特異性持続。<br>
+      📌 <strong>「コメント欄／フェイスライン／過去動画フェイスライン／ブスになるルール／ドーパミンデトックス」は10代比率が47〜82%</strong>と突出。短尺・刺激的タイトルは若年層を強く引き込む。<br>
+      📌 <strong>「51-11教訓」は20代75.0%</strong>と社会人寄り、<strong>Instagram経由は20代56%＋30代21%</strong>で年齢層が上にずれる経路。
+    </p>
+
+    <h3 style="margin-top:32px">表2：登録経路 × 職業</h3>
+    <details class="data-table" open><summary>クロス集計テーブル</summary>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>登録経路</th>
+        <th class="num">n</th>
+        <th class="num">学生</th>
+        <th class="num">会社員</th>
+        <th class="num">フリーランス</th>
+        <th class="num">経営者</th>
+        <th class="num">フリーター</th>
+        <th class="num">主婦</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>YT51-19夏までに垢抜け</td><td class="row-total">1,280</td><td class="cell high">643 (50.2%)</td><td class="cell high">552 (43.1%)</td><td class="cell low">26 (2.0%)</td><td class="cell low">26 (2.0%)</td><td class="cell low">30 (2.3%)</td><td class="cell zero">3 (0.2%)</td></tr>
+        <tr><td>51-17髪型完全攻略</td><td class="row-total">288</td><td class="cell high">134 (46.5%)</td><td class="cell high">137 (47.6%)</td><td class="cell low">8 (2.8%)</td><td class="cell low">4 (1.4%)</td><td class="cell low">5 (1.7%)</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51-20女性に執着するな</td><td class="row-total">209</td><td class="cell high">93 (44.5%)</td><td class="cell high">92 (44.0%)</td><td class="cell low">5 (2.4%)</td><td class="cell low">7 (3.3%)</td><td class="cell mid">10 (4.8%)</td><td class="cell zero">2 (1.0%)</td></tr>
+        <tr><td>YT51-19垢抜けコメント欄</td><td class="row-total">180</td><td class="cell high">101 (56.1%)</td><td class="cell mid">70 (38.9%)</td><td class="cell low">6 (3.3%)</td><td class="cell low">3 (1.7%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51チャンネルページ</td><td class="row-total">140</td><td class="cell high">73 (52.1%)</td><td class="cell mid">57 (40.7%)</td><td class="cell low">3 (2.1%)</td><td class="cell low">3 (2.1%)</td><td class="cell low">3 (2.1%)</td><td class="cell zero">1 (0.7%)</td></tr>
+        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="row-total">110</td><td class="cell high">50 (45.5%)</td><td class="cell high">51 (46.4%)</td><td class="cell low">2 (1.8%)</td><td class="cell low">5 (4.5%)</td><td class="cell low">2 (1.8%)</td><td class="cell zero">―</td></tr>
+        <tr><td>51-18スマホデトックス</td><td class="row-total">46</td><td class="cell high">27 (58.7%)</td><td class="cell mid">15 (32.6%)</td><td class="cell low">1 (2.2%)</td><td class="cell low">2 (4.3%)</td><td class="cell low">1 (2.2%)</td><td class="cell zero">―</td></tr>
+        <tr><td>IG_リョータ_プロフ</td><td class="row-total">34</td><td class="cell mid">10 (29.4%)</td><td class="cell high">20 (58.8%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">1 (2.9%)</td><td class="cell zero">1 (2.9%)</td></tr>
+        <tr><td>旧LINE経由</td><td class="row-total">34</td><td class="cell high">16 (47.1%)</td><td class="cell mid">14 (41.2%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">1 (2.9%)</td><td class="cell low">2 (5.9%)</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51-1男磨き完全攻略</td><td class="row-total">33</td><td class="cell high">19 (57.6%)</td><td class="cell mid">12 (36.4%)</td><td class="cell low">1 (3.0%)</td><td class="cell low">1 (3.0%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>YT51-5フェイスライン</td><td class="row-total">23</td><td class="cell high">14 (60.9%)</td><td class="cell mid">8 (34.8%)</td><td class="cell zero">―</td><td class="cell low">1 (4.3%)</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>51-11教訓</td><td class="row-total">16</td><td class="cell mid">5 (31.2%)</td><td class="cell high">9 (56.2%)</td><td class="cell zero">―</td><td class="cell low">1 (6.2%)</td><td class="cell low">1 (6.2%)</td><td class="cell zero">―</td></tr>
+        <tr><td>51-8ブスになるルール</td><td class="row-total">12</td><td class="cell high">6 (50.0%)</td><td class="cell mid">4 (33.3%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell mid">2 (16.7%)</td><td class="cell zero">―</td></tr>
+        <tr><td>YT過去動画フェイスライン</td><td class="row-total">11</td><td class="cell high">8 (72.7%)</td><td class="cell mid">2 (18.2%)</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell low">1 (9.1%)</td><td class="cell zero">―</td></tr>
+        <tr style="background:rgba(255,200,80,.06)"><td>51-13ドーパミンデトックス <span style="font-size:10px;color:var(--accent)">★新</span></td><td class="row-total">10</td><td class="cell mid">4 (40.0%)</td><td class="cell">1 (10.0%)</td><td class="cell mid">2 (20.0%)</td><td class="cell zero">―</td><td class="cell high">3 (30.0%)</td><td class="cell zero">―</td></tr>
+        <tr><td>その他（n&lt;10の経路集約）</td><td class="row-total">27</td><td class="cell high">15 (55.6%)</td><td class="cell mid">10 (37.0%)</td><td class="cell zero">―</td><td class="cell low">1 (3.7%)</td><td class="cell low">1 (3.7%)</td><td class="cell zero">―</td></tr>
+        <tr><td class="row-total">全体</td><td class="row-total">2,453</td><td class="row-total">1,218 (49.7%)</td><td class="row-total">1,054 (43.0%)</td><td class="row-total">56 (2.3%)</td><td class="row-total">56 (2.3%)</td><td class="row-total">62 (2.5%)</td><td class="row-total">7 (0.3%)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    </details>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-8px">
+      📌 <strong>「学生＋会社員」が9割超え</strong>はどの経路も共通。<br>
+      📌 <strong>会社員比率が高い経路：IG_リョータ_プロフ58.8% ／ 51-11教訓56.2% ／ 髪型完全攻略47.6% ／ 筋トレ食事46.4%</strong>＝商材検討余力のある層。<br>
+      📌 <strong>学生比率が高い経路：YT過去動画フェイスライン72.7% ／ フェイスライン60.9% ／ スマホデトックス58.7% ／ YT51-1男磨き完全攻略57.6% ／ コメント欄56.1%</strong>＝決済力課題が出やすい入口。<br>
+      📌 <strong>「ドーパミンデトックス」(n=10) はフリーター30.0%・フリーランス20.0%</strong>と他経路と異質な職業構成。<strong>「YT51-20女性に執着するな」はフリーター4.8%＋経営者3.3%</strong>と多様性あり。
+    </p>
+
+    <h3 style="margin-top:32px">表3：登録経路 × 年代 × 職業（経路内TOP5セル）</h3>
+    <p style="font-size:13px;color:var(--text-sub);margin-bottom:12px">
+      各経路の最大セグメントを上位5セルまで表示（経路内%）。
+    </p>
+    <details class="data-table" open><summary>クロス集計テーブル</summary>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>登録経路</th>
+        <th class="num">n</th>
+        <th>1位セグメント</th>
+        <th>2位</th>
+        <th>3位</th>
+        <th>4位</th>
+        <th>5位</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>YT51-19夏までに垢抜け</td><td class="row-total">1,280</td><td class="cell high">10代以下×学生 32.8%</td><td class="cell high">20代×会社員 31.0%</td><td class="cell mid">20代×学生 17.4%</td><td class="cell">30代×会社員 8.8%</td><td class="cell low">40代×会社員 1.6%</td></tr>
+        <tr><td>51-17髪型完全攻略</td><td class="row-total">288</td><td class="cell high">20代×会社員 35.1%</td><td class="cell high">10代以下×学生 28.8%</td><td class="cell mid">20代×学生 17.4%</td><td class="cell">30代×会社員 10.1%</td><td class="cell low">30代×フリーランス 1.7%</td></tr>
+        <tr><td>YT51-20女性に執着するな</td><td class="row-total">209</td><td class="cell high">10代以下×学生 30.1%</td><td class="cell mid">20代×会社員 27.8%</td><td class="cell">20代×学生 14.4%</td><td class="cell">30代×会社員 10.5%</td><td class="cell low">40代×会社員 3.8%</td></tr>
+        <tr><td>YT51-19垢抜けコメント欄</td><td class="row-total">180</td><td class="cell high">10代以下×学生 43.9%</td><td class="cell mid">20代×会社員 26.7%</td><td class="cell">20代×学生 12.2%</td><td class="cell low">30代×会社員 7.2%</td><td class="cell low">10代以下×会社員 2.8%</td></tr>
+        <tr><td>YT51チャンネルページ</td><td class="row-total">140</td><td class="cell high">10代以下×学生 41.4%</td><td class="cell mid">20代×会社員 25.0%</td><td class="cell">20代×学生 10.7%</td><td class="cell">30代×会社員 10.7%</td><td class="cell low">40代×会社員 4.3%</td></tr>
+        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="row-total">110</td><td class="cell high">10代以下×学生 28.2%</td><td class="cell mid">20代×会社員 24.5%</td><td class="cell mid">30代×会社員 19.1%</td><td class="cell mid">20代×学生 17.3%</td><td class="cell low">20代×経営者 1.8%</td></tr>
+        <tr><td>51-18スマホデトックス</td><td class="row-total">46</td><td class="cell high">10代以下×学生 41.3%</td><td class="cell mid">20代×会社員 17.4%</td><td class="cell mid">20代×学生 17.4%</td><td class="cell">30代×会社員 13.0%</td><td class="cell low">10代以下×会社員 2.2%</td></tr>
+        <tr style="background:rgba(75,180,255,.05)"><td><strong>IG_リョータ_プロフ</strong></td><td class="row-total">34</td><td class="cell high">20代×会社員 41.2%</td><td class="cell mid">10代以下×学生 20.6%</td><td class="cell mid">30代×会社員 17.6%</td><td class="cell">20代×学生 8.8%</td><td class="cell low">10代以下×主婦 2.9%</td></tr>
+        <tr><td>旧LINE経由</td><td class="row-total">34</td><td class="cell high">10代以下×学生 26.5%</td><td class="cell high">20代×会社員 26.5%</td><td class="cell mid">20代×学生 20.6%</td><td class="cell low">30代×会社員 8.8%</td><td class="cell low">40代×会社員 5.9%</td></tr>
+        <tr><td>YT51-1男磨き完全攻略</td><td class="row-total">33</td><td class="cell high">10代以下×学生 39.4%</td><td class="cell mid">20代×会社員 27.3%</td><td class="cell">20代×学生 18.2%</td><td class="cell low">30代×会社員 9.1%</td><td class="cell low">20代×フリーランス 3.0%</td></tr>
+        <tr><td>YT51-5フェイスライン</td><td class="row-total">23</td><td class="cell high">10代以下×学生 56.5%</td><td class="cell mid">30代×会社員 17.4%</td><td class="cell">20代×会社員 13.0%</td><td class="cell low">10代以下×会社員 4.3%</td><td class="cell low">20代×学生 4.3%</td></tr>
+        <tr><td>51-11教訓</td><td class="row-total">16</td><td class="cell high">20代×会社員 50.0%</td><td class="cell mid">10代以下×学生 18.8%</td><td class="cell">20代×学生 12.5%</td><td class="cell low">20代×フリーター 6.2%</td><td class="cell low">20代×経営者 6.2%</td></tr>
+        <tr><td>51-8ブスになるルール</td><td class="row-total">12</td><td class="cell high">10代以下×学生 41.7%</td><td class="cell mid">20代×会社員 25.0%</td><td class="cell mid">10代以下×フリーター 16.7%</td><td class="cell low">20代×学生 8.3%</td><td class="cell low">40代×会社員 8.3%</td></tr>
+        <tr><td>YT過去動画フェイスライン</td><td class="row-total">11</td><td class="cell high">10代以下×学生 72.7%</td><td class="cell low">10代以下×会社員 9.1%</td><td class="cell low">20代×フリーター 9.1%</td><td class="cell low">20代×会社員 9.1%</td><td class="cell zero">―</td></tr>
+        <tr style="background:rgba(255,200,80,.06)"><td>51-13ドーパミンデトックス <span style="font-size:10px;color:var(--accent)">★新</span></td><td class="row-total">10</td><td class="cell high">10代以下×学生 30.0%</td><td class="cell mid">10代以下×フリーター 20.0%</td><td class="cell mid">20代×フリーランス 20.0%</td><td class="cell low">20代×フリーター 10.0%</td><td class="cell low">20代×学生 10.0%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    </details>
+
+    <div class="highlight">
+      📌 <strong>主要経路の最大セグメントは「10代以下×学生」と「20代×会社員」の二強パターン</strong>。両者で経路内の60〜80%を占める。<br>
+      📌 <strong>「髪型完全攻略」「51-11教訓」「IG_リョータ_プロフ」は20代×会社員が首位（35〜50%）</strong>＝決済力ある会社員が最大セル。LP導線・有料コンテンツ送客優先候補。<br>
+      📌 <strong>「IG_リョータ_プロフ」は依然異質：20代会社員41.2%＋30代会社員17.6%で社会人会社員が約6割</strong>。商材販売・高単価訴求の本命入口。<br>
+      📌 <strong>「YT51-20女性に執着するな」(n=209)は前回比でほぼ倍増</strong>。10代×学生30.1%＋20代×会社員27.8%とバランス型で40代×会社員3.8%も含む新規流入チャネル。<br>
+      📌 <strong>「ドーパミンデトックス」(n=10) は学生40%＋フリーター30%＋フリーランス20%</strong>と決済力低めの層に偏る。<br>
+      📌 「フェイスライン」「過去動画フェイスライン」「YT51-1男磨き完全攻略」「コメント欄」「スマホデトックス」は<strong>10代×学生が4〜7割</strong>と若年層偏重。教育系・無料プログラム送客向き。<br>
+      📌 ボリューム最大の <strong>「YT51-19夏までに垢抜け」(全体の52.2%)</strong> は10代学生＋20代会社員＋20代学生＋30代会社員の四本柱で経路内90.0%。万能訴求型。
+    </div>
+  </section>
+
+
+  <!-- 【2】個別相談 経路別 流入 -->
+  <!-- フロント登録経路分析 -->
+  <section>
+    <h2>📺 フロント登録経路 別 流入分析</h2>
+    <p style="color:var(--text-sub);font-size:13px;margin-bottom:16px">
+      LINE登録時に「どの動画／導線から入ってきたか」のソース別分析。<strong>どの動画が"質の高い見込み客"を連れてくるか</strong>を可視化。<br>
+      母数：4/16以降申込149件。同経路でも申込のみで未実施＝LINE離脱が多い場合あり。
+    </p>
+
+    <h3>1. チャネル別 流入数 × スクリーニング通過率 × 成約数</h3>
+    <table>
+      <thead><tr>
+        <th>チャネル</th>
+        <th class="num">申込</th>
+        <th class="num">構成比</th>
+        <th class="num">スクリーニング通過</th>
+        <th class="num">通過率</th>
+        <th class="num">実施</th>
+        <th class="num">成約</th>
+        <th class="num">申込→成約率</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>YT51-19夏までに垢抜け</strong> <span class="badge good">主力</span></td>
+          <td class="num">42</td>
+          <td class="num">28.2%</td>
+          <td class="num">16</td>
+          <td class="num">38%</td>
+          <td class="num">10</td>
+          <td class="num"><strong>5</strong></td>
+          <td class="num"><span class="badge good">11.9%</span></td>
+        </tr>
+        <tr>
+          <td>その他YT/LINE経由（少数経路集約）</td>
+          <td class="num">36</td>
+          <td class="num">24.2%</td>
+          <td class="num">16</td>
+          <td class="num">44%</td>
+          <td class="num">8</td>
+          <td class="num">1</td>
+          <td class="num">2.8%</td>
+        </tr>
+        <tr>
+          <td>51-17髪型完全攻略 <span class="badge warn">効率悪</span></td>
+          <td class="num">29</td>
+          <td class="num">19.5%</td>
+          <td class="num">10</td>
+          <td class="num">34%</td>
+          <td class="num">11</td>
+          <td class="num">1</td>
+          <td class="num"><span class="badge warn">3.4%</span></td>
+        </tr>
+        <tr>
+          <td>51-12かっこいい体を作る筋トレ食事 <span class="badge danger">成約0</span></td>
+          <td class="num">13</td>
+          <td class="num">8.7%</td>
+          <td class="num">6</td>
+          <td class="num">46%</td>
+          <td class="num">5</td>
+          <td class="num">0</td>
+          <td class="num"><span class="badge danger">0.0%</span></td>
+        </tr>
+        <tr>
+          <td>YT51チャンネルページ <span class="badge danger">学生82%</span></td>
+          <td class="num">12</td>
+          <td class="num">8.1%</td>
+          <td class="num">3</td>
+          <td class="num"><span class="badge danger">25%</span></td>
+          <td class="num">3</td>
+          <td class="num">1</td>
+          <td class="num">8.3%</td>
+        </tr>
+        <tr>
+          <td>51-11教訓 <span class="badge good">高効率</span></td>
+          <td class="num">10</td>
+          <td class="num">6.7%</td>
+          <td class="num">5</td>
+          <td class="num">50%</td>
+          <td class="num">4</td>
+          <td class="num">1</td>
+          <td class="num"><span class="badge good">10.0%</span></td>
+        </tr>
+        <tr>
+          <td>51-8ブスになるルール <span class="badge good">最高効率</span></td>
+          <td class="num">7</td>
+          <td class="num">5.1%</td>
+          <td class="num">3</td>
+          <td class="num">43%</td>
+          <td class="num">5</td>
+          <td class="num">1</td>
+          <td class="num"><span class="badge good">14.3%</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight">
+      📌 <strong>成約10件中5件（50%）が「YT51-19夏までに垢抜け」経由</strong>。圧倒的な主力チャネル。<br>
+      📌 <strong>申込→成約率トップ3</strong>：51-8ブスになるルール（14.3%）／YT51-19夏までに垢抜け（12.2%）／51-11教訓（11.1%）。<br>
+      📌 <strong>要警戒</strong>：51-12かっこいい体を作る筋トレ食事（成約0/12件）／51-17髪型完全攻略（成約1/27件＝3.7%）／YT51チャンネルページ（通過率18%・10代偏重）。<br>
+      → <strong>主力動画への露出強化</strong>＋<strong>低効率チャネルのCTA見直し or 訴求差別化</strong>が直近のレバー。
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>2. チャネル × 年代構成（%は当該チャネル内）</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>チャネル</th>
+        <th class="num">n</th>
+        <th class="num">10代</th>
+        <th class="num">20-24</th>
+        <th class="num">25-29</th>
+        <th class="num">30-34</th>
+        <th class="num">35-39</th>
+        <th class="num">40+</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>YT51-19夏までに垢抜け</td><td class="num">41</td><td class="cell mid">46%</td><td class="cell">24%</td><td class="cell">15%</td><td class="cell">12%</td><td class="cell zero">―</td><td class="cell low">2%</td></tr>
+        <tr><td>その他YT/LINE経由</td><td class="num">30</td><td class="cell mid">43%</td><td class="cell">17%</td><td class="cell">17%</td><td class="cell low">7%</td><td class="cell">10%</td><td class="cell low">7%</td></tr>
+        <tr><td>51-17髪型完全攻略</td><td class="num">27</td><td class="cell mid">44%</td><td class="cell">30%</td><td class="cell">15%</td><td class="cell low">7%</td><td class="cell low">4%</td><td class="cell zero">―</td></tr>
+        <tr><td>51-12かっこいい体を作る筋トレ食事</td><td class="num">12</td><td class="cell">25%</td><td class="cell mid">42%</td><td class="cell low">8%</td><td class="cell low">8%</td><td class="cell zero">―</td><td class="cell">17%</td></tr>
+        <tr><td><strong>YT51チャンネルページ</strong></td><td class="num">11</td><td class="cell high"><strong>73%</strong></td><td class="cell low">9%</td><td class="cell low">9%</td><td class="cell low">9%</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>51-11教訓</td><td class="num">9</td><td class="cell">33%</td><td class="cell mid">44%</td><td class="cell">22%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>51-8ブスになるルール</td><td class="num">7</td><td class="cell">29%</td><td class="cell">29%</td><td class="cell low">14%</td><td class="cell low">14%</td><td class="cell zero">―</td><td class="cell low">14%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>YT51チャンネルページは10代73%で偏重</strong>＝チャンネル登録から流れる層が若年層中心。<br>
+      📌 <strong>51-11教訓・51-12筋トレ食事は20-24歳がトップ</strong>＝20代前半に刺さる動画。<br>
+      📌 <strong>YT51-19夏までに垢抜けは10代-30代まで幅広く</strong>＝主力動画として機能。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>3. チャネル × 職業構成（%は当該チャネル内）</h3>
+    <div class="cross">
+    <table>
+      <thead><tr>
+        <th>チャネル</th>
+        <th class="num">n</th>
+        <th class="num">学生</th>
+        <th class="num">会社員</th>
+        <th class="num">フリーター</th>
+        <th class="num">フリーランス</th>
+        <th class="num">経営者</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>YT51-19夏までに垢抜け</td><td class="num">41</td><td class="cell mid">46%</td><td class="cell mid">44%</td><td class="cell low">10%</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>その他YT/LINE経由</td><td class="num">30</td><td class="cell mid">47%</td><td class="cell mid">50%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell low">3%</td></tr>
+        <tr><td>51-17髪型完全攻略</td><td class="num">27</td><td class="cell mid">52%</td><td class="cell mid">37%</td><td class="cell low">7%</td><td class="cell low">4%</td><td class="cell zero">―</td></tr>
+        <tr><td><strong>51-12かっこいい体を作る筋トレ食事</strong></td><td class="num">12</td><td class="cell mid">50%</td><td class="cell">33%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell"><strong>17%</strong></td></tr>
+        <tr><td><strong>YT51チャンネルページ</strong></td><td class="num">11</td><td class="cell high"><strong>82%</strong></td><td class="cell low">18%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>51-11教訓</td><td class="num">9</td><td class="cell mid">56%</td><td class="cell mid">44%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+        <tr><td>51-8ブスになるルール</td><td class="num">7</td><td class="cell mid">57%</td><td class="cell mid">43%</td><td class="cell zero">―</td><td class="cell zero">―</td><td class="cell zero">―</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-sub);margin-top:-12px">
+      📌 <strong>51-12かっこいい体を作る筋トレ食事は経営者比率17%</strong>＝唯一の経営者流入源。ただし成約0件＝経営者層への商品マッチング要見直し。<br>
+      📌 <strong>YT51チャンネルページは学生82%</strong>＝スクリーニングで弾かれる層が大半（決済力不足）。<br>
+      📌 <strong>YT51-19・その他YT・51-11・51-8</strong>は学生:会社員がほぼ拮抗（46-57% : 37-50%）＝バランス良好。
+    </p>
+
+    <div class="divider"></div>
+
+    <h3>4. ROI評価マトリクス</h3>
+    <table>
+      <thead><tr>
+        <th>評価</th>
+        <th>チャネル</th>
+        <th>判断ロジック</th>
+        <th>推奨アクション</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge good">★ 強化</span></td>
+          <td>YT51-19夏までに垢抜け</td>
+          <td>申込数1位×成約数1位×幅広い年代</td>
+          <td>露出最大化／類似動画の量産</td>
+        </tr>
+        <tr>
+          <td><span class="badge good">★ 強化</span></td>
+          <td>51-11教訓 / 51-8ブスになるルール</td>
+          <td>申込→成約率11-14%で最高効率</td>
+          <td>露出予算追加・ピン留め</td>
+        </tr>
+        <tr>
+          <td><span class="badge info">継続観測</span></td>
+          <td>51-17髪型完全攻略</td>
+          <td>申込3位だが成約率3.7%＝低効率</td>
+          <td>サムネ／訴求改善でCV率改善試験</td>
+        </tr>
+        <tr>
+          <td><span class="badge warn">要改善</span></td>
+          <td>51-12かっこいい体を作る筋トレ食事</td>
+          <td>成約0/12件・経営者偏重</td>
+          <td>動画CTAを「経営者向けプレミアム」訴求に変更検討</td>
+        </tr>
+        <tr>
+          <td><span class="badge danger">要見直し</span></td>
+          <td>YT51チャンネルページ</td>
+          <td>10代82%・スクリーニング通過18%＝大半が弾かれる</td>
+          <td>チャンネル概要欄CTAを20代以上向けに調整</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+</div>
+
+<!-- ============   TAB 4: LINEヒアリングアンケート (n=546) ============ -->
 <!-- ================================================================== -->
 <div class="tab-panel" id="tab-survey" role="tabpanel">
 
@@ -1853,7 +1871,7 @@
 </div>
 
 <!-- ================================================================== -->
-<!-- ============   TAB 4: 年代別ニーズ分析（n=207）   ============= -->
+<!-- ============   TAB 5: 年代別ニーズ分析（n=207）   ============= -->
 <!-- ================================================================== -->
 <div class="tab-panel" id="tab-needs" role="tabpanel">
 

@@ -31,6 +31,7 @@ const state = {
     age: 'all',
     occupation: 'all',
     answered: 'all',
+    screening: 'all',
     exclude_test: 'yes',
   },
   charts: {},
@@ -62,7 +63,7 @@ function isTestRecord(r) {
 }
 
 // --- Filters ---
-function matchFilters(r, isConsult = false) {
+function matchFilters(r, isConsult = false, ignoreScreening = false) {
   const f = state.filters;
 
   // テストデータ除外
@@ -133,6 +134,12 @@ function matchFilters(r, isConsult = false) {
   if (!isConsult) {
     if (f.answered === 'yes' && !r.has_answered_survey) return false;
     if (f.answered === 'no' && r.has_answered_survey) return false;
+  }
+
+  // スクリーニング（個別相談専用）
+  if (isConsult && !ignoreScreening && f.screening && f.screening !== 'all') {
+    if (f.screening === 'apo' && r.is_screened) return false;
+    if (f.screening === 'screened' && !r.is_screened) return false;
   }
 
   return true;
@@ -243,6 +250,41 @@ function isFineAgeBand(s) {
   // "60代以上" を除外
   if (s === '60代以上') return false;
   return true;
+}
+
+// 年収帯から上限値（万円）を抽出（チルダ文字依存を避けるため数値抽出方式）
+// "100万円以下"→100, "100〜300万円"→300, "300万円〜500万円"→500, "500万円〜1000万円"→1000, "1000万円以上"→Infinity
+function incomeUpperBound(income) {
+  if (!income) return null;
+  if (income.includes('以上')) return Infinity;
+  const nums = income.match(/\d+/g);
+  if (!nums) return null;
+  return parseInt(nums[nums.length - 1], 10);
+}
+
+// アポ実施スクリーニング判定（個別相談のみ）。該当した理由の配列を返す（空=アポ実施対象）
+// ルール: 2026-05-19改訂版。恒久5条件 + 暫定2条件（ライフティ与信通過まで撤廃見込み）
+function getScreeningReasons(r) {
+  const reasons = [];
+  const occ = r.occupation || '';
+  const intent = r.intent_level || '';
+  const cc = r.cc_available || '';
+  const broad = getAgeBroad(r.age_band);
+  const upper = incomeUpperBound(r.income_band);
+  const income100orLess = upper === 100;
+  const incomeUnder500 = upper !== null && upper <= 500;
+
+  // 恒久ルール
+  if (broad === '10代以下') reasons.push('10代');
+  if (occ === '学生' && income100orLess) reasons.push('学生×年収100万以下');
+  if (broad === '40代' && incomeUnder500) reasons.push('40代×年収500万未満');
+  if (broad === '50代以上') reasons.push('50代以上');
+  if (intent === '入会をあまり考えていない' || intent === '入会を全く考えていない') reasons.push('意向度最下位');
+  // 暫定ルール（ライフティ与信通過まで）
+  if (income100orLess) reasons.push('[暫定]年収100万以下');
+  if (cc === '持っていない') reasons.push('[暫定]クレカなし');
+
+  return reasons;
 }
 function sortIncomeBand(entries) { return sortByOrder(entries, INCOME_ORDER); }
 function sortBudget(entries) { return sortByOrder(entries, BUDGET_ORDER); }
@@ -444,7 +486,7 @@ function initFilters() {
   });
 
   document.getElementById('filter-reset').addEventListener('click', () => {
-    state.filters = { period: 'all', date_from: '', date_to: '', source: 'all', age: 'all', occupation: 'all', answered: 'all', exclude_test: 'yes' };
+    state.filters = { period: 'all', date_from: '', date_to: '', source: 'all', age: 'all', occupation: 'all', answered: 'all', screening: 'all', exclude_test: 'yes' };
     document.querySelectorAll('.filter-bar select').forEach(sel => {
       sel.value = sel.dataset.filter === 'exclude_test' ? 'yes' : 'all';
     });
@@ -496,6 +538,7 @@ const PIVOT_FIELDS_CONSULT = [
   { key: 'monthly_budget', label: '月投資額', sort: sortBudget },
   { key: 'intent_level', label: '意向度', sort: sortIntent },
   { key: 'result', label: '結果', sort: sortResult },
+  { key: 'screening_status', label: 'スクリーニング' },
   { key: 'implemented', label: '実施可否' },
   { key: 'front_source', label: 'フロント経路' },
   { key: 'consultation_source', label: '個相経路' },
@@ -668,6 +711,7 @@ const LIST_COLS_CONSULT = [
   { key: 'intent_level', label: '意向度' },
   { key: 'implemented', label: '実施' },
   { key: 'result', label: '結果' },
+  { key: 'screening_status', label: 'スクリーニング' },
   { key: 'contract_at', label: '契約日' },
   { key: 'plan_name', label: 'プラン' },
   { key: 'consultant', label: '担当' },
@@ -747,6 +791,47 @@ function getMonth(dateStr) {
 
 function filterConsult() { return state.data.factConsult.filter(r => matchFilters(r, true)); }
 
+function renderScreeningSummary(items) {
+  const apo = items.filter(r => !r.is_screened);
+  const screened = items.filter(r => r.is_screened);
+  const cells = (arr) => {
+    const impl = arr.filter(isImplemented).length;
+    const contract = arr.filter(isContracted).length;
+    const rate = arr.length ? (contract / arr.length * 100).toFixed(1) + '%' : '-';
+    return { n: arr.length, impl, contract, rate };
+  };
+  const cAll = cells(items), cApo = cells(apo), cScr = cells(screened);
+
+  const rows = [
+    ['申込件数', cAll.n, cApo.n, cScr.n],
+    ['実施数', cAll.impl, cApo.impl, cScr.impl],
+    ['成約数', cAll.contract, cApo.contract, cScr.contract],
+    ['成約率（申込比）', cAll.rate, cApo.rate, cScr.rate],
+  ];
+  let html = '<table class="cross"><thead><tr><th>指標</th><th>申込全体</th>'
+    + '<th>アポ実施対象<br><span style="font-weight:400;font-size:10px;color:' + COLORS.textSub + '">スクリーニング後</span></th>'
+    + '<th>スクリーニング除外</th></tr></thead><tbody>';
+  for (const [label, ...vals] of rows) {
+    html += `<tr><td><strong>${label}</strong></td>`;
+    vals.forEach((v, i) => {
+      const hl = (label.includes('成約率') && i === 1) ? ` style="color:${COLORS.good};font-weight:700"` : '';
+      html += `<td${hl}>${typeof v === 'number' ? v.toLocaleString() : v}</td>`;
+    });
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+  const el = document.getElementById('c-screening-summary');
+  if (el) el.innerHTML = html;
+
+  // 理由内訳（1人複数理由あり）
+  const reasonCounts = {};
+  screened.forEach(r => (r.screening_reasons || []).forEach(reason => {
+    reasonCounts[reason] = (reasonCounts[reason] || 0) + 1;
+  }));
+  const reasonEntries = Object.entries(reasonCounts).sort((a, b) => b[1] - a[1]);
+  renderDataTable('c-screening-reasons', reasonEntries, screened.length);
+}
+
 // --- Render: Consult tab ---
 function renderConsult() {
   const all = filterConsult();
@@ -765,6 +850,9 @@ function renderConsult() {
   setText('c-kpi-rate', all.length ? (contracted.length / all.length * 100).toFixed(1) + '%' : '-');
   setText('c-kpi-revenue', totalRevenue ? '¥' + Math.round(totalRevenue).toLocaleString() : '-');
   setText('c-kpi-arpu', amounts.length ? `平均 ¥${Math.round(arpu).toLocaleString()}（n=${amounts.length}）` : '金額未入力');
+
+  // スクリーニング効果（IF分析）: screeningフィルタを無視した母集団で適用前後を比較
+  renderScreeningSummary(state.data.factConsult.filter(r => matchFilters(r, true, true)));
 
   // Funnel
   setText('c-funnel-applied', all.length.toLocaleString());
@@ -892,7 +980,12 @@ async function loadData(password) {
 
 function initApp({ factFront, factConsult, meta }) {
   factFront.forEach(r => { r.age_broad = getAgeBroad(r.age_band); });
-  factConsult.forEach(r => { r.age_broad = getAgeBroad(r.age_band); });
+  factConsult.forEach(r => {
+    r.age_broad = getAgeBroad(r.age_band);
+    r.screening_reasons = getScreeningReasons(r);
+    r.is_screened = r.screening_reasons.length > 0;
+    r.screening_status = r.is_screened ? 'スクリーニング対象' : 'アポ実施対象';
+  });
   state.data = { factFront, factConsult, meta };
 
   setText('meta-updated', '最終更新: ' + new Date(meta.generated_at).toLocaleString('ja-JP'));

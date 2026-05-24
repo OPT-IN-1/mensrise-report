@@ -327,6 +327,14 @@
       </select>
     </div>
     <div>
+      <label>スクリーニング<span style="opacity:.6">（個相のみ）</span></label>
+      <select data-filter="screening">
+        <option value="all">全て（申込ベース）</option>
+        <option value="apo">アポ実施対象のみ</option>
+        <option value="screened">スクリーニング対象のみ</option>
+      </select>
+    </div>
+    <div>
       <label>テストデータ</label>
       <select data-filter="exclude_test">
         <option value="yes">除外</option>
@@ -450,6 +458,16 @@
           <div class="kpi-sub" id="c-kpi-arpu">-</div>
         </div>
       </div>
+
+      <section class="block">
+        <h2>スクリーニング効果（アポ実施ルール適用 IF分析）</h2>
+        <p style="font-size:12px;color:var(--text-sub);margin-bottom:14px">
+          2026-05-19改訂ルール。恒久5条件＋暫定2条件に該当する申込を「アポ実施しない（スクリーニング対象）」として、適用前後の成約率を比較。
+        </p>
+        <div class="cross-wrap" style="margin-bottom:16px"><div id="c-screening-summary"></div></div>
+        <h3>スクリーニング理由の内訳</h3>
+        <div class="data-table-box" id="c-screening-reasons" style="max-height:none"></div>
+      </section>
 
       <section class="block">
         <h2>ファネル</h2>

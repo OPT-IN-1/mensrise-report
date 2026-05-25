@@ -277,10 +277,11 @@
   </header>
 
   <nav class="tabs">
-    <button class="tab active" data-tab="front">① フロント分析</button>
-    <button class="tab" data-tab="consult">② 個別相談分析</button>
-    <button class="tab" data-tab="pivot">③ ピボット</button>
-    <button class="tab" data-tab="list">④ 顧客一覧</button>
+    <button class="tab active" data-tab="overview">全体集計</button>
+    <button class="tab" data-tab="front">フロント分析</button>
+    <button class="tab" data-tab="consult">個別相談分析</button>
+    <button class="tab" data-tab="pivot">ピボット</button>
+    <button class="tab" data-tab="list">顧客一覧</button>
   </nav>
 
   <section class="filter-bar">
@@ -345,8 +346,37 @@
   </section>
 
   <main>
+    <!-- (0) 全体集計 -->
+    <div class="tab-panel active" id="panel-overview">
+      <div class="pivot-controls">
+        <div>
+          <label>粒度</label>
+          <select id="ov-granularity">
+            <option value="week">週次</option>
+            <option value="month" selected>月次</option>
+          </select>
+        </div>
+        <div>
+          <label>期間</label>
+          <select id="ov-range">
+            <option value="may">2026年5月</option>
+            <option value="all" selected>全期間</option>
+          </select>
+        </div>
+      </div>
+      <section class="block">
+        <h2>全体集計</h2>
+        <p style="font-size:12px;color:var(--text-sub);margin-bottom:14px">
+          基準日: オプト数=フロント登録日 / 申込・合格・キャンセル・着座=申込日 / 成約・売上=契約日。
+          合格＝スクリーニング通過、成約＝結果「成約」かつ金額確定。
+          （着座は実施日データが弱いため申込日ベースで近似。後でブラッシュアップ予定）
+        </p>
+        <div class="cross-wrap"><div id="ov-table"></div></div>
+      </section>
+    </div>
+
     <!-- (1) フロント分析 -->
-    <div class="tab-panel active" id="panel-front">
+    <div class="tab-panel" id="panel-front">
       <div class="kpi-grid">
         <div class="kpi">
           <div class="kpi-label">フロントLINE登録数</div>

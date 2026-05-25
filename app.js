@@ -505,6 +505,7 @@ function initTabs() {
       document.querySelectorAll('.tab-panel').forEach(x => x.classList.remove('active'));
       t.classList.add('active');
       document.getElementById('panel-' + t.dataset.tab).classList.add('active');
+      document.querySelector('.filter-bar').style.display = t.dataset.tab === 'overview' ? 'none' : 'flex';
       renderActiveTab();
     });
   });
@@ -513,10 +514,131 @@ function initTabs() {
 function renderActiveTab() {
   const active = document.querySelector('.tab.active');
   if (!active) return;
+  if (active.dataset.tab === 'overview') renderOverview();
   if (active.dataset.tab === 'front') renderFront();
   if (active.dataset.tab === 'consult') renderConsult();
   if (active.dataset.tab === 'pivot') renderPivot();
   if (active.dataset.tab === 'list') renderList();
+}
+
+// --- Overview tab (全体集計) ---
+const OV_CANCEL = ['飛び', 'キャンセル', 'キャンセル（飛び）', 'キャンセル（連絡あり）'];
+
+// 合格（アポ実施対象）判定: 実施済み・キャンセル/飛び（=アポ取得済み）は通過扱い、それ以外は属性スクリーニング判定
+function isPassed(r) {
+  if (r.implemented === '実施' || OV_CANCEL.includes(r.implemented)) return true;
+  return !r.is_screened;
+}
+
+function ovFmtDate(d) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function generateBuckets(granularity, range) {
+  const allDates = [];
+  state.data.factFront.forEach(r => { if (r.registered_at) allDates.push(r.registered_at.slice(0, 10)); });
+  state.data.factConsult.forEach(r => {
+    if (r.applied_at) allDates.push(r.applied_at.slice(0, 10));
+    if (r.contract_at) allDates.push(r.contract_at.slice(0, 10));
+  });
+  if (allDates.length === 0) return [];
+  allDates.sort();
+  let minDate = allDates[0], maxDate = allDates[allDates.length - 1];
+  if (range === 'may') { minDate = '2026-05-01'; maxDate = '2026-05-31'; }
+
+  const buckets = [];
+  if (granularity === 'month') {
+    let y = parseInt(minDate.slice(0, 4)), m = parseInt(minDate.slice(5, 7));
+    const endY = parseInt(maxDate.slice(0, 4)), endM = parseInt(maxDate.slice(5, 7));
+    while (y < endY || (y === endY && m <= endM)) {
+      const mm = String(m).padStart(2, '0');
+      const lastDay = new Date(y, m, 0).getDate();
+      buckets.push({ label: `${y}-${mm}`, start: `${y}-${mm}-01`, end: `${y}-${mm}-${String(lastDay).padStart(2, '0')}` });
+      m++; if (m > 12) { m = 1; y++; }
+    }
+  } else {
+    let cur = new Date(minDate + 'T00:00:00');
+    cur.setDate(cur.getDate() - cur.getDay());
+    const end = new Date(maxDate + 'T00:00:00');
+    while (cur <= end) {
+      const ws = new Date(cur), we = new Date(cur); we.setDate(we.getDate() + 6);
+      buckets.push({ label: `${ovFmtDate(ws).slice(5)}〜${ovFmtDate(we).slice(5)}`, start: ovFmtDate(ws), end: ovFmtDate(we) });
+      cur.setDate(cur.getDate() + 7);
+    }
+  }
+  return buckets;
+}
+
+function inBucket(dateStr, bucket) {
+  if (!dateStr) return false;
+  const d = dateStr.slice(0, 10);
+  return d >= bucket.start && d <= bucket.end;
+}
+
+function renderOverview() {
+  const granularity = document.getElementById('ov-granularity').value;
+  const range = document.getElementById('ov-range').value;
+  const front = state.data.factFront.filter(r => !isTestRecord(r));
+  const consult = state.data.factConsult.filter(r => !isTestRecord(r));
+  const buckets = generateBuckets(granularity, range);
+
+  const calc = (b) => {
+    const opt = front.filter(r => inBucket(r.registered_at, b)).length;
+    const applied = consult.filter(r => inBucket(r.applied_at, b));
+    const passed = applied.filter(isPassed);
+    const cancelled = applied.filter(r => OV_CANCEL.includes(r.implemented));
+    const seated = applied.filter(r => r.implemented === '実施');
+    const contracted = consult.filter(r => r.result === '成約' && inBucket(r.contract_at, b));
+    const revenue = contracted.reduce((s, r) => s + (parseAmount(r.contract_amount) || 0), 0);
+    return { opt, applied: applied.length, passed: passed.length, cancelled: cancelled.length, seated: seated.length, contracted: contracted.length, revenue };
+  };
+
+  const rowsData = buckets.map(b => ({ label: b.label, ...calc(b) }));
+  const total = rowsData.reduce((acc, r) => {
+    ['opt', 'applied', 'passed', 'cancelled', 'seated', 'contracted', 'revenue'].forEach(k => acc[k] += r[k]);
+    return acc;
+  }, { opt: 0, applied: 0, passed: 0, cancelled: 0, seated: 0, contracted: 0, revenue: 0 });
+
+  const pct = (n, d) => d ? (n / d * 100).toFixed(1) + '%' : '-';
+  const yen = n => '¥' + Math.round(n).toLocaleString();
+  const cols = [
+    ['期間', r => r.label, true],
+    ['オプト数', r => r.opt.toLocaleString()],
+    ['個別申込', r => r.applied.toLocaleString()],
+    ['申込率', r => pct(r.applied, r.opt)],
+    ['合格数', r => r.passed.toLocaleString()],
+    ['合格率', r => pct(r.passed, r.applied)],
+    ['ｷｬﾝｾﾙ/飛び', r => r.cancelled.toLocaleString()],
+    ['着座数', r => r.seated.toLocaleString()],
+    ['着座率', r => pct(r.seated, r.passed)],
+    ['成約数', r => r.contracted.toLocaleString()],
+    ['成約率', r => pct(r.contracted, r.seated)],
+    ['売上', r => yen(r.revenue)],
+    ['リスト単価', r => r.opt ? yen(r.revenue / r.opt) : '-'],
+  ];
+
+  let html = '<table class="cross"><thead><tr>';
+  cols.forEach(c => html += `<th${c[2] ? ' style="text-align:left"' : ''}>${c[0]}</th>`);
+  html += '</tr></thead><tbody>';
+  for (const r of rowsData) {
+    html += '<tr>';
+    cols.forEach(c => html += `<td${c[2] ? ' style="text-align:left;font-weight:600"' : ''}>${c[1](r)}</td>`);
+    html += '</tr>';
+  }
+  const totalRow = { label: '合計', ...total };
+  const ts = 'border-top:2px solid var(--accent);font-weight:700';
+  html += '<tr>';
+  cols.forEach(c => html += `<td style="${ts}${c[2] ? ';text-align:left' : ''}">${c[1](totalRow)}</td>`);
+  html += '</tr>';
+  html += '</tbody></table>';
+  document.getElementById('ov-table').innerHTML = html;
+}
+
+function initOverview() {
+  ['ov-granularity', 'ov-range'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', renderOverview);
+  });
 }
 
 // --- Pivot tab ---
@@ -792,8 +914,8 @@ function getMonth(dateStr) {
 function filterConsult() { return state.data.factConsult.filter(r => matchFilters(r, true)); }
 
 function renderScreeningSummary(items) {
-  const apo = items.filter(r => !r.is_screened);
-  const screened = items.filter(r => r.is_screened);
+  const apo = items.filter(isPassed);
+  const screened = items.filter(r => !isPassed(r));
   const cells = (arr) => {
     const impl = arr.filter(isImplemented).length;
     const contract = arr.filter(isContracted).length;
@@ -995,7 +1117,9 @@ function initApp({ factFront, factConsult, meta }) {
   initFilters();
   initPivot();
   initList();
-  renderFront();
+  initOverview();
+  document.querySelector('.filter-bar').style.display = 'none';
+  renderOverview();
 
   document.getElementById('loading').classList.add('hidden');
   document.getElementById('auth-overlay').style.display = 'none';

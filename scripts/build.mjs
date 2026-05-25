@@ -106,6 +106,29 @@ function pick(obj, ...keys) {
   return null;
 }
 
+// 金額フィールドのサニタイズ: 数値のみ許可。名前/#REF!等の混入を破棄（個人情報・異常値対策）
+function sanitizeAmount(v) {
+  if (!v) return null;
+  const cleaned = String(v).replace(/[,，¥￥円\s]/g, '');
+  if (/^\d+(\.\d+)?$/.test(cleaned)) return cleaned;
+  return null;
+}
+
+// 入金ステータスのサニタイズ: 既知キーワードのみ許可。名前の誤入力を破棄（個人情報対策）
+function sanitizePaymentStatus(v) {
+  if (!v) return null;
+  if (/入金|済|未|分割|一括|頭金|ローン|クレジット|カード|現金|決済|完了|保留/.test(v)) return v;
+  return null;
+}
+
+// 日付の正規化: "2026/05/10" や "2026/3/22" を "2026-05-10" 形式に統一（時刻部分は保持）
+function normalizeDate(v) {
+  if (!v) return null;
+  const m = String(v).match(/(\d{4})[-/](\d{1,2})[-/](\d{1,2})(.*)$/);
+  if (!m) return v;
+  return `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}${m[4] || ''}`;
+}
+
 // --- B + C → fact_front ---
 function buildFactFront(rowsB, rowsC) {
   const byIdB = new Map();
@@ -128,7 +151,7 @@ function buildFactFront(rowsB, rowsC) {
 
     out.push({
       anon_id: hashId(lineId),
-      registered_at: pick(src, '登録日時'),
+      registered_at: normalizeDate(pick(src, '登録日時')),
       acquisition_source: pick(b || {}, '登録経路'),
       has_answered_survey: Boolean(c),
       age_band: pick(c || {}, '年齢を教えてください'),
@@ -158,7 +181,7 @@ function buildFactConsult(rowsA) {
 
     const rec = {
       anon_id: hashId(lineId),
-      applied_at: pick(r, '申込日時'),
+      applied_at: normalizeDate(pick(r, '申込日時')),
       age_band: pick(r, '年代'),
       occupation: pick(r, '職業'),
       income_band: pick(r, '年収'),
@@ -179,9 +202,9 @@ function buildFactConsult(rowsA) {
       proposed_plan: pick(r, '提案商品プラン'),
       payment_method: pick(r, '決済手段'),
       plan_name: pick(r, 'プラン名'),
-      contract_at: pick(r, '契約日'),
-      contract_amount: pick(r, '契約金額(売上)'),
-      payment_status: pick(r, '入金ステータス'),
+      contract_at: normalizeDate(pick(r, '契約日')),
+      contract_amount: sanitizeAmount(pick(r, '契約金額(売上)')),
+      payment_status: sanitizePaymentStatus(pick(r, '入金ステータス')),
       consultant: pick(r, '個別相談担当者'),
       apply_count: pick(r, '申込回数'),
       // Free text fields (mask own name)

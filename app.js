@@ -52,14 +52,26 @@ function groupBy(items, key) {
   return [...map.entries()].sort((a, b) => b[1] - a[1]);
 }
 
+// 「あ」のみ等の無意味な記入か判定（1文字のみ、または同一文字の繰り返し）
+function looksLikeJunk(s) {
+  if (typeof s !== 'string') return false;
+  const t = s.trim();
+  if (!t) return false;
+  if (t.length <= 1) return true;          // 「あ」など1文字
+  if (/^(.)\1*$/.test(t)) return true;     // 「ああ」「aaa」など同一文字反復
+  return false;
+}
+
 function isTestRecord(r) {
-  // フロント側のテスト判定: acquisition_source が空、または明らかに少件のテスト
-  // 個相側: front_source/consultation_source/concern_free/desired_future に "テスト" を含む
+  // 「テスト」を含むレコード
   const fields = [
     r.acquisition_source, r.front_source, r.consultation_source, r.referral_source,
     r.concern_free, r.desired_future, r.question, r.success_factor, r.loss_factor,
   ];
-  return fields.some(v => typeof v === 'string' && /テスト/i.test(v));
+  if (fields.some(v => typeof v === 'string' && /テスト/i.test(v))) return true;
+  // 悩み・理想などの自由記述が「あ」のみ等の適当な記入（LINE名は判定に使わない）
+  if (looksLikeJunk(r.concern_free) || looksLikeJunk(r.desired_future)) return true;
+  return false;
 }
 
 // --- Filters ---

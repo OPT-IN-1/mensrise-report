@@ -670,6 +670,7 @@ const PIVOT_FIELDS_CONSULT = [
   { key: 'occupation', label: '職業' },
   { key: 'income_band', label: '年収', sort: sortIncomeBand },
   { key: 'monthly_budget', label: '月投資額', sort: sortBudget },
+  { key: 'cc_available', label: 'クレジットカード' },
   { key: 'intent_level', label: '意向度', sort: sortIntent },
   { key: 'result', label: '結果', sort: sortResult },
   { key: 'screening_status', label: 'スクリーニング' },
@@ -842,6 +843,7 @@ const LIST_COLS_CONSULT = [
   { key: 'occupation', label: '職業' },
   { key: 'income_band', label: '年収' },
   { key: 'monthly_budget', label: '月投資' },
+  { key: 'cc_available', label: 'クレカ' },
   { key: 'intent_level', label: '意向度' },
   { key: 'implemented', label: '実施' },
   { key: 'result', label: '結果' },
@@ -1004,6 +1006,7 @@ function renderConsult() {
     { key: 'monthly_budget', chart: 'c-chart-budget', table: 'c-table-budget', title: '月投資額', sort: sortBudget },
     { key: 'intent_level', chart: 'c-chart-intent', table: 'c-table-intent', title: '意向度', sort: sortIntent },
     { key: 'result', chart: 'c-chart-result', table: 'c-table-result', title: '結果', sort: sortResult },
+    { key: 'cc_available', chart: 'c-chart-cc', table: 'c-table-cc', title: 'クレジットカード保有', sort: null },
   ];
   for (const a of attrs) {
     let data = groupBy(all, a.key);
@@ -1029,6 +1032,7 @@ function renderConsult() {
   renderCross('c-cross-age-broad-occupation', all, 'age_broad', 'occupation', { rowLimit: 10, colLimit: 10 });
   renderCross('c-cross-age-occupation', all, 'age_band', 'occupation', { rowSort: 'age', rowKeyFilter: isFineAgeBand, colLimit: 10 });
   renderCross('c-cross-front-result', all, 'front_source', 'result', { rowLimit: 15, colLimit: 8 });
+  renderCross('c-cross-cc-result', all, 'cc_available', 'result', { colLimit: 8 });
 
   // 月次推移
   renderMonthlyConsult('c-chart-monthly', all);
